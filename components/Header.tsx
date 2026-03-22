@@ -138,22 +138,22 @@ export function Header() {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               className="absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-sm overflow-hidden"
             >
-              <div className="container mx-auto px-8 py-12 flex">
-                <div className="w-1/4 pr-8 border-r border-gray-100">
-                  <h3 className="font-serif text-xl mb-4 text-foreground">Explore {activeTab}</h3>
-                  <ul className="space-y-3 text-sm text-gray-500 font-medium">
+              <div className="w-full px-8 py-16 flex">
+                <div className="w-1/4 pr-16 border-r border-gray-100">
+                  <h3 className="font-serif text-2xl mb-8 text-foreground">Explore {activeTab}</h3>
+                  <ul className="space-y-4 text-base text-gray-600 font-medium">
                     <li><Link href={`/shop`} className="hover:text-foreground transition-colors">View All</Link></li>
                     <li><Link href={`/shop`} className="hover:text-foreground transition-colors">Best Sellers</Link></li>
                     <li><Link href={`/shop`} className="hover:text-foreground transition-colors">New Arrivals</Link></li>
                   </ul>
                 </div>
-                <div className="w-3/4 pl-12 grid grid-cols-3 gap-8">
+                <div className="w-3/4 pl-16 grid grid-cols-3 gap-12">
                   {/* Decorative images for the mega menu */}
                   {[1, 2, 3].map((i) => (
                     <div key={i} className="group cursor-pointer">
-                      <div className="relative aspect-[4/3] bg-ice overflow-hidden mb-3">
-                        <img 
-                          src={`https://images.unsplash.com/photo-1599643478514-4a4e09f52f5e?q=80&w=800&auto=format&fit=crop`} 
+                      <div className="relative aspect-[4/3] bg-ice overflow-hidden mb-4">
+                        <img
+                          src={`https://images.unsplash.com/photo-1599643478514-4a4e09f52f5e?q=80&w=800&auto=format&fit=crop`}
                           alt="Jewelry"
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />

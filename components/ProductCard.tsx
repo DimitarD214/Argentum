@@ -60,9 +60,9 @@ export function ProductCard({ product }: { product: any }) {
           </div>
         </div>
         
-        <div className="flex flex-col items-center text-center px-4 mt-auto">
-          <h3 className="font-serif text-lg text-foreground mb-2 leading-tight">{product.title}</h3>
-          <p className="text-sm font-medium text-gray-500">${product.price.toLocaleString()}</p>
+        <div className="flex flex-col items-center text-center px-2 sm:px-4 mt-auto space-y-2">
+          <h3 className="font-serif text-base sm:text-lg md:text-lg text-foreground leading-snug">{product.title}</h3>
+          <p className="text-xs sm:text-sm font-medium text-gray-500">From ${product.price.toLocaleString()}</p>
         </div>
       </Link>
     </motion.div>

@@ -19,21 +19,27 @@ export default async function Home() {
       <CategoriesGrid />
       <HeritageSection />
 
-      <section className="py-32 px-6 md:px-12 bg-white">
-        <div className="max-w-7xl mx-auto flex flex-col items-center">
-          <div className="text-center mb-24 space-y-4">
-            <span className="text-gray-400 uppercase tracking-[0.25em] text-[10px] font-bold block mb-4">Trending Now</span>
-            <h2 className="font-serif text-4xl md:text-5xl text-foreground">Bestsellers</h2>
+      <section className="py-16 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8 lg:px-0 bg-white">
+        <div className="flex flex-col items-center w-full">
+          <div className="text-center mb-12 md:mb-16 lg:mb-20 space-y-3 md:space-y-4 px-4 max-w-2xl">
+            <span className="text-gray-400 uppercase tracking-[0.25em] text-[10px] font-bold block">Trending Now</span>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-foreground">Spring Favorites</h2>
+            <p className="text-gray-500 text-xs md:text-sm pt-2">Our most-loved pieces this season</p>
+            <div className="pt-2">
+              <Link href="/shop" className="text-xs uppercase font-semibold tracking-widest border-b border-foreground pb-1 hover:text-gray-500 transition-colors">
+                View Entire Collection
+              </Link>
+            </div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16 w-full max-w-6xl mx-auto">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 w-full max-w-none">
             {bestsellers.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-          
-          <div className="mt-24">
-            <Link href="/shop" className="px-14 py-5 border border-foreground text-foreground font-semibold uppercase tracking-[0.2em] text-[11px] hover:bg-foreground hover:text-white transition-colors duration-500">
+
+          <div className="mt-12 md:mt-16 lg:mt-20">
+            <Link href="/shop" className="px-12 md:px-14 py-4 md:py-5 border border-foreground text-foreground font-semibold uppercase tracking-[0.2em] text-[10px] md:text-[11px] hover:bg-foreground hover:text-white transition-colors duration-500">
               View All Collections
             </Link>
           </div>
