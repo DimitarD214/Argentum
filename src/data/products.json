@@ -1,0 +1,54 @@
+[
+  {
+    "id": "emerald-butterfly-ring",
+    "name": "Emerald Butterfly Ring",
+    "theme": "Butterflies",
+    "stoneColor": "Green",
+    "price": {
+      "sterling_silver": 120,
+      "gold_14k": 450
+    },
+    "badges": ["New In"],
+    "description": "An exquisite ring featuring delicate butterfly wings crafted from sterling silver with an emerald centerpiece.",
+    "images": []
+  },
+  {
+    "id": "floral-droplet-earrings",
+    "name": "Floral Droplet Earrings",
+    "theme": "Flowers",
+    "stoneColor": "Rose",
+    "price": {
+      "sterling_silver": 150,
+      "gold_14k": 550
+    },
+    "badges": ["Limited Edition"],
+    "description": "Elegant earrings blooming with rose-colored stones.",
+    "images": []
+  },
+  {
+    "id": "forest-greens-necklace",
+    "name": "Forest Greens Necklace",
+    "theme": "Classic",
+    "stoneColor": "Green",
+    "price": {
+      "sterling_silver": 210,
+      "gold_14k": 780
+    },
+    "badges": [],
+    "description": "A classic necklace with stunning green stones reflecting the deep forest.",
+    "images": []
+  },
+  {
+    "id": "rose-petal-bracelet",
+    "name": "Rose Petal Bracelet",
+    "theme": "Flowers",
+    "stoneColor": "Rose",
+    "price": {
+      "sterling_silver": 180,
+      "gold_14k": 620
+    },
+    "badges": ["Handcrafted"],
+    "description": "A handcrafted bracelet composed of sterling silver rose petals.",
+    "images": []
+  }
+]
