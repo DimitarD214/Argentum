@@ -8,9 +8,18 @@
       "sterling_silver": 120,
       "gold_14k": 450
     },
-    "badges": ["New In"],
-    "description": "An exquisite ring featuring delicate butterfly wings crafted from sterling silver with an emerald centerpiece.",
-    "images": []
+    "badges": [
+      "New In"
+    ],
+    "description": "An exquisite ring featuring delicate butterfly wings.",
+    "images": [
+      "/emerald-butterfly-ring.png"
+    ],
+    "category": "Rings",
+    "material": [
+      "Sterling Silver",
+      "14k Gold"
+    ]
   },
   {
     "id": "floral-droplet-earrings",
@@ -21,9 +30,18 @@
       "sterling_silver": 150,
       "gold_14k": 550
     },
-    "badges": ["Limited Edition"],
+    "badges": [
+      "Limited Edition"
+    ],
     "description": "Elegant earrings blooming with rose-colored stones.",
-    "images": []
+    "images": [
+      "/floral-droplet-earrings.png"
+    ],
+    "category": "Earrings",
+    "material": [
+      "Sterling Silver",
+      "14k Gold"
+    ]
   },
   {
     "id": "forest-greens-necklace",
@@ -31,12 +49,19 @@
     "theme": "Classic",
     "stoneColor": "Green",
     "price": {
-      "sterling_silver": 210,
+      "sterling_silver": 320,
       "gold_14k": 780
     },
     "badges": [],
-    "description": "A classic necklace with stunning green stones reflecting the deep forest.",
-    "images": []
+    "description": "A classic necklace with stunning green stones.",
+    "images": [
+      "/forest-greens-necklace.png"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "Sterling Silver",
+      "14k Gold"
+    ]
   },
   {
     "id": "rose-petal-bracelet",
@@ -47,8 +72,57 @@
       "sterling_silver": 180,
       "gold_14k": 620
     },
-    "badges": ["Handcrafted"],
+    "badges": [
+      "Handcrafted"
+    ],
     "description": "A handcrafted bracelet composed of sterling silver rose petals.",
-    "images": []
+    "images": [
+      "/rose-petal-bracelet.png"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "Sterling Silver",
+      "14k Gold"
+    ]
+  },
+  {
+    "id": "diamond-butterfly-necklace",
+    "name": "Diamond Butterfly Necklace",
+    "theme": "Butterflies",
+    "stoneColor": "Clear",
+    "price": {
+      "sterling_silver": 250,
+      "gold_14k": 850
+    },
+    "badges": [
+      "Premium"
+    ],
+    "description": "A delicate butterfly necklace with clear stones.",
+    "images": [],
+    "category": "Necklaces",
+    "material": [
+      "Sterling Silver",
+      "14k Gold",
+      "Platinum"
+    ]
+  },
+  {
+    "id": "classic-gold-hoops",
+    "name": "Classic Gold Hoops",
+    "theme": "Classic",
+    "stoneColor": "Clear",
+    "price": {
+      "gold_14k": 140
+    },
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Timeless 14k gold hoop earrings.",
+    "images": [],
+    "category": "Earrings",
+    "material": [
+      "14k Gold",
+      "Rose Gold"
+    ]
   }
 ]

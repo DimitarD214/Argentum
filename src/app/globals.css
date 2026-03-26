@@ -4,23 +4,32 @@
   --color-pure-white: #ffffff;
   --color-foreground: #1a1a1a;
 
-  --color-spring-50: #f0faf4;
-  --color-spring-100: #e0f5e9;
-  --color-spring-200: #c1ebd3;
-  --color-spring-300: #91dbb1;
-  --color-spring-400: #5ec98d;
-  --color-spring-500: #3ab06f;
-  --color-spring-600: #2a9058;
-  --color-spring-700: #247348;
-  --color-spring-800: #215c3c;
-  --color-spring-900: #1d4b33;
+  --color-astera-50: #f4fcfb;
+  --color-astera-100: #dff6f4;
+  --color-astera-200: #bcece7;
+  --color-astera-300: #89ddd5;
+  --color-astera-400: #57c8bf;
+  --color-astera-500: #269999;
+  --color-astera-600: #1b7a7b;
+  --color-astera-700: #196263;
+  --color-astera-800: #174e4f;
+  --color-astera-900: #164142;
 
+  --color-seafoam: #e0f5e9;
+  --color-mint: #d4edda;
+  --color-aqua: #b8e2e1;
+  --color-emerald: #10b981;
+  
   --color-champagne: #f1e5ac;
   --color-cream: #fdfcf8;
   --color-warm-beige: #f7f4ef;
 
-  --font-serif: var(--font-serif), "Georgia", serif;
-  --font-sans: var(--font-sans), "Helvetica Neue", sans-serif;
+  --font-serif: var(--font-serif), "Playfair Display", "Georgia", serif;
+  --font-sans: var(--font-sans), "Montserrat", "Helvetica Neue", sans-serif;
+
+  --transition-ultra: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-fast: all 0.3s ease;
 }
 
 * {
@@ -55,12 +64,12 @@ html {
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
 }
 .btn-primary:hover {
-  background: var(--color-spring-700);
+  background: var(--color-astera-700);
   transform: scale(1.03);
   box-shadow: 0 8px 30px rgba(36, 115, 72, 0.25);
 }
@@ -78,7 +87,7 @@ html {
   text-decoration: none;
   border: 1.5px solid #1a1a1a;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: var(--transition-smooth);
 }
 .btn-outline:hover {
   background: #1a1a1a;
@@ -86,10 +95,10 @@ html {
   transform: scale(1.03);
 }
 
-.btn-spring {
+.btn-astera {
   display: inline-block;
   padding: 16px 40px;
-  background: var(--color-spring-600);
+  background: var(--color-astera-600);
   color: #ffffff;
   font-family: var(--font-sans);
   font-size: 11px;
@@ -99,10 +108,10 @@ html {
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: var(--transition-smooth);
 }
-.btn-spring:hover {
-  background: var(--color-spring-700);
+.btn-astera:hover {
+  background: var(--color-astera-700);
   transform: scale(1.03);
   box-shadow: 0 8px 30px rgba(36, 115, 72, 0.3);
 }
@@ -128,8 +137,7 @@ html {
 
 /* ===== CARD HOVER LIFT ===== */
 .card-hover {
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-    box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: var(--transition-smooth);
 }
 .card-hover:hover {
   transform: translateY(-8px);
@@ -141,33 +149,48 @@ html {
   overflow: hidden;
 }
 .img-zoom > * {
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .img-zoom:hover > * {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
-/* ===== HERO PARALLAX ===== */
-.parallax-bg {
-  will-change: transform;
-}
-
-/* ===== SECTION GRADIENT TRANSITIONS ===== */
-.section-gradient-top {
-  background: linear-gradient(to bottom, var(--color-spring-100) 0%, #ffffff 100%);
-  height: 80px;
-  width: 100%;
-}
-
-
-/* ===== HERO ENTRANCE ANIMATION ===== */
+/* ===== ANIMATIONS ===== */
 @keyframes fadeSlideUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition-ultra);
+}
+
+.reveal-on-scroll.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.luxury-text-gradient {
+  background: linear-gradient(135deg, var(--color-astera-900) 0%, var(--color-astera-600) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

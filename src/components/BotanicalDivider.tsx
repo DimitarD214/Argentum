@@ -7,7 +7,7 @@ export default function BotanicalDivider({ className = "" }: { className?: strin
         viewBox="0 0 200 32"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-spring-400 opacity-60"
+        className="text-astera-400 opacity-60"
       >
         {/* Left leaf branch */}
         <path
