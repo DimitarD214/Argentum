@@ -12,18 +12,21 @@ export interface CartItem {
 
 interface CartState {
   items: CartItem[];
+  isCartOpen: boolean;
   addItem: (item: CartItem) => void;
   removeItem: (id: string, metal?: string) => void;
   updateQuantity: (id: string, quantity: number, metal?: string) => void;
   clearCart: () => void;
   getCartTotal: () => number;
   getCartCount: () => number;
+  updateCartOpen: (isOpen: boolean) => void;
 }
 
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
+      isCartOpen: false,
       
       addItem: (item) => {
         set((state) => {
@@ -68,6 +71,7 @@ export const useCartStore = create<CartState>()(
       getCartCount: () => {
         return get().items.reduce((count, item) => count + item.quantity, 0);
       },
+      updateCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
     }),
     {
       name: 'astera-cart-storage',

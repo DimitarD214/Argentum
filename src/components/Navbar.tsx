@@ -52,7 +52,8 @@ export default function Navbar({ variant = "transparent" }: { variant?: "transpa
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [menuTimeout, setMenuTimeout] = useState<NodeJS.Timeout | null>(null);
-  const [isCartOpen, setIsCartOpen] = useState(false); const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const isCartOpen = useCartStore((state) => state.isCartOpen);
+  const setIsCartOpen = useCartStore((state) => state.updateCartOpen); const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isFavOpen, setIsFavOpen] = useState(false);
   const favCount = useFavouritesStore((state) => state.items.length);
   const [mounted, setMounted] = useState(false);
