@@ -11,7 +11,7 @@ export default function SparkleOverlay() {
     if (!ctx) return;
 
     let animationId: number;
-    let particles: {
+    const particles: {
       x: number;
       y: number;
       size: number;
