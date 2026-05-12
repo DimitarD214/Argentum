@@ -1,0 +1,29 @@
+﻿# LUXURY UI & MODERN DESIGN CONSTITUTION
+
+## 1. THE "ANTI-MUSH" SPACING LAW
+- **Zero Edge Touching:** No element (text, labels, buttons) shall ever touch the edge of its container or an image border. 
+- **Vertical Rhythm:** Main sections MUST have a minimum padding of `py-20` to `py-32` (80px to 128px). 
+- **The "Breathe" Rule:** If you think a gap is "enough," double it. High-end design is defined by intentional whitespace.
+- **Container Logic:** Always wrap content in `max-w-7xl mx-auto px-6 lg:px-8`.
+
+## 2. VISUAL HIERARCHY & TYPOGRAPHY
+- **Headings:** Use high-end Serif fonts (e.g., Playfair Display) with `tracking-widest` and `uppercase` for a "Cartier/Apple" aesthetic.
+- **Body:** Use clean, minimalist Sans-serif (e.g., Inter, Geist) with `leading-relaxed`.
+- **Labels:** Floating labels (like 'Bestseller' or 'Handcrafted') must be inside a `backdrop-blur-md bg-white/70` pill with `rounded-full`, `px-4`, and `py-1.5`.
+
+## 3. COMPONENT POLISH (TAILWIND ONLY)
+- **Borders & Corners:** Use `rounded-2xl` or `rounded-3xl` for cards. Use ultra-thin borders: `border border-black/5` or `border-white/10`.
+- **Shadows:** Never use default heavy shadows. Use `shadow-sm` or custom soft glows (`shadow-[0_8px_30px_rgb(0,0,0,0.04)]`).
+- **Interaction:** Every clickable element MUST have a transition: `transition-all duration-500 ease-in-out`. Add `hover:scale-[1.01]` and `hover:opacity-80`.
+
+## 4. MANDATORY VISUAL QA PROTOCOL
+- **Step 1:** After generating code, take a screenshot.
+- **Step 2:** Analyze the screenshot for "HTML-ish" traits: uneven gaps, default blue links, or cramped text.
+- **Step 3:** If the design looks like a 1990s site, YOU MUST REJECT YOUR OWN CODE. 
+- **Step 4:** Explicitly check: "Is the 'N' bubble or any floating UI overlapping content?" If yes, fix the `z-index` and `fixed` positioning.
+
+## 5. PROHIBITED PRACTICES
+- NO inline styles.
+- NO default HTML buttons.
+- NO `padding: 5px` or arbitrary small values.
+- NO "mushed" footers. Footers must have `gap-16` between columns.

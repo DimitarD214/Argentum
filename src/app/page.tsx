@@ -1,4 +1,4 @@
-/* ASTERA DESIGN SYSTEM REMINDER: NEVER align text 100% to screen edges. Minimum padding: px-24 (mobile) / px-64+ (desktop) */
+/* ASTERA DESIGN SYSTEM REMINDER: ALWAYS use section-luxury for main page sections. Vertical padding: 80px - 128px. */
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -8,253 +8,194 @@ import BotanicalDivider from "@/components/BotanicalDivider";
 
 export default function Home() {
   const categories = [
-    { name: "Necklaces", bg: "var(--color-seafoam)", image: "/forest-greens-necklace.png" },
-    { name: "Rings", bg: "var(--color-mint)", image: "/emerald-butterfly-ring.png" },
-    { name: "Earrings", bg: "var(--color-aqua)", image: "/floral-droplet-earrings.png" },
-    { name: "Bracelets", bg: "var(--color-creme)", image: "/rose-petal-bracelet.png" },
+    { name: "Bezvremenske Ogrlice", bg: "var(--color-seafoam)", image: "/forest-greens-necklace.png" },
+    { name: "Umjetničko Prstenje", bg: "var(--color-luxury-beige)", image: "/emerald-butterfly-ring.png" },
+    { name: "Kolekcija Naušnica", bg: "var(--color-aqua)", image: "/floral-droplet-earrings.png" },
+    { name: "Remek-djela Narukvica", bg: "var(--color-mint)", image: "/rose-petal-bracelet.png" },
   ];
 
   const featured = [
-    { name: "Emerald Butterfly Ring", price: "From $120", tag: "New In", image: "/emerald-butterfly-ring.png" },
-    { name: "Floral Droplet Earrings", price: "From $150", tag: "Limited Edition", image: "/floral-droplet-earrings.png" },
-    { name: "Forest Greens Necklace", price: "From $210", tag: null, image: "/forest-greens-necklace.png" },
-    { name: "Rose Petal Bracelet", price: "From $180", tag: "Handcrafted", image: "/rose-petal-bracelet.png" },
+    { name: "Smaragdni Leptir Prsten", price: "$1,200", tag: "Limitirano Izdanje", image: "/emerald-butterfly-ring.png" },
+    { name: "Cvjetne Naušnice", price: "$850", tag: "Novo", image: "/floral-droplet-earrings.png" },
+    { name: "Šumsko Zelenilo Ogrlica", price: "$2,100", tag: "Ekskluzivno", image: "/forest-greens-necklace.png" },
+    { name: "Ružina Latica Narukvica", price: "$1,450", tag: "Ručni Rad", image: "/rose-petal-bracelet.png" },
   ];
 
   return (
-    <>
+    <div className="bg-white text-base">
       <Navbar />
 
       <main className="flex-1">
-        {/* ========== HERO SECTION ========== */}
-        <section className="relative w-full h-screen overflow-hidden">
-          <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover object-center scale-[1.08] z-0" src="/hero-campaign.mp4" />
-          <div className="absolute inset-0 bg-gradient-to-br from-astera-900/60 via-astera-800/40 to-astera-700/60 z-[1]" />
+        {/* ========== HERO SECTION (RE-ARCHITECTED) ========== */}
+        <section className="relative w-full h-[98vh] overflow-hidden flex items-end justify-start">
+          <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover z-0 scale-[1.05]" src="/hero-campaign.mp4" />
+          <div className="absolute inset-0 bg-black/35 z-[1]" />
           <SparkleOverlay />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-black/10 z-[4]" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-transparent to-transparent z-[2]" />
 
-          {/* Hero content — centered */}
-          <div className="relative z-10 h-full w-full flex items-center justify-start pb-20 md:pb-32 px-24 md:px-64 lg:px-80">
-            <div className="text-left max-w-2xl animate-[fadeSlideUp_1.2s_ease-out_0.3s_both]">
-              <p className="text-astera-300 font-sans text-[11px] md:text-[12px] tracking-[0.25em] uppercase mb-6 font-medium animate-[fadeSlideUp_1s_ease-out_0.5s_both]">
-                Spring Collection 2026
-              </p>
-              <h2 className="text-white font-serif text-6xl md:text-8xl lg:text-[7.5rem] leading-[1.1] mb-16 tracking-[0.02em] animate-[fadeSlideUp_1.2s_ease-out_0.7s_both]">
-                Astera premium jewelry
-              </h2>
-
-              <div className="flex flex-wrap gap-4 justify-start animate-[fadeSlideUp_1s_ease-out_1.1s_both]">
-                <Link href="/shop" className="btn-astera">
-                  Shop Now
-                </Link>
-                <Link href="#discover" className="btn-outline !text-white !border-white/40 hover:!bg-white hover:!text-astera-900">
-                  Discover More
-                </Link>
-              </div>
+          {/* BOTTOM-LEFT QUADRANT POSITIONING - REMOVED BACKGROUND BOX */}
+          <div className="container-luxury !mx-0 !ml-0 relative z-10 pb-24 md:pb-32 lg:pb-40 px-10 md:px-20 lg:pl-32 xl:pl-48 text-left w-full max-w-none">
+            <div className="max-w-4xl transform transition-all duration-1000 animate-in fade-in slide-in-from-bottom-10">
+               <ScrollReveal duration={1200} direction="up">
+                  <p className="subheading-luxury text-astera-300 mb-8 md:mb-10 opacity-90 drop-shadow-lg tracking-[0.5em] text-sm font-bold uppercase">
+                    Kolekcija Proljeće 2026
+                  </p>
+               </ScrollReveal>
+               <ScrollReveal delay={200} duration={1200} direction="up">
+                  <h2 className="text-white font-serif text-5xl md:text-7xl lg:text-[8.5rem] leading-[0.9] tracking-[0.05em] uppercase mb-12 md:mb-16 drop-shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+                    Majstori <br/> Vječnosti
+                  </h2>
+               </ScrollReveal>
+               <ScrollReveal delay={400} duration={1200} direction="up">
+                  <div className="flex flex-col sm:flex-row items-start justify-start gap-10 mt-16">
+                    <Link href="/shop" className="btn-luxury w-full sm:w-auto px-20 py-6 bg-white text-astera-900 hover:bg-astera-50 hover:shadow-[0_20px_50px_rgba(255,255,255,0.2)] transition-all duration-700 font-bold tracking-[0.4em]">
+                      Istražite Trgovinu
+                    </Link>
+                    <Link href="#discover" className="btn-luxury-outline w-full sm:w-auto px-16 py-6 !text-white !border-white/30 hover:!bg-white hover:!text-astera-900 backdrop-blur-xl transition-all duration-700 font-bold tracking-[0.3em]">
+                      Naša Baština
+                    </Link>
+                  </div>
+               </ScrollReveal>
             </div>
           </div>
         </section>
 
-        <div className="h-1 bg-gradient-to-r from-astera-300 via-astera-500 to-astera-300 opacity-40" />
-
-        {/* ========== BRAND STORY ========== */}
-        <section className="bg-astera-50 py-64 md:py-80 px-6 flex flex-col items-center">
-          <div className="w-full max-w-[1720px] px-24 md:px-56 lg:px-80 text-center">
-            <ScrollReveal className="w-full flex flex-col items-center" duration={1000}>
-              <BotanicalDivider className="mb-10" />
-            </ScrollReveal>
-            <ScrollReveal className="w-full flex flex-col items-center" delay={100} duration={1000}>
-              <h2 className="font-serif text-5xl md:text-6xl lg:text-[5.5rem] text-astera-900 mb-10 leading-[1.2] tracking-[0.03em]">
-                Artisans of Light
-                <br />
-                Since 2024
-              </h2>
-            </ScrollReveal>
-            <ScrollReveal className="w-full flex flex-col items-center" delay={250} duration={1000}>
-              <p className="font-sans text-[18px] md:text-[19px] text-astera-700 leading-[2] tracking-[0.01em] max-w-xl mx-auto text-center">
-                From the heart of Europe, our passion for innovation, design, and mastery
-                of precious materials has defined Astera as a rising star in artisan
-                jewelry and accessories.
+        {/* ========== BRAND STORY (REVEAL ON SCROLL + BEIGE HARMONY) ========== */}
+        <section id="story" className="section-luxury bg-luxury-beige py-32 md:py-48">
+          <div className="container-luxury text-center max-w-5xl">
+            <ScrollReveal className="flex flex-col items-center">
+              <BotanicalDivider className="mb-20 opacity-30" />
+              <p className="subheading-luxury mb-12 text-astera-300 font-bold">Osnovano 2024.</p>
+              <h3 className="heading-luxury text-4xl md:text-7xl mb-16 leading-[1.1] tracking-[0.2em]">
+                Tkanje Svjetlosti u <br/> Bezvremensku Eleganciju
+              </h3>
+              <p className="font-sans text-[18px] md:text-[22px] text-gray-500 leading-relaxed max-w-3xl mx-auto mb-16 italic font-medium opacity-80">
+                Svaki komad Astera nakita svjedočanstvo je majstorstvu svjetlosti. Iz našeg studija u Europi, 
+                redefiniramo luksuz kroz simbiozu plemenitih metala i smaragda, stvoreno za one koji žive u izvanrednom.
               </p>
-            </ScrollReveal>
-            <ScrollReveal className="w-full flex flex-col items-center" delay={400} duration={1000}>
-              <BotanicalDivider className="mt-10" />
-            </ScrollReveal>
-          </div>
-        </section>
-
-        {/* ========== SHOP BY CATEGORY ========== */}
-        <section id="discover" className="bg-white py-64 md:py-80 px-6 flex flex-col items-center">
-          <div className="w-full max-w-[1720px] px-24 md:px-56 lg:px-80">
-            <ScrollReveal className="w-full flex flex-col items-center">
-              <div className="text-center mb-20">
-                <h2 className="font-serif text-5xl md:text-7xl lg:text-[5.8rem] text-black mb-6 tracking-[0.03em]">
-                  Shop by Category
-                </h2>
-                <div className="w-8 h-8 mx-auto flex items-center justify-center animate-bounce">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-5 h-5 text-astera-500">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                  </svg>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16 justify-center">
-              {categories.map((cat, i) => (
-                <ScrollReveal className="w-full flex flex-col items-center" key={cat.name} delay={i * 120} direction="up">
-                  <Link href="/shop" className="group block card-hover">
-                    <div
-                      className="aspect-[3/4] flex items-center justify-center overflow-hidden img-zoom rounded-xl"
-                      style={{ backgroundColor: cat.bg }}
-                    >
-                      <img src={cat.image} alt={cat.name} className="w-full h-full object-cover" />
-                    </div>
-                    <p className="text-center font-sans text-[13px] font-medium tracking-[0.06em] text-black mt-6 group-hover:text-astera-600 transition-colors duration-300">
-                      {cat.name}
-                    </p>
-                  </Link>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <div className="bg-astera-50">
-          <ScrollReveal className="w-full flex flex-col items-center">
-            <BotanicalDivider className="py-2" />
-          </ScrollReveal>
-        </div>
-
-        {/* ========== SPRING FAVOURITES ========== */}
-        <section className="bg-astera-50 py-64 md:py-80 px-6 flex flex-col items-center">
-          <div className="w-full max-w-[1720px] px-24 md:px-56 lg:px-80">
-            <ScrollReveal className="w-full flex flex-col items-center">
-              <div className="text-center mb-16">
-                <h2 className="font-serif text-4xl md:text-6xl lg:text-[5rem] text-black tracking-[0.03em]">
-                  Spring Favourites
-                </h2>
-                <p className="font-sans text-[15px] text-astera-600 mt-4 tracking-[0.08em] max-w-md mx-auto text-center">
-                  Our most-loved pieces this season
-                </p>
-                <div className="mt-8">
-                  <Link
-                    href="/shop"
-                    className="text-[12px] font-sans font-medium text-astera-700 underline underline-offset-4 hover:text-astera-500 transition-colors duration-300"
-                  >
-                    View All
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16 justify-center">
-              {featured.map((item, i) => (
-                <ScrollReveal className="w-full flex flex-col items-center" key={item.name} delay={i * 100} direction="up">
-                  <Link href="/shop" className="group block card-hover">
-                    <div className="relative aspect-square bg-white flex items-center justify-center overflow-hidden mb-5 border border-astera-200 group-hover:border-astera-400 transition-all duration-500 img-zoom rounded-xl">
-                      {item.tag && (
-                        <span className="absolute top-3 left-3 bg-astera-600 text-white text-[9px] font-sans font-semibold tracking-[0.12em] uppercase px-3 py-1.5 z-10 rounded-md">
-                          {item.tag}
-                        </span>
-                      )}
-                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                      <button className="absolute top-3 right-3 text-white/80 hover:text-white hover:scale-125 transition-all duration-300 z-10 drop-shadow-md">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                        </svg>
-                      </button>
-                    </div>
-                    <h3 className="font-sans text-[13px] font-medium text-black leading-snug group-hover:text-astera-700 transition-colors duration-300 tracking-[0.02em]">
-                      {item.name}
-                    </h3>
-                    <p className="font-sans text-[13px] text-astera-600 mt-1.5 tracking-[0.02em]">
-                      {item.price}
-                    </p>
-                  </Link>
-                </ScrollReveal>
-              ))}
-            </div>
-
-            <div className="mt-12 text-center md:hidden">
-              <Link href="/shop" className="btn-astera">View All</Link>
-            </div>
-          </div>
-        </section>
-
-        {/* ========== BUTTERFLY SERIES CAMPAIGN BANNER ========== */}
-        <section className="relative w-full h-[65vh] md:h-[75vh] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-astera-800 via-astera-700 to-astera-600" />
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_30%_70%,_#c1ebd3_0%,_transparent_60%)]" />
-          <SparkleOverlay />
-
-          <div className="relative z-10 h-full w-full flex flex-col items-center justify-center text-center px-6">
-            <ScrollReveal className="w-full flex flex-col items-center" direction="none" duration={1200}>
-              <p className="font-sans text-[10px] tracking-[0.3em] uppercase text-astera-200 mb-8">
-                The Butterfly Series
-              </p>
-            </ScrollReveal>
-            <ScrollReveal className="w-full flex flex-col items-center" delay={150} duration={1200}>
-              <h2 className="font-serif text-5xl md:text-6xl lg:text-[5rem] text-white mb-8 leading-[1.1] tracking-[0.03em]">
-                Born to Shine
-              </h2>
-            </ScrollReveal>
-            <ScrollReveal className="w-full flex flex-col items-center" delay={300} duration={1200}>
-              <p className="font-sans text-[14px] md:text-[15px] text-astera-100/75 max-w-md mb-12 leading-[1.9] tracking-wide">
-                Delicate wing patterns crafted in precious metals and emerald
-                stones. A limited collection celebrating the art of transformation.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal className="w-full flex flex-col items-center" delay={450} duration={1000}>
-              <Link href="/shop" className="btn-outline !text-white !border-white/40 hover:!bg-white hover:!text-astera-800">
-                Explore the Series
+              <Link href="/shop" className="group flex flex-col items-center gap-4">
+                 <span className="text-[12px] font-bold uppercase tracking-[0.5em] text-black">Doživite Umjetnost Izrade</span>
+                 <div className="w-[1px] h-20 bg-astera-100 group-hover:h-32 group-hover:bg-astera-600 transition-all duration-1000" />
               </Link>
             </ScrollReveal>
           </div>
         </section>
-      </main>
 
-      
-        {/* ========== ASTERA SERVICES ========== */}
-        <section className="bg-white py-80 md:py-96 border-t border-gray-100">
-          <div className="max-w-[1720px] mx-auto px-24 md:px-56 lg:px-80">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-24 text-center">
-              <ScrollReveal direction="up" className="w-full flex flex-col items-center">
-                <div className="w-16 h-16 bg-astera-50 rounded-full flex items-center justify-center mb-8">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6 text-astera-600">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                  </svg>
-                </div>
-                <h3 className="font-serif text-3xl mb-4">Authentic Jewelry</h3>
-                <p className="text-gray-500 text-sm font-sans tracking-wide leading-relaxed mb-6 italic">Every piece is certified and handcrafted with precision.</p>
-                <button className="text-[11px] font-sans font-semibold uppercase tracking-[0.2em] border-b border-black pb-1 hover:text-astera-600 hover:border-astera-600 transition-all">Chat Now</button>
-              </ScrollReveal>
+        {/* ========== CATEGORIES (ULTRA-MODERN GRID) ========== */}
+        <section id="discover" className="section-luxury bg-white py-32">
+          <div className="container-luxury">
+             <ScrollReveal className="text-center mb-32">
+                <h3 className="heading-luxury text-3xl md:text-5xl lg:text-6xl mb-6 tracking-[0.3em]">Kolekcije</h3>
+                <p className="subheading-luxury tracking-[0.4em] font-bold">Definirano Posebnošću</p>
+             </ScrollReveal>
 
-              <ScrollReveal direction="up" delay={150} className="w-full flex flex-col items-center">
-                <div className="w-16 h-16 bg-astera-50 rounded-full flex items-center justify-center mb-8">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6 text-astera-600">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.2.176-.452.343-.748.501-.588.312-.884.664-.884 1.056V11.25M10.5 16.5h3m-6.75 3.75a9 9 0 1 1 13.5-7.788L21 21H3l3.375-3.375Z" />
-                  </svg>
-                </div>
-                <h3 className="font-serif text-3xl mb-4">Customer Service</h3>
-                <p className="text-gray-500 text-sm font-sans tracking-wide leading-relaxed mb-6 italic">Explore answers to our FAQs or connect with our Customer Service team.</p>
-                <button className="text-[11px] font-sans font-semibold uppercase tracking-[0.2em] border-b border-black pb-1 hover:text-astera-600 hover:border-astera-600 transition-all">Visit FAQ</button>
-              </ScrollReveal>
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12">
+               {categories.map((cat, i) => (
+                 <ScrollReveal key={cat.name} delay={i * 150} className="group">
+                   <Link href="/shop" className="block outline-none">
+                     <div className="aspect-[3/4] rounded-[3rem] overflow-hidden bg-cover bg-center border border-black/5 shadow-sm transition-all duration-1000 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] group-hover:scale-[1.03]"
+                          style={{ backgroundColor: cat.bg }}>
+                        <img src={cat.image} alt={cat.name} className="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-1000 group-hover:scale-110" />
+                     </div>
+                     <div className="mt-12 text-center px-6">
+                        <h4 className="font-sans text-[12px] font-bold tracking-[0.3em] uppercase text-black mb-2 group-hover:text-astera-600 transition-colors">
+                          {cat.name}
+                        </h4>
+                        <div className="h-[1.5px] w-0 bg-astera-600 mx-auto transition-all duration-700 group-hover:w-20" />
+                     </div>
+                   </Link>
+                 </ScrollReveal>
+               ))}
+             </div>
+          </div>
+        </section>
 
-              <ScrollReveal direction="up" delay={300} className="w-full flex flex-col items-center">
-                <div className="w-16 h-16 bg-astera-50 rounded-full flex items-center justify-center mb-8">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6 text-astera-600">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H4.5a1.5 1.5 0 0 1-1.5-1.5v-8.25m18 0l-9-5.25m9 5.25v7.5a1.5 1.5 0 0 1-1.5 1.5H4.5a1.5 1.5 0 0 1-1.5-1.5v-7.5m18 0l-9-5.25m0 0L3 11.25m9-5.25v16.5" />
-                  </svg>
-                </div>
-                <h3 className="font-serif text-3xl mb-4">Gift Services</h3>
-                <p className="text-gray-500 text-sm font-sans tracking-wide leading-relaxed mb-6 italic">Add a personalized touch to your exquisite gift.</p>
-                <button className="text-[11px] font-sans font-semibold uppercase tracking-[0.2em] border-b border-black pb-1 hover:text-astera-600 hover:border-astera-600 transition-all">Learn More</button>
-              </ScrollReveal>
+        {/* ========== FEATURED (PREMIUM PRODUCT CARDS) ========== */}
+        <section className="section-luxury bg-warm-beige py-32 md:py-48">
+          <div className="container-luxury">
+            <ScrollReveal className="flex flex-col md:flex-row justify-between items-end mb-32 gap-10">
+               <div className="max-w-xl">
+                 <h3 className="heading-luxury text-3xl md:text-6xl mb-8 tracking-[0.2em]">Proljetni Favoriti</h3>
+                 <p className="font-sans text-[16px] text-gray-500 tracking-wide leading-relaxed">Pažljivo odabrani komadi definirani profinjenom izradom i elegantnom estetikom, proizašli iz naše proljetne palete boja.</p>
+               </div>
+               <Link href="/shop" className="group flex items-center gap-6 text-[13px] font-bold uppercase tracking-[0.4em] text-astera-700 hover:text-astera-900 transition-all">
+                  <span>Kupi Sve Komade</span>
+                  <div className="w-12 h-[1px] bg-astera-700 group-hover:w-24 transition-all duration-700" />
+               </Link>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">
+              {featured.map((item, i) => (
+                <ScrollReveal key={item.name} delay={item.name === "Smaragdni Leptir Prsten" ? 0 : 100} direction="up" className="card-luxury hover:translate-y-[-10px] duration-1000">
+                  <div className="relative aspect-square bg-white flex items-center justify-center overflow-hidden">
+                    {item.tag && (
+                      <span className="pill-luxury absolute top-8 left-8 z-10 text-astera-900 !bg-white/80 !backdrop-blur-xl">
+                        {item.tag}
+                      </span>
+                    )}
+                    <Link href="/shop" className="block w-full h-full group">
+                      <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    </Link>
+                  </div>
+                  <div className="p-12 text-center flex flex-col items-center">
+                    <h4 className="heading-luxury text-[15px] mb-4 line-clamp-1 border-b border-transparent group-hover:border-astera-300">{item.name}</h4>
+                    <p className="font-serif text-[22px] text-astera-900 italic tracking-wider mb-10">{item.price}</p>
+                    <Link href="/shop" className="btn-luxury py-4 px-10 bg-transparent border border-black/10 text-black hover:bg-astera-900 hover:text-white w-full rounded-2xl hover:border-astera-900">
+                      Pogledaj Detalje
+                    </Link>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
           </div>
         </section>
 
+        {/* ========== CAMPAIGN BANNER (FULL WIDTH BEIGE) ========== */}
+        <section className="relative h-[80vh] flex items-center justify-center bg-astera-900 overflow-hidden">
+             <div className="absolute inset-x-0 bottom-0 h-96 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+             <SparkleOverlay />
+             <div className="container-luxury text-center relative z-10 py-12 md:py-24 max-w-4xl">
+                <ScrollReveal duration={1200}>
+                   <p className="subheading-luxury text-astera-400 mb-10 opacity-90 tracking-[0.6em] font-bold">Serija Leptir</p>
+                   <h2 className="text-white font-serif text-5xl md:text-7xl lg:text-[7.5rem] leading-none tracking-[0.05em] uppercase mb-16 drop-shadow-2xl">
+                      Rođeni da Sjaje
+                   </h2>
+                   <p className="text-astera-100/70 font-sans text-xl max-w-2xl mx-auto leading-relaxed mb-20 italic">
+                     "Slavlje transformacije, gdje se osjetljivi rad u metalu spaja s eteričnim sjajem smaragdnih krila."
+                   </p>
+                   <Link href="/shop" className="btn-luxury px-24 py-6 bg-white text-astera-900 hover:scale-110 shadow-3xl !rounded-full font-bold tracking-[0.4em]">
+                     Kupi Seriju
+                   </Link>
+                </ScrollReveal>
+             </div>
+        </section>
+
+        {/* ========== SERVICES (LUXURY MINIMALISM) ========== */}
+        <section className="section-luxury bg-white border-t border-black/5 py-48">
+          <div className="container-luxury">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-32 lg:gap-40 text-center">
+              {[
+                { title: "Autentična Remek-djela", text: "Svaka kreacija je pojedinačno certificirana i ručno rađena od strane naših majstora.", action: "Razgovor sa Savjetnikom", icon: "💎" },
+                { title: "Usluga po Mjeri", text: "Od određivanja veličine do prilagođenih gravura, naši kustosi osiguravaju da je vaš komad jedinstveno vaš.", action: "Saznajte Više", icon: "✨" },
+                { title: "Stručnost u Darivanju", text: "Ekskluzivno pakiranje i personalizirane kartice za najdragocjenije životne prekretnice.", action: "Vodič za Poklone", icon: "🎁" }
+              ].map((service, i) => (
+                <ScrollReveal key={service.title} delay={i * 200} direction="up" className="flex flex-col items-center group">
+                  <div className="w-24 h-24 rounded-[2.5rem] bg-luxury-beige flex items-center justify-center text-4xl mb-12 transition-all duration-1000 group-hover:scale-110 group-hover:rotate-6 shadow-sm border border-black/5">
+                    {service.icon}
+                  </div>
+                  <h4 className="heading-luxury text-2xl mb-8 tracking-[0.15em]">{service.title}</h4>
+                  <p className="text-gray-500 font-sans text-[16px] leading-relaxed mb-12 italic font-medium opacity-80">{service.text}</p>
+                  <button className="text-[12px] font-bold uppercase tracking-[0.4em] text-black border-b border-black/20 pb-2 hover:border-black hover:tracking-[0.5em] transition-all duration-700">
+                     {service.action}
+                  </button>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
       <Footer />
-    </>
+    </div>
   );
 }

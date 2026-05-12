@@ -1,5 +1,25 @@
 [
   {
+    "id": "luna-pendant-test",
+    "name": "Celestial Luna Pendant (Test)",
+    "theme": "Classic",
+    "stoneColor": "Clear",
+    "price": {
+      "sterling_silver": 89,
+      "gold_14k": 320
+    },
+    "badges": [
+      "Test Item"
+    ],
+    "description": "A stunning crescent moon pendant that symbolizes guidance and change.",
+    "images": [],
+    "category": "Necklaces",
+    "material": [
+      "Sterling Silver",
+      "14k Gold"
+    ]
+  },
+  {
     "id": "emerald-butterfly-ring",
     "name": "Emerald Butterfly Ring",
     "theme": "Butterflies",

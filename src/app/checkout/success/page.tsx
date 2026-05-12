@@ -1,19 +1,56 @@
-/* ASTERA DESIGN SYSTEM REMINDER: NEVER align text 100% to screen edges. Minimum padding: px-24 (mobile) / px-64+ (desktop) */
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { CheckCircle, ArrowRight } from 'lucide-react';
+import { useCartStore } from '@/store/cartStore';
+import { useCheckoutStore } from '@/store/checkoutStore';
+
 export default function CheckoutSuccessPage() {
+  const searchParams = useSearchParams();
+  const sessionId = searchParams.get('session_id');
+  const { clearCart } = useCartStore();
+  const { resetCheckout } = useCheckoutStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    clearCart();
+    resetCheckout();
+  }, []);
+
+  if (!mounted) return null;
+
   return (
-    <div className="min-h-screen bg-astera-50 flex items-center justify-center px-24 md:px-64">
-      <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-12 text-center">
-        <div className="w-20 h-20 bg-astera-100 rounded-full flex items-center justify-center mx-auto mb-8">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-astera-600">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-          </svg>
+    <div className="min-h-[80vh] bg-pure-white flex items-center justify-center px-4">
+      <div className="max-w-md w-full text-center space-y-8">
+        <div className="flex justify-center">
+          <div className="w-24 h-24 bg-astera-50 rounded-full flex items-center justify-center text-astera-500 animate-pulse">
+            <CheckCircle size={48} strokeWidth={1.5} />
+          </div>
         </div>
-        <h1 className="font-serif text-3xl text-astera-900 mb-4">Order Confirmed</h1>
-        <p className="font-sans text-[14px] text-gray-500 leading-relaxed mb-8">
-          Thank you for shopping with Astera. We&apos;ll send you a confirmation email and your exquisite pieces will be carefully packaged.
-        </p>
-        <a href="/shop" className="btn-astera w-full text-center block py-[16px] text-[13px]">Continue Shopping</a>
-        <a href="/account" className="block mt-4 font-sans text-[13px] text-astera-600 hover:text-astera-800 underline underline-offset-2">View Order History</a>
+        
+        <div className="space-y-4">
+          <h1 className="heading-luxury text-3xl uppercase tracking-widest">Hvala vam na kupnji!</h1>
+          <p className="text-slate-500 font-sans text-sm leading-relaxed">
+            Vaša narudžba je uspješno zaprimljena. Potvrdu smo poslali na vašu email adresu.
+          </p>
+          {sessionId && (
+            <p className="text-[10px] text-slate-300 font-sans uppercase tracking-widest">
+              ID Transakcije: {sessionId.substring(0, 12)}...
+            </p>
+          )}
+        </div>
+
+        <div className="pt-8">
+          <a 
+            href="/shop" 
+            className="inline-flex items-center gap-3 bg-foreground text-pure-white px-10 py-4 rounded-xl font-sans font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-astera-700 transition-all duration-500 shadow-xl shadow-black/10 hover:shadow-black/20 hover:-translate-y-1"
+          >
+            <span>Natrag u trgovinu</span>
+            <ArrowRight size={16} strokeWidth={3} />
+          </a>
+        </div>
       </div>
     </div>
   );
