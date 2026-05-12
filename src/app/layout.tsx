@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'sonner';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const fontSerif = Playfair_Display({
   variable: '--font-serif',
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
        <body className='min-h-screen flex flex-col antialiased'>
          {children}
          <Toaster position='top-center' richColors />
+         <SpeedInsights />
        </body>
     </html>
   );
