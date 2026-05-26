@@ -1,3 +1,4 @@
+import { createClient } from '@/utils/supabase/client';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -7,6 +8,8 @@ interface FavouritesState {
   removeFavourite: (id: string) => void;
   toggleFavourite: (id: string) => void;
   isFavourite: (id: string) => boolean;
+  syncWithServer: (userId: string) => Promise<void>;
+  hydrateFromServer: (serverItems: string[]) => void;
 }
 
 export const useFavouritesStore = create<FavouritesState>()(
@@ -24,6 +27,21 @@ export const useFavouritesStore = create<FavouritesState>()(
         }
       },
       isFavourite: (id) => get().items.includes(id),
+
+      syncWithServer: async (userId) => {
+        const { items } = get();
+        try {
+          const supabase = createClient();
+          await supabase.from('profiles').update({ favourites_data: items }).eq('id', userId);
+        } catch (err) {
+          console.error("Failed to sync favourites", err);
+        }
+      },
+      hydrateFromServer: (serverItems) => set((state) => {
+        const merged = Array.from(new Set([...state.items, ...serverItems]));
+        return { items: merged };
+      }),
+
     }),
     {
       name: 'astera-favourites-storage',

@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { createClient } from "@supabase/supabase-js";
+import { processBoxNowDelivery } from "@/lib/boxnow";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_dummy", {
   apiVersion: "2025-04-30.basil" as any,
@@ -69,6 +71,36 @@ export async function POST(req: NextRequest) {
         metadata: session.metadata,
         created: new Date().toISOString(),
       };
+
+            // Save to Supabase Orders
+      const supabaseAdmin = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      );
+      
+      const { data: order, error: orderError } = await supabaseAdmin.from('orders').insert({
+        id: session.id,
+        user_email: session.customer_details?.email,
+        total_amount: (session.amount_total || 0) / 100,
+        delivery_method: session.metadata?.delivery_method,
+        boxnow_locker_id: session.metadata?.boxNowLocation,
+        shipping_address: session.metadata?.shipping_address ? JSON.parse(session.metadata.shipping_address) : null,
+        status: 'paid'
+      }).select().single();
+
+      if (orderError) {
+        console.error('Failed to save order to Supabase:', orderError);
+      } else {
+        console.log('Order saved to Supabase');
+        // Handle Box Now fulfillment
+        if (session.metadata?.delivery_method === 'boxnow' && session.metadata?.boxNowLocation) {
+          await processBoxNowDelivery(session.id, session.metadata.boxNowLocation, {
+            name: session.customer_details?.name,
+            email: session.customer_details?.email,
+            phone: session.metadata?.phone || session.customer_details?.phone
+          });
+        }
+      }
 
       console.log("   Line Items:", lineItems.data.length);
       console.log("   Forwarding to n8n...");

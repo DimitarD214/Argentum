@@ -37,7 +37,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
         className="fixed top-0 right-0 h-full w-full md:w-[600px] bg-white z-[210] shadow-[0_0_100px_rgba(0,0,0,0.25)] flex flex-col"
       >
         {/* Header - SPACIOUS MASTERPIECE */}
-        <div className="flex items-center justify-between p-16 md:p-24 border-b border-black/5 bg-luxury-beige/50">
+        <div className="flex items-center justify-between p-8 md:p-10 border-b border-black/5 bg-luxury-beige/50">
           <div className="flex items-center gap-8">
              <div className="w-14 h-14 bg-astera-50 rounded-[2rem] flex items-center justify-center text-astera-700 shadow-inner">
                 <ShoppingBag size={24} strokeWidth={1} />
@@ -56,14 +56,14 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
         </div>
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar p-16 md:p-24">
+        <div className="flex-1 overflow-y-auto custom-scrollbar p-8 md:p-10">
           <AnimatePresence mode="popLayout">
             {items.length === 0 ? (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9, y: 40 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="h-full flex flex-col items-center justify-center text-center space-y-14"
+                className="h-full flex flex-col items-center justify-center text-center space-y-8"
               >
                 <div className="relative">
                   <div className="w-32 h-32 bg-astera-50 rounded-full flex items-center justify-center animate-pulse">
@@ -96,7 +96,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.6, delay: idx * 0.1 }}
-                    className="flex gap-16 group"
+                    className="flex gap-8 group"
                   >
                     <div className="w-36 h-48 bg-luxury-beige/40 rounded-[2.5rem] flex-shrink-0 flex items-center justify-center overflow-hidden relative shadow-inner border border-black/5 group-hover:border-astera-100 transition-all duration-1000">
                       {item.image ? (
@@ -134,7 +134,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
 
         {/* Footer Actions - STICKY MASTERPIECE */}
         {items.length > 0 && (
-          <div className="p-16 md:p-24 bg-white border-t border-black/5 shadow-[0_-30px_100px_rgba(0,0,0,0.05)] relative z-10">
+          <div className="p-8 md:p-10 bg-white border-t border-black/5 shadow-[0_-30px_100px_rgba(0,0,0,0.05)] relative z-10">
             <div className="space-y-6 mb-12">
               <div className="flex items-center justify-between">
                 <span className="text-[12px] font-bold uppercase tracking-widest text-gray-400">UKUPNO ZA PLAĆANJE</span>
@@ -152,7 +152,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
             <Link
               href="/checkout"
               onClick={onClose}
-              className="w-full bg-astera-900 text-white rounded-[2.5rem] flex items-center justify-center gap-16 py-7 px-10 transition-all duration-1000 hover:bg-black hover:shadow-[0_25px_60px_rgba(0,0,0,0.3)] hover:-translate-y-2 group"
+              className="w-full bg-astera-900 text-white rounded-[2.5rem] flex items-center justify-center gap-4 py-5 px-8 transition-all duration-1000 hover:bg-black hover:shadow-[0_25px_60px_rgba(0,0,0,0.3)] hover:-translate-y-2 group"
             >
               <span className="text-[13px] font-bold uppercase tracking-widest">ZAVRŠI KUPOVINU</span>
               <ArrowRight size={20} className="group-hover:translate-x-4 transition-transform duration-700" />

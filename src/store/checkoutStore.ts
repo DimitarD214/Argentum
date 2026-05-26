@@ -17,17 +17,18 @@ export interface CheckoutState {
     street: string;
     houseNumber: string;
   };
+  saveAsDefault: boolean;
   isR1: boolean;
   r1Info: {
     companyName: string;
     oib: string;
   };
   
-  // Actions
   setStep: (step: number) => void;
   setDeliveryMethod: (method: DeliveryMethod) => void;
   setBoxNowLocation: (location: string) => void;
   updateCustomerInfo: (info: Partial<CheckoutState['customerInfo']>) => void;
+  setSaveAsDefault: (save: boolean) => void;
   setR1: (isR1: boolean) => void;
   updateR1Info: (info: Partial<CheckoutState['r1Info']>) => void;
   resetCheckout: () => void;
@@ -51,6 +52,7 @@ export const useCheckoutStore = create<CheckoutState>()(
         street: '',
         houseNumber: '',
       },
+      saveAsDefault: false,
       isR1: false,
       r1Info: {
         companyName: '',
@@ -64,6 +66,7 @@ export const useCheckoutStore = create<CheckoutState>()(
         set((state) => ({
           customerInfo: { ...state.customerInfo, ...info },
         })),
+      setSaveAsDefault: (saveAsDefault) => set({ saveAsDefault }),
       setR1: (isR1) => set({ isR1 }),
       updateR1Info: (info) =>
         set((state) => ({
@@ -77,24 +80,13 @@ export const useCheckoutStore = create<CheckoutState>()(
           deliveryMethod: 'post',
           boxNowLocation: '',
           customerInfo: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            city: '',
-            postalCode: '',
-            street: '',
-            houseNumber: '',
+            firstName: '', lastName: '', email: '', phone: '', city: '', postalCode: '', street: '', houseNumber: '',
           },
+          saveAsDefault: false,
           isR1: false,
-          r1Info: {
-            companyName: '',
-            oib: '',
-          },
+          r1Info: { companyName: '', oib: '' },
         }),
     }),
-    {
-      name: 'astera-checkout-storage',
-    }
+    { name: 'astera-checkout-storage' }
   )
 );

@@ -1,109 +1,218 @@
 'use client';
 
-import React from 'react';
-import { useCheckoutStore, DeliveryMethod } from '@/store/checkoutStore';
+import React, { useEffect, useState } from 'react';
+import { useCheckoutStore } from '@/store/checkoutStore';
 import { useCartStore } from '@/store/cartStore';
-import { Store, Truck, Box } from 'lucide-react';
-
-const BoxNowLocations = [
-  'Paketomat - Arena Centar, Zagreb',
-  'Paketomat - City Center One West, Zagreb',
-  'Paketomat - Mall of Split, Split',
-  'Paketomat - Tower Center, Rijeka',
-  'Paketomat - Portanova, Osijek',
-  'Paketomat - Supernova, Zadar',
-];
+import { Truck, Box, Check, Loader2 } from 'lucide-react';
+import { createClient } from '@/utils/supabase/client';
 
 export const DeliveryStep = () => {
-  const { deliveryMethod, setDeliveryMethod, boxNowLocation, setBoxNowLocation } = useCheckoutStore();
+  const { 
+    deliveryMethod, 
+    setDeliveryMethod, 
+    boxNowLocation, 
+    setBoxNowLocation,
+    customerInfo,
+    updateCustomerInfo,
+    saveAsDefault,
+    setSaveAsDefault
+  } = useCheckoutStore();
   const { getCartTotal } = useCartStore();
+  const [loadingProfile, setLoadingProfile] = useState(true);
+  const [isBoxNowLoaded, setIsBoxNowLoaded] = useState(false);
 
-  const methods: { id: DeliveryMethod; name: string; desc: string; icon: any; price: string; priceVal: number }[] = [
-    { 
-      id: 'manual', 
-      name: 'Preuzimanje u poslovnici', 
-      desc: 'Besplatno preuzimanje u našoj glavnoj poslovnici (Zagreb).', 
-      icon: Store,
-      price: 'Besplatno',
-      priceVal: 0
-    },
-    { 
-      id: 'post', 
-      name: 'Dostava na adresu', 
-      desc: 'Dostava GLS ili HP Express službom na vaš kućni prag.', 
-      icon: Truck,
-      price: '4.90 EUR',
-      priceVal: 4.90
-    },
-    { 
-      id: 'boxnow', 
-      name: 'Box Now Paketomat', 
-      desc: 'Dostava na odabrani paketomat dostupan 24/7.', 
-      icon: Box,
-      price: '2.50 EUR',
-      priceVal: 2.50
-    },
-  ];
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const supabase = createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('default_delivery_method, default_boxnow_locker_id, default_shipping_address')
+            .eq('id', user.id)
+            .single();
 
-  const currentMethod = methods.find(m => m.id === deliveryMethod);
-  const total = getCartTotal() + (currentMethod?.priceVal || 0);
+          if (profile) {
+            if (profile.default_delivery_method === 'post' || profile.default_delivery_method === 'home_delivery') {
+              setDeliveryMethod('post');
+            } else if (profile.default_delivery_method === 'boxnow') {
+              setDeliveryMethod('boxnow');
+              if (profile.default_boxnow_locker_id) {
+                setBoxNowLocation(profile.default_boxnow_locker_id);
+              }
+            }
+            
+            if (profile.default_shipping_address) {
+              updateCustomerInfo(profile.default_shipping_address);
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch profile', err);
+      } finally {
+        setLoadingProfile(false);
+      }
+    };
+    fetchProfile();
+  }, [setDeliveryMethod, setBoxNowLocation, updateCustomerInfo]);
+
+  // Initialize BoxNow Widget
+  useEffect(() => {
+    if (deliveryMethod !== 'boxnow') return;
+
+    if (!document.getElementById('boxnow-script')) {
+      const script = document.createElement('script');
+      script.id = 'boxnow-script';
+      script.src = 'https://widget-cdn.boxnow.hr/map-widget/client/v5.js';
+      script.async = true;
+      script.onload = () => setIsBoxNowLoaded(true);
+      document.body.appendChild(script);
+    } else {
+      setIsBoxNowLoaded(true);
+    }
+
+    const handleBoxNowMessage = (event: MessageEvent) => {
+      if (typeof event.data === 'object' && event.data !== null && event.data.boxnow) {
+        const lockerId = event.data.boxnow.lockerId || event.data.boxnow.id;
+        if (lockerId) setBoxNowLocation(String(lockerId));
+      }
+    };
+    window.addEventListener('message', handleBoxNowMessage);
+    
+    return () => {
+      window.removeEventListener('message', handleBoxNowMessage);
+    };
+  }, [deliveryMethod, setBoxNowLocation]);
+
+  const total = getCartTotal() + (deliveryMethod === 'boxnow' ? 2.50 : 4.90);
+
+  if (loadingProfile) {
+    return <div className="py-12 flex justify-center"><Loader2 className="animate-spin text-slate-300 w-8 h-8" /></div>;
+  }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-in fade-in duration-500">
       <div className="border-b border-slate-100 pb-4">
-        <h2 className="heading-luxury text-lg tracking-widest uppercase">NAČIN DOSTAVE</h2>
+        <h2 className="heading-luxury text-lg tracking-widest uppercase">Način dostave</h2>
         <p className="text-slate-400 font-sans text-xs mt-1">Odaberite kako želite primiti vašu pošiljku.</p>
       </div>
 
-      <div className="grid gap-4">
-        {methods.map((method) => {
-          const Icon = method.icon;
-          const isSelected = deliveryMethod === method.id;
-          
-          return (
-            <div 
-              key={method.id}
-              onClick={() => setDeliveryMethod(method.id)}
-              className={`flex items-start gap-6 p-6 rounded-2xl border transition-all duration-500 cursor-pointer ${
-                isSelected 
-                  ? 'border-foreground bg-pure-white shadow-xl shadow-black/5 ring-1 ring-foreground' 
-                  : 'border-slate-100 bg-pure-white hover:border-slate-300'
-              }`}
-            >
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-500 ${
-                isSelected ? 'bg-foreground text-pure-white' : 'bg-slate-50 text-slate-400'
-              }`}>
-                <Icon size={20} />
+      <div className="flex bg-slate-50 p-1 rounded-2xl">
+        <button
+          onClick={() => setDeliveryMethod('post')}
+          className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-sans text-xs font-bold transition-all ${
+            deliveryMethod === 'post' ? 'bg-white shadow-sm text-foreground' : 'text-slate-400 hover:text-slate-600'
+          }`}
+        >
+          <Truck size={16} />
+          Dostava na adresu
+        </button>
+        <button
+          onClick={() => setDeliveryMethod('boxnow')}
+          className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-sans text-xs font-bold transition-all ${
+            deliveryMethod === 'boxnow' ? 'bg-white shadow-sm text-foreground' : 'text-slate-400 hover:text-slate-600'
+          }`}
+        >
+          <Box size={16} />
+          Box Now Paketomat
+        </button>
+      </div>
+
+      <div className="min-h-[300px]">
+        {deliveryMethod === 'post' ? (
+          <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-[10px] font-sans font-bold uppercase tracking-widest mb-2 text-slate-500">Ulica</label>
+                <input 
+                  type="text" 
+                  value={customerInfo.street}
+                  onChange={(e) => updateCustomerInfo({ street: e.target.value })}
+                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
+                  placeholder="Ime ulice"
+                />
               </div>
-              
-              <div className="flex-grow">
-                <div className="flex items-center justify-between mb-1">
-                  <h3 className="font-sans font-bold text-sm tracking-tight">{method.name}</h3>
-                  <span className={`text-[10px] font-bold uppercase tracking-widest ${isSelected ? 'text-astera-600' : 'text-slate-400'}`}>
-                    {method.price}
-                  </span>
-                </div>
-                <p className="text-slate-400 text-xs font-sans leading-relaxed">{method.desc}</p>
-                
-                {isSelected && method.id === 'boxnow' && (
-                  <div className="mt-6 space-y-3">
-                    <label className="block text-[9px] uppercase font-bold tracking-[0.2em] text-slate-400">Odaberite Lokaciju</label>
-                    <select 
-                      value={boxNowLocation}
-                      onChange={(e) => setBoxNowLocation(e.target.value)}
-                      className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
-                    >
-                      <option value="">Odaberite paketomat...</option>
-                      {BoxNowLocations.map((loc) => (
-                        <option key={loc} value={loc}>{loc}</option>
-                      ))}
-                    </select>
-                  </div>
-                )}
+              <div>
+                <label className="block text-[10px] font-sans font-bold uppercase tracking-widest mb-2 text-slate-500">Kućni broj</label>
+                <input 
+                  type="text" 
+                  value={customerInfo.houseNumber}
+                  onChange={(e) => updateCustomerInfo({ houseNumber: e.target.value })}
+                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
+                  placeholder="Broj"
+                />
               </div>
             </div>
-          );
-        })}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-[10px] font-sans font-bold uppercase tracking-widest mb-2 text-slate-500">Grad</label>
+                <input 
+                  type="text" 
+                  value={customerInfo.city}
+                  onChange={(e) => updateCustomerInfo({ city: e.target.value })}
+                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
+                  placeholder="Vaš grad"
+                />
+              </div>
+              <div>
+                <label className="block text-[10px] font-sans font-bold uppercase tracking-widest mb-2 text-slate-500">Poštanski broj</label>
+                <input 
+                  type="text" 
+                  value={customerInfo.postalCode}
+                  onChange={(e) => updateCustomerInfo({ postalCode: e.target.value })}
+                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
+                  placeholder="10000"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-[10px] font-sans font-bold uppercase tracking-widest mb-2 text-slate-500">Broj telefona</label>
+              <input 
+                type="tel" 
+                value={customerInfo.phone}
+                onChange={(e) => updateCustomerInfo({ phone: e.target.value })}
+                className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
+                placeholder="+385 91 123 4567"
+              />
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2">
+            {boxNowLocation && (
+              <div className="p-4 bg-astera-50 text-astera-900 rounded-xl border border-astera-200 flex items-center justify-between">
+                <div>
+                  <p className="text-[10px] uppercase tracking-widest font-bold text-astera-600 mb-1">Odabrani Paketomat</p>
+                  <p className="text-sm font-sans font-bold">ID: {boxNowLocation}</p>
+                </div>
+                <Check className="text-astera-600" />
+              </div>
+            )}
+            <div className="w-full h-[400px] bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 relative">
+              {!isBoxNowLoaded && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 gap-3">
+                  <Loader2 className="animate-spin w-6 h-6" />
+                  <span className="text-xs font-sans uppercase tracking-widest">Učitavanje karte...</span>
+                </div>
+              )}
+              <div id="boxnowmap" className="w-full h-full"></div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="flex items-center gap-3 pt-4">
+        <div 
+          onClick={() => setSaveAsDefault(!saveAsDefault)}
+          className={`w-5 h-5 rounded border flex items-center justify-center cursor-pointer transition-colors ${
+            saveAsDefault ? 'bg-foreground border-foreground text-pure-white' : 'bg-white border-slate-200 text-transparent'
+          }`}
+        >
+          <Check size={14} />
+        </div>
+        <span className="text-xs font-sans text-slate-500 cursor-pointer select-none" onClick={() => setSaveAsDefault(!saveAsDefault)}>
+          Spremi kao moju zadanu adresu/paketomat
+        </span>
       </div>
 
       <div className="bg-slate-50 rounded-2xl p-6 flex justify-between items-center">

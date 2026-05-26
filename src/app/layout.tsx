@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'sonner';
+import StoreHydration from '@/components/StoreHydration';
 
 const fontSerif = Playfair_Display({
   variable: '--font-serif',
@@ -24,7 +25,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang='en' className={fontSerif.variable + ' ' + fontSans.variable}>
        <body className='min-h-screen flex flex-col antialiased'>
-         {children}
+         <main className='flex-1 px-4 md:px-8 lg:px-12'>
+           {children}
+         </main>
+         <StoreHydration />
          <Toaster position='top-center' richColors />
        </body>
     </html>

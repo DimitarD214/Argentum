@@ -31,13 +31,20 @@ export const ReviewStep = () => {
             email: customerInfo.email,
             customerName: `${customerInfo.firstName} ${customerInfo.lastName}`,
             delivery_method: deliveryMethod,
-            boxNowLocation: boxNowLocation || 'N/A',
+            boxNowLocation: deliveryMethod === 'boxnow' ? boxNowLocation : '',
             r1_requested: isR1 ? 'true' : 'false',
-            company_name: r1Info.companyName || 'N/A',
-            oib: r1Info.oib || 'N/A',
+            company_name: r1Info.companyName || '',
+            oib: r1Info.oib || '',
             phone: customerInfo.phone,
-            shipping_address: `${customerInfo.street} ${customerInfo.houseNumber}, ${customerInfo.postalCode} ${customerInfo.city}`
+            shipping_address: JSON.stringify({
+              street: customerInfo.street,
+              houseNumber: customerInfo.houseNumber,
+              city: customerInfo.city,
+              postalCode: customerInfo.postalCode,
+              phone: customerInfo.phone
+            })
           },
+          saveAsDefault: useCheckoutStore.getState().saveAsDefault,
           currency: 'eur'
         }),
       });

@@ -1,3 +1,4 @@
+import { createClient } from '@/utils/supabase/client';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -77,7 +78,7 @@ export const useCartStore = create<CartState>()(
       syncWithServer: async (userId) => {
         const { items } = get();
         try {
-          const { supabase } = await import('@/lib/supabase');
+          const supabase = createClient();
           await supabase.from('profiles').update({ cart_data: items }).eq('id', userId);
         } catch (err) {
           console.error("Failed to sync cart", err);

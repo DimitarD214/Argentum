@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import products from "@/data/products.json";
+import { createClient } from "@/utils/supabase/server";
 
 function mapMetalToKey(metal: string): string {
   const m = metal.toLowerCase();
@@ -17,7 +18,18 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_dummy", {
 
 export async function POST(req: NextRequest) {
   try {
-    const { items, metadata, currency = 'eur' } = await req.json();
+    const { items, metadata, saveAsDefault, currency = 'eur' } = await req.json();
+
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (user && saveAsDefault) {
+      await supabase.from('profiles').update({
+        default_delivery_method: metadata.delivery_method,
+        default_boxnow_locker_id: metadata.boxNowLocation || null,
+        default_shipping_address: metadata.delivery_method === 'post' ? JSON.parse(metadata.shipping_address) : null
+      }).eq('id', user.id);
+    }
 
     if (!items || items.length === 0) {
       throw new Error("No items in checkout.");
