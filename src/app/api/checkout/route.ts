@@ -1,5 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import products from "@/data/products.json";
+
+function mapMetalToKey(metal: string): string {
+  const m = metal.toLowerCase();
+  if (m.includes('silver')) return 'sterling_silver';
+  if (m.includes('14k') && m.includes('gold')) return 'gold_14k';
+  if (m.includes('rose') && m.includes('gold')) return 'rose_gold';
+  if (m.includes('platinum')) return 'platinum';
+  return m.replace(/ /g, '_');
+}
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_dummy", {
   apiVersion: "2024-06-20", 
@@ -13,17 +23,34 @@ export async function POST(req: NextRequest) {
       throw new Error("No items in checkout.");
     }
 
-    const lineItems = items.map((item: any) => ({
-      price_data: {
-        currency: currency,
-        product_data: {
-          name: item.name,
-          description: item.metal ?? "Premium Jewelry",
+    const lineItems = items.map((item: any) => {
+      const product = products.find((p: any) => p.id === item.id);
+      if (!product) throw new Error(`Product ${item.id} not found.`);
+
+      let price = 0;
+      if (item.metal) {
+        const metalKey = mapMetalToKey(item.metal);
+        price = (product.price as any)[metalKey];
+        if (price === undefined) {
+          throw new Error(`Invalid metal ${item.metal} for product ${item.id}.`);
+        }
+      } else {
+        // Fallback for flat priced items if any exist
+        price = typeof product.price === 'number' ? product.price : (Object.values(product.price)[0] as number);
+      }
+
+      return {
+        price_data: {
+          currency: currency,
+          product_data: {
+            name: product.name,
+            description: item.metal ?? "Premium Jewelry",
+          },
+          unit_amount: Math.round(price * 100),
         },
-        unit_amount: Math.round(item.price * 100),
-      },
-      quantity: item.quantity,
-    }));
+        quantity: item.quantity,
+      };
+    });
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
 
@@ -38,7 +65,7 @@ export async function POST(req: NextRequest) {
       },
       metadata: {
         ...metadata,
-        source: "argentum-storefront",
+        source: "astera-storefront",
       },
     };
 

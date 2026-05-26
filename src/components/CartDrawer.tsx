@@ -37,7 +37,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
         className="fixed top-0 right-0 h-full w-full md:w-[600px] bg-white z-[210] shadow-[0_0_100px_rgba(0,0,0,0.25)] flex flex-col"
       >
         {/* Header - SPACIOUS MASTERPIECE */}
-        <div className="flex items-center justify-between p-12 md:p-16 border-b border-black/5 bg-luxury-beige/50">
+        <div className="flex items-center justify-between p-16 md:p-24 border-b border-black/5 bg-luxury-beige/50">
           <div className="flex items-center gap-8">
              <div className="w-14 h-14 bg-astera-50 rounded-[2rem] flex items-center justify-center text-astera-700 shadow-inner">
                 <ShoppingBag size={24} strokeWidth={1} />
@@ -56,7 +56,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
         </div>
 
         {/* Content Area */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar p-12 md:p-16">
+        <div className="flex-1 overflow-y-auto custom-scrollbar p-16 md:p-24">
           <AnimatePresence mode="popLayout">
             {items.length === 0 ? (
               <motion.div 
@@ -96,7 +96,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.6, delay: idx * 0.1 }}
-                    className="flex gap-10 group"
+                    className="flex gap-16 group"
                   >
                     <div className="w-36 h-48 bg-luxury-beige/40 rounded-[2.5rem] flex-shrink-0 flex items-center justify-center overflow-hidden relative shadow-inner border border-black/5 group-hover:border-astera-100 transition-all duration-1000">
                       {item.image ? (
@@ -109,7 +109,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
                       <div className="flex justify-between items-start mb-4">
                         <div className="space-y-2">
                           <h3 className="heading-luxury text-base tracking-[0.2em]">{item.name}</h3>
-                          {item.metal && <p className="font-sans text-[11px] font-bold uppercase tracking-[0.3em] text-astera-300 group-hover:text-astera-600 transition-colors">{item.metal.replace('_', ' ')}</p>}
+                          {item.metal && <p className="font-sans text-[11px] font-bold uppercase tracking-widest text-astera-300 group-hover:text-astera-600 transition-colors">{item.metal.replace('_', ' ')}</p>}
                         </div>
                         <button onClick={() => removeItem(item.id, item.metal)} className="w-10 h-10 flex items-center justify-center rounded-full text-gray-300 hover:text-red-500 hover:bg-red-50 transition-all duration-500">
                           <Trash2 size={18} strokeWidth={1.5} />
@@ -134,10 +134,10 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
 
         {/* Footer Actions - STICKY MASTERPIECE */}
         {items.length > 0 && (
-          <div className="p-12 md:p-16 bg-white border-t border-black/5 shadow-[0_-30px_100px_rgba(0,0,0,0.05)] relative z-10">
+          <div className="p-16 md:p-24 bg-white border-t border-black/5 shadow-[0_-30px_100px_rgba(0,0,0,0.05)] relative z-10">
             <div className="space-y-6 mb-12">
               <div className="flex items-center justify-between">
-                <span className="text-[12px] font-bold uppercase tracking-[0.4em] text-gray-400">UKUPNO ZA PLAĆANJE</span>
+                <span className="text-[12px] font-bold uppercase tracking-widest text-gray-400">UKUPNO ZA PLAĆANJE</span>
                 <span className="font-sans font-bold text-[36px] tracking-tighter text-astera-900 border-b border-astera-50">€{getCartTotal().toFixed(2)}</span>
               </div>
               <div className="flex items-center justify-between text-astera-300 bg-astera-50/30 p-4 rounded-2xl border border-astera-50">
@@ -152,14 +152,14 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
             <Link
               href="/checkout"
               onClick={onClose}
-              className="w-full bg-astera-900 text-white rounded-[2.5rem] flex items-center justify-center gap-10 py-7 px-10 transition-all duration-1000 hover:bg-black hover:shadow-[0_25px_60px_rgba(0,0,0,0.3)] hover:-translate-y-2 group"
+              className="w-full bg-astera-900 text-white rounded-[2.5rem] flex items-center justify-center gap-16 py-7 px-10 transition-all duration-1000 hover:bg-black hover:shadow-[0_25px_60px_rgba(0,0,0,0.3)] hover:-translate-y-2 group"
             >
-              <span className="text-[13px] font-bold uppercase tracking-[0.5em]">ZAVRŠI KUPOVINU</span>
+              <span className="text-[13px] font-bold uppercase tracking-widest">ZAVRŠI KUPOVINU</span>
               <ArrowRight size={20} className="group-hover:translate-x-4 transition-transform duration-700" />
             </Link>
             
-            <div className="mt-12 flex items-center justify-center gap-10 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
-               <img src="/stripe-badge.png" alt="Stripe" className="h-6" />
+            <div className="mt-12 flex items-center justify-center gap-16 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
+               <Image src="/stripe-badge.png" alt="Stripe" width={100} height={24} className="h-6 object-contain" />
                <div className="w-[1.5px] h-4 bg-astera-900" />
                <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-astera-900">ZAŠTIĆENA TRANSAKCIJA</span>
             </div>

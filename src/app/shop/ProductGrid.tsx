@@ -1,5 +1,6 @@
 /* ASTERA DESIGN SYSTEM REMINDER: ALWAYS use card-luxury for product cards. Rounded-3xl, soft shadows. */
 "use client";
+import Image from "next/image";
 import { useState } from 'react';
 import { useFavouritesStore } from '@/store/favouritesStore';
 import { useCartStore } from '@/store/cartStore';
@@ -135,8 +136,8 @@ export default function ProductGrid({ initialProducts }: { initialProducts: Prod
       {/* Top Banner (Luxury Grid Header) */}
       <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
         <div className="max-w-xl">
-           <p className="subheading-luxury mb-4 text-astera-600 tracking-[0.3em] uppercase">Faza Otkrivanja</p>
-           <h2 className="heading-luxury text-4xl leading-tight">
+           <p className="subheading-luxury mb-4 text-astera-600 tracking-widest uppercase">Faza Otkrivanja</p>
+           <h2 className="heading-luxury text-5xl leading-tight font-serif">
               {filteredProducts.length} <span className="opacity-40 lowercase italic font-light tracking-wide">remek-djela pronađeno u našem europskom studiju</span>
            </h2>
         </div>
@@ -186,7 +187,7 @@ export default function ProductGrid({ initialProducts }: { initialProducts: Prod
       </div>
 
       {/* Luxury Product Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24 py-24">
         <AnimatePresence mode="popLayout">
           {filteredProducts.map((product, i) => {
             const isFav = favItems.includes(product.id);
@@ -198,7 +199,7 @@ export default function ProductGrid({ initialProducts }: { initialProducts: Prod
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.05 }}
+                transition={{ duration: 0.8, ease: "easeOut", delay: i * 0.1 }}
                 className="card-luxury group bg-white border border-slate-50 transition-all duration-700 hover:shadow-2xl hover:shadow-black/5"
               >
                 {/* Image Section */}
@@ -219,7 +220,7 @@ export default function ProductGrid({ initialProducts }: { initialProducts: Prod
                   </button>
                   
                   <Link href={`/shop/${product.id}`} className="absolute inset-0 block group-hover:scale-110 transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                    <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover opacity-90 mix-blend-multiply" />
+                    <Image src={product.images[0]} alt={product.name} fill className="object-cover opacity-90 mix-blend-multiply" />
                   </Link>
 
                   <div className="absolute inset-x-0 bottom-0 z-20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] px-6 pb-8">

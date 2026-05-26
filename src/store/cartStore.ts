@@ -20,6 +20,8 @@ interface CartState {
   getCartTotal: () => number;
   getCartCount: () => number;
   updateCartOpen: (isOpen: boolean) => void;
+  syncWithServer: (userId: string) => Promise<void>;
+  hydrateFromServer: (serverItems: CartItem[]) => void;
 }
 
 export const useCartStore = create<CartState>()(
@@ -72,6 +74,29 @@ export const useCartStore = create<CartState>()(
         return get().items.reduce((count, item) => count + item.quantity, 0);
       },
       updateCartOpen: (isOpen) => set({ isCartOpen: isOpen }),
+      syncWithServer: async (userId) => {
+        const { items } = get();
+        try {
+          const { supabase } = await import('@/lib/supabase');
+          await supabase.from('profiles').update({ cart_data: items }).eq('id', userId);
+        } catch (err) {
+          console.error("Failed to sync cart", err);
+        }
+      },
+      hydrateFromServer: (serverItems) => {
+        set((state) => {
+          const merged = [...serverItems];
+          state.items.forEach(localItem => {
+            const existing = merged.find(i => i.id === localItem.id && i.metal === localItem.metal);
+            if (existing) {
+              existing.quantity += localItem.quantity;
+            } else {
+              merged.push(localItem);
+            }
+          });
+          return { items: merged };
+        });
+      },
     }),
     {
       name: 'astera-cart-storage',

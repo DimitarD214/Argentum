@@ -94,7 +94,7 @@ export const useCheckoutStore = create<CheckoutState>()(
         }),
     }),
     {
-      name: 'argentum-checkout-storage',
+      name: 'astera-checkout-storage',
     }
   )
 );

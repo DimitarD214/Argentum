@@ -18,7 +18,7 @@ async function seed() {
       const stripeProduct = await stripe.products.create({
         name: product.name,
         description: product.description,
-        images: product.images.map(img => `https://argentum-stil.vercel.app${img}`), // Using a placeholder base URL
+        images: product.images.map(img => `https://astera-stil.vercel.app${img}`), // Using a placeholder base URL
         metadata: {
           original_id: product.id,
           category: product.category,

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useFavouritesStore } from "@/store/favouritesStore";
 import productsData from "@/data/products.json";
@@ -59,7 +60,7 @@ export default function FavouritesDrawer({ isOpen, onClose }: { isOpen: boolean;
               <div key={item.id} className="flex gap-6 group">
                 <div className="w-24 h-32 bg-astera-50 rounded-lg overflow-hidden flex-shrink-0">
                   {item.images && item.images[0] ? (
-                    <img src={item.images[0]} alt={item.name} className="w-full h-full object-cover" />
+                    <Image src={item.images[0]} alt={item.name} fill className="object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-[10px] text-gray-300 uppercase tracking-widest">Image</div>
                   )}

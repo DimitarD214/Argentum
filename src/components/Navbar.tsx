@@ -1,58 +1,41 @@
 /* ASTERA DESIGN SYSTEM: CONTEXTual LUXURY ARCHITECTURE */
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cartStore";
-import CartDrawer from "./CartDrawer"; 
-import SearchOverlay from "./SearchOverlay";
-import FavouritesDrawer from "./FavouritesDrawer";
+import dynamic from "next/dynamic";
+const CartDrawer = dynamic(() => import("./CartDrawer"), { ssr: false }); 
+const SearchOverlay = dynamic(() => import("./SearchOverlay"), { ssr: false });
+const FavouritesDrawer = dynamic(() => import("./FavouritesDrawer"), { ssr: false });
 import { useFavouritesStore } from "@/store/favouritesStore";
 
 const menuData: Record<string, { columns: { title: string; links: string[] }[]; featuredImage: string; featuredTitle: string }> = {
-  "Novo": {
+  "Astera nakit": {
     columns: [
-      { title: "Sada u trendu", links: ["Najprodavanije", "Nove kolekcije", "Ponovno na zalihi", "Online ekskluzive"] },
-      { title: "Kolekcije", links: ["Proljetni Cvat", "Serija Leptir", "Šumsko Zelenilo", "Vjenčanja"] },
-      { title: "Izdvojeno", links: ["Do 100 EUR", "100 EUR – 200 EUR", "200 EUR – 500 EUR", "Luksuzni Komadi"] },
-    ],
-    featuredImage: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070&auto=format&fit=crop",
-    featuredTitle: "Proljeće 2026 Lookbook",
-  },
-  "Nakit": {
-    columns: [
-      { title: "Po kategoriji", links: ["Ogrlice", "Prstenje", "Naušnice", "Narukvice", "Privjesci"] },
-      { title: "Po materijalu", links: ["Srebro 925", "14k Zlato", "Rozo Zlato", "Kristal"] },
-      { title: "Prigode", links: ["Svakodnevna Elegancija", "Vjenčanja", "Godišnjice", "Poklon Setovi"] },
+      { title: "Kategorije", links: ["Ogrlice", "Prstenje", "Naušnice", "Narukvice", "Privjesci"] },
+      { title: "Kolekcije", links: ["Proljetni Cvat", "Smaragdna Priča", "Zvjezdana Noć"] }
     ],
     featuredImage: "https://images.unsplash.com/photo-1596566111082-d55e82ad9028?q=80&w=1974&auto=format&fit=crop",
-    featuredTitle: "Smaragdna Priča",
+    featuredTitle: "Elegancija i stil"
   },
-  "Satovi": {
+  "Tradicijski nakit": {
     columns: [
-      { title: "Ženski satovi", links: ["Klasični", "Elegantni", "Moderni", "S kristalima"] },
-      { title: "Muški satovi", links: ["Klasični", "Sportski", "Elegantni", "Ograničena izdanja"] },
-      { title: "Značajke", links: ["Švicarska Mehanika", "Automatik", "Vodootporno", "Keramika"] },
+      { title: "Vrsta", links: ["Botuni", "Konavoske naušnice", "Šibenski botun", "Zlatovez"] },
+      { title: "Regije", links: ["Dalmacija", "Slavonija", "Istra"] }
     ],
-    featuredImage: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1780&auto=format&fit=crop",
-    featuredTitle: "Kolekcijski Satovi",
+    featuredImage: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=2070&auto=format&fit=crop",
+    featuredTitle: "Hrvatska Baština"
   },
-  "Dodaci": {
+  "Vjerski nakit": {
     columns: [
-      { title: "Kategorije", links: ["Sunčane naočale", "Dodaci za kosu", "Privjesci", "Maskice za mobitel"] },
-      { title: "Stil", links: ["Minimalizam", "Upečatljivo", "Svakodnevno", "Večernje"] },
+      { title: "Kategorije", links: ["Krunice", "Medaljoni", "Križevi", "Anđeli"] },
+      { title: "Prigode", links: ["Krštenja", "Prva Pričest", "Krizma", "Vjenčanja"] }
     ],
-    featuredImage: "https://images.unsplash.com/photo-1537233815102-bf0b2996d984?q=80&w=1974&auto=format&fit=crop",
-    featuredTitle: "Umjetnički Dodaci",
-  },
-  "Pokloni": {
-    columns: [
-      { title: "Ideje za poklon", links: ["Za Nju", "Za Njega", "Za Parove", "Do 75 EUR"] },
-      { title: "Usluge", links: ["Poklon kartice", "Zamatanje poklona", "Personalizacija", "Najprodavanije"] },
-    ],
-    featuredImage: "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1974&auto=format&fit=crop",
-    featuredTitle: "Umjetnost Darivanja",
-  },
+    featuredImage: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?q=80&w=1974&auto=format&fit=crop",
+    featuredTitle: "Duhovna Povezanost"
+  }
 };
 
 export default function Navbar() {
@@ -85,7 +68,7 @@ export default function Navbar() {
     setMenuTimeout(timeout);
   };
 
-  const navItems = ["Novo", "Nakit", "Satovi", "Dodaci", "Pokloni"];
+  const navItems = ["Astera nakit", "Tradicijski nakit", "Vjerski nakit"];
 
   // THE INTELLIGENT HEADER LOGIC
   const isHomePage = pathname === "/";
@@ -116,10 +99,10 @@ export default function Navbar() {
           >
             {/* Left Nav */}
             <nav className="hidden xl:flex items-center gap-10" onMouseLeave={handleMouseLeave}>
-              {navItems.slice(0, 3).map((item) => (
+              {navItems.slice(0, 2).map((item) => (
                 <div key={item} onMouseEnter={() => handleMouseEnter(item)} className="relative group py-3">
                   <Link
-                    href="/shop"
+                    href={`/shop/${item.toLowerCase().replace(/ /g, "-")}`}
                     className={`text-[11px] font-sans font-bold tracking-[0.2em] uppercase transition-all duration-500 block ${
                       activeMenu === item
                         ? "text-astera-900"
@@ -153,10 +136,10 @@ export default function Navbar() {
             {/* Right Nav & Icons */}
             <div className="flex items-center gap-10">
               <nav className="hidden xl:flex items-center gap-10 mr-4" onMouseLeave={handleMouseLeave}>
-                {navItems.slice(3).map((item) => (
+                {navItems.slice(2).map((item) => (
                   <div key={item} onMouseEnter={() => handleMouseEnter(item)} className="relative group py-3">
                     <Link
-                      href="/shop"
+                      href={`/shop/${item.toLowerCase().replace(/ /g, "-")}`}
                       className={`text-[11px] font-sans font-bold tracking-[0.2em] uppercase transition-all duration-500 block ${
                         activeMenu === item
                           ? "text-astera-900"
@@ -247,7 +230,7 @@ export default function Navbar() {
                           {col.links.map((link) => (
                             <li key={link}>
                               <Link
-                                href="/shop"
+                                href={`/shop/${activeMenu.toLowerCase().replace(/ /g, "-")}/${link.toLowerCase().replace(/ /g, "-")}`}
                                 className="text-[16px] md:text-[20px] font-serif text-gray-400 hover:text-astera-800 hover:translate-x-2 transition-all duration-500 block italic font-light"
                               >
                                 {link}
@@ -263,11 +246,7 @@ export default function Navbar() {
                 {/* THE CINEMATIC IMAGE ZONE */}
                 <div className="hidden lg:flex col-span-4 pl-12 border-l border-astera-50 h-full min-h-[45vh] flex-col justify-center">
                   <div className="relative w-full h-[320px] rounded-[3rem] overflow-hidden group shadow-xl">
-                    <img 
-                      src={menuData[activeMenu].featuredImage} 
-                      alt={menuData[activeMenu].featuredTitle}
-                      className="w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-110"
-                    />
+                    <Image src={menuData[activeMenu].featuredImage} alt={menuData[activeMenu].featuredTitle} fill className="object-cover transition-transform duration-[3000ms] group-hover:scale-110" />
                     <div className="absolute inset-0 bg-black/5" />
                     <div className="absolute bottom-10 left-0 w-full text-center px-8">
                          <p className="text-white text-[13px] font-serif italic tracking-[0.5em] uppercase drop-shadow-md">
@@ -275,7 +254,7 @@ export default function Navbar() {
                          </p>
                     </div>
                   </div>
-                  <Link href="/shop" className="mt-8 group/btn flex items-center gap-8 text-[12px] font-sans font-bold tracking-[0.3em] uppercase text-black hover:text-astera-900 transition-colors ml-4">
+                  <Link href={`/shop/${activeMenu.toLowerCase().replace(/ /g, "-")}`} className="mt-8 group/btn flex items-center gap-8 text-[12px] font-sans font-bold tracking-[0.3em] uppercase text-black hover:text-astera-900 transition-colors ml-4">
                     Istražite
                     <div className="w-12 h-[1px] bg-black group-hover:w-24 transition-all duration-700" />
                   </Link>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
-import { pollForStripeCustomerId } from '@/lib/onboarding';
+
 import { useRouter } from 'next/navigation';
 import { User, CreditCard, Settings, LogOut, Loader2, Sparkles } from 'lucide-react';
 import Link from 'next/link';
@@ -37,10 +37,19 @@ export default function AccountPage() {
       if (profile?.stripe_customer_id) {
         setStripeId(profile.stripe_customer_id);
       } else {
-        // Start polling if Stripe ID is missing
-        pollForStripeCustomerId(user.id).then((id) => {
-          if (id) setStripeId(id);
-        });
+        // Use Supabase Realtime instead of polling
+        const channel = supabase.channel('stripe-sync')
+          .on(
+            'postgres_changes',
+            { event: 'UPDATE', schema: 'public', table: 'profiles', filter: `id=eq.${user.id}` },
+            (payload) => {
+              if (payload.new.stripe_customer_id) {
+                setStripeId(payload.new.stripe_customer_id);
+                channel.unsubscribe();
+              }
+            }
+          )
+          .subscribe();
       }
 
       setIsLoading(false);

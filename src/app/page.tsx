@@ -1,4 +1,5 @@
 /* ASTERA DESIGN SYSTEM REMINDER: ALWAYS use section-luxury for main page sections. Vertical padding: 80px - 128px. */
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -95,7 +96,7 @@ export default function Home() {
                    <Link href="/shop" className="block outline-none">
                      <div className="aspect-[3/4] rounded-[3rem] overflow-hidden bg-cover bg-center border border-black/5 shadow-sm transition-all duration-1000 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] group-hover:scale-[1.03]"
                           style={{ backgroundColor: cat.bg }}>
-                        <img src={cat.image} alt={cat.name} className="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-1000 group-hover:scale-110" />
+                        <Image src={cat.image} alt={cat.name} fill className="object-cover mix-blend-multiply opacity-90 transition-transform duration-1000 group-hover:scale-110" />
                      </div>
                      <div className="mt-12 text-center px-6">
                         <h4 className="font-sans text-[12px] font-bold tracking-[0.3em] uppercase text-black mb-2 group-hover:text-astera-600 transition-colors">
@@ -134,7 +135,7 @@ export default function Home() {
                       </span>
                     )}
                     <Link href="/shop" className="block w-full h-full group">
-                      <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                      <Image src={item.image} alt={item.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                     </Link>
                   </div>
                   <div className="p-12 text-center flex flex-col items-center">

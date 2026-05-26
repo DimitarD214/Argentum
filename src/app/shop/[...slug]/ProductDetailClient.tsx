@@ -1,12 +1,13 @@
 /* ASTERA DESIGN SYSTEM REMINDER: ALWAYS use container-luxury and section-luxury. Minimum padding: px-24 (mobile) / px-64+ (desktop) */
 "use client";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { useCartStore } from "@/store/cartStore";
 import products from "@/data/products.json";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ScrollReveal from "@/components/ScrollReveal";
+import { motion } from "framer-motion";
 import Link from 'next/link';
 
 interface Product {
@@ -39,9 +40,8 @@ const translateMap: Record<string, string> = {
 
 const t = (val: string) => translateMap[val] || val;
 
-export default function ProductDetailPage() {
-  const params = useParams();
-  const productId = params.id as string;
+export default function ProductDetailClient({ productId }: { productId: string }) {
+  
   const product = (products as Product[]).find((p) => p.id === productId);
   const { addItem, updateCartOpen } = useCartStore();
 
@@ -97,29 +97,29 @@ export default function ProductDetailPage() {
     <div className="bg-white">
       <Navbar variant="solid" />
 
-      <main className="min-h-screen pt-32 lg:pt-48">
+      <main className="min-h-screen pt-40 lg:pt-56 pb-24">
         <section className="section-luxury">
           <div className="container-luxury">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 items-start">
 
               {/* Left — Product Visuals (7 Cols) */}
               <div className="lg:col-span-7">
-                <ScrollReveal direction="none" duration={1200}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
                   <div className="aspect-[4/5] bg-luxury-beige rounded-[3rem] overflow-hidden flex items-center justify-center border border-black/5 shadow-sm group">
                     {product.images && product.images.length > 0 ? (
-                      <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover opacity-90 mix-blend-multiply transition-transform duration-1000 group-hover:scale-105" />
+                      <Image src={product.images[0]} alt={product.name} fill className="object-cover opacity-90 mix-blend-multiply transition-transform duration-1000 group-hover:scale-105" />
                     ) : (
                       <div className="text-astera-300 font-serif tracking-[0.3em] text-xl uppercase italic">
                         {product.name}
                       </div>
                     )}
                   </div>
-                </ScrollReveal>
+                </motion.div>
               </div>
 
               {/* Right — Product Details (5 Cols) */}
               <div className="lg:col-span-5 lg:sticky lg:top-48">
-                <ScrollReveal delay={200} duration={1000}>
+                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}>
                    {/* Breadcrumb / Category */}
                    <nav className="subheading-luxury flex items-center gap-3 mb-8 text-astera-600">
                      <Link href="/shop" className="hover:text-black transition-colors">Kolekcija</Link>
@@ -155,7 +155,7 @@ export default function ProductDetailPage() {
                       {/* Material */}
                       {product.material.length > 1 && (
                         <div>
-                          <label className="subheading-luxury mb-4 block">Odaberite Materijal</label>
+                          <label className="subheading-luxury uppercase tracking-widest mb-4 block">Odaberite Materijal</label>
                           <div className="flex flex-wrap gap-4">
                             {product.material.map((m) => (
                               <button
@@ -176,7 +176,7 @@ export default function ProductDetailPage() {
 
                       {/* Quantity & Action */}
                       <div className="flex flex-col gap-6">
-                        <label className="subheading-luxury block text-center lg:text-left">Količina</label>
+                        <label className="subheading-luxury uppercase tracking-widest block text-center lg:text-left">Količina</label>
                         <div className="flex flex-col sm:flex-row items-center gap-6">
                            <div className="flex items-center bg-luxury-beige rounded-2xl border border-black/5 p-1 px-4">
                               <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-4 text-gray-400 hover:text-black transition-colors">
@@ -208,7 +208,7 @@ export default function ProductDetailPage() {
 
                    {/* Composition / Origin */}
                    <div className="mt-20 pt-12 border-t border-black/5">
-                     <h4 className="subheading-luxury mb-8">Umjetnički Detalji</h4>
+                     <h4 className="subheading-luxury uppercase tracking-widest mb-8">Umjetnički Detalji</h4>
                      <ul className="grid grid-cols-2 gap-y-6">
                         <li className="flex flex-col gap-1">
                            <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Kategorija</span>
@@ -228,7 +228,7 @@ export default function ProductDetailPage() {
                         </li>
                      </ul>
                    </div>
-                </ScrollReveal>
+                </motion.div>
               </div>
 
             </div>
@@ -243,10 +243,10 @@ export default function ProductDetailPage() {
                 { label: "Certifikat o Autentičnosti", icon: "✨" },
                 { label: "Brza Dostava", icon: "🕊️" }
               ].map(s => (
-                <ScrollReveal key={s.label} className="flex flex-col items-center">
+                <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col items-center">
                    <div className="text-3xl mb-6 grayscale opacity-80">{s.icon}</div>
                    <p className="subheading-luxury !text-astera-700">{s.label}</p>
-                </ScrollReveal>
+                </motion.div>
               ))}
            </div>
         </section>

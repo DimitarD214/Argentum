@@ -1,5 +1,6 @@
 /* ASTERA DESIGN SYSTEM REMINDER: NEVER align text 100% to screen edges. Minimum padding: px-24 (mobile) / px-64+ (desktop) */
 "use client";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
@@ -51,7 +52,7 @@ export default function SearchOverlay({ isOpen, onClose }: { isOpen: boolean; on
               {recommendations.map(item => (
                 <Link href="/shop" key={item.name} onClick={onClose} className="group block">
                   <div className="aspect-square bg-gray-50 rounded-xl mb-4 overflow-hidden">
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    <Image src={item.image} alt={item.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-110" />
                   </div>
                   <p className="text-[12px] font-sans font-bold tracking-[0.05em] uppercase text-black">{item.name}</p>
                   <p className="text-[12px] font-sans text-gray-500 mt-1">{item.price}</p>

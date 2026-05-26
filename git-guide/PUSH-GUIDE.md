@@ -1,6 +1,6 @@
 # GitHub Push & Update Guide
 
-This guide explains how to sync your local changes with the GitHub repository: **DimitarD214/Argentum**.
+This guide explains how to sync your local changes with the GitHub repository: **DimitarD214/Astera**.
 
 ## 1. Check your status
 Before making changes, it's good to see what has changed.
