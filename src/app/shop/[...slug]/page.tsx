@@ -61,7 +61,7 @@ export default async function ShopSlugPage({ params }: { params: Promise<{ slug:
           </header>
           <section className="section-luxury">
             <div className="container-luxury">
-              <ProductGrid initialProducts={products} />
+              <ProductGrid initialProducts={products as any} />
             </div>
           </section>
         </main>
