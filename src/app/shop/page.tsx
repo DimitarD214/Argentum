@@ -46,7 +46,7 @@ export default async function ShopPage() {
         <section className="section-luxury">
           <div className="container-luxury">
              {/* Pass real-time products to the client component */}
-            <ProductGrid initialProducts={products} />
+            <ProductGrid initialProducts={products as any} />
           </div>
         </section>
       </main>
