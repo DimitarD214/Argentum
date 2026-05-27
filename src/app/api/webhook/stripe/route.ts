@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
           name: session.customer_details?.name,
           phone: session.customer_details?.phone,
         },
-        shipping: session.shipping_details,
+        shipping: (session as any).shipping_details || (session as any).shipping,
         lineItems: lineItems.data.map((item) => ({
           name: item.description,
           quantity: item.quantity,
