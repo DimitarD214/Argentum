@@ -134,7 +134,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
 
         {/* Footer Actions - STICKY MASTERPIECE */}
         {items.length > 0 && (
-          <div className="p-8 md:p-10 bg-white border-t border-black/5 shadow-[0_-30px_100px_rgba(0,0,0,0.05)] relative z-10">
+          <div className="py-8 px-6 md:p-10 bg-white border-t border-black/5 shadow-[0_-30px_100px_rgba(0,0,0,0.05)] relative z-10">
             <div className="space-y-6 mb-12">
               <div className="flex items-center justify-between">
                 <span className="text-[12px] font-bold uppercase tracking-widest text-gray-400">UKUPNO ZA PLAĆANJE</span>
@@ -159,7 +159,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
             </Link>
             
             <div className="mt-12 flex items-center justify-center gap-16 opacity-30 grayscale hover:grayscale-0 transition-all duration-1000">
-               <Image src="/stripe-badge.png" alt="Stripe" width={100} height={24} className="h-6 object-contain" />
+               <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" className="h-6 w-auto object-contain opacity-75" />
                <div className="w-[1.5px] h-4 bg-astera-900" />
                <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-astera-900">ZAŠTIĆENA TRANSAKCIJA</span>
             </div>

@@ -4,8 +4,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getStripeProducts } from '@/lib/stripe-products';
 
-export default async function ShopSlugPage({ params }: { params: { slug: string[] } }) {
-  const slug = params.slug;
+export default async function ShopSlugPage({ params }: { params: Promise<{ slug: string[] }> }) {
+  const resolvedParams = await params;
+  const slug = resolvedParams?.slug || [];
   const categories = ["astera-nakit", "tradicijski-nakit", "vjerski-nakit"];
   
   if (categories.includes(slug[0])) {

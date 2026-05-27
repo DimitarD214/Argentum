@@ -159,7 +159,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Content Area - EXPANDS TO FILL ENTIRE WIDTH & HEIGHT */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar px-4 pb-4">
+        <div className="flex-1 overflow-y-auto custom-scrollbar px-4 pb-4 min-h-[60vh]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentStep}
@@ -175,7 +175,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Navigation - MASSIVE BUTTONS TO FILL SPACE */}
-        <div className="mt-8 flex items-center justify-between border-t border-black/5 pt-10 shrink-0">
+        <div className="mt-8 flex items-center justify-between border-t border-black/5 py-8 px-8 shrink-0">
           <button
             onClick={prevStep}
             disabled={currentStep === 1}
