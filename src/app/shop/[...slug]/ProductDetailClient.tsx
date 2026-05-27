@@ -95,7 +95,7 @@ export default function ProductDetailClient({ productId }: { productId: string }
 
   return (
     <div className="bg-white">
-      <Navbar variant="solid" />
+      <Navbar />
 
       <main className="min-h-screen pt-40 lg:pt-56 pb-24">
         <section className="section-luxury">
