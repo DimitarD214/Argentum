@@ -45,12 +45,12 @@ export default async function ShopSlugPage({ params }: { params: Promise<{ slug:
     // modify ProductGrid to show a title for the category.
 
     return (
-      <div className="bg-astera-white">
+      <div className="bg-white">
         <Navbar />
         <main className="min-h-screen">
-          <header className="section-luxury bg-astera-cream border-b border-black/5 flex flex-col items-center justify-center py-32">
+          <header className="section-luxury bg-luxury-beige border-b border-black/5 flex flex-col items-center justify-center py-32">
             <div className="container-luxury text-center">
-              <p className="subheading-luxury mb-6 tracking-[0.4em] uppercase text-astera-gold">
+              <p className="subheading-luxury mb-6 tracking-[0.4em] uppercase text-astera-400">
                 {slug[1] ? slug[1].replace(/-/g, ' ') : mainCategory}
               </p>
               <h1 className="heading-luxury text-5xl md:text-7xl lg:text-[8rem] mb-12 drop-shadow-xl capitalize">
