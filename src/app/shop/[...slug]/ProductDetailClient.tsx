@@ -65,9 +65,9 @@ export default function ProductDetailClient({ productId }: { productId: string }
     return (
       <div className="min-h-screen flex items-center justify-center bg-astera-cream">
         <div className="text-center">
-          <h1 className="heading-luxury text-4xl mb-6">Komad Nije Pronađen</h1>
-          <p className="font-sans text-astera-text/70 mb-12 italic">Umjetnička kreacija koju tražite vratila se među zvijezde.</p>
-          <a href="/shop" className="btn-luxury px-12 py-4">Povratak na Kolekciju</a>
+          <h1 className="font-serif tracking-widest uppercase text-4xl mb-6 text-astera-dark">Komad Nije Pronađen</h1>
+          <p className="font-sans text-astera-dark/70 mb-12 italic leading-relaxed">Umjetnička kreacija koju tražite vratila se među zvijezde.</p>
+          <a href="/shop" className="bg-astera-dark text-astera-cream px-12 py-5 rounded-full font-sans text-xs font-bold uppercase tracking-widest transition-all duration-500 ease-in-out hover:scale-[1.01] hover:opacity-80 hover:bg-astera-gold shadow-sm inline-block">Povratak na Kolekciju</a>
         </div>
       </div>
     );
@@ -98,18 +98,18 @@ export default function ProductDetailClient({ productId }: { productId: string }
       <Navbar />
 
       <main className="min-h-screen pt-40 lg:pt-56 pb-24">
-        <section className="section-luxury">
-          <div className="container-luxury">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 items-start">
+        <section className="py-32">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-32 items-start">
 
               {/* Left — Product Visuals (7 Cols) */}
               <div className="lg:col-span-7">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-                  <div className="aspect-[4/5] bg-astera-cream rounded-[3rem] overflow-hidden flex items-center justify-center border border-black/5 shadow-sm group">
+                  <div className="aspect-[4/5] bg-astera-cream rounded-[3rem] overflow-hidden flex items-center justify-center border border-astera-border shadow-[0_8px_30px_rgba(0,0,0,0.04)] group">
                     {product.images && product.images.length > 0 ? (
-                      <Image src={product.images[0]} alt={product.name} fill className="object-cover opacity-90 mix-blend-multiply transition-transform duration-1000 group-hover:scale-105" />
+                      <Image src={product.images[0]} alt={product.name} fill className="object-cover opacity-90 mix-blend-multiply transition-transform duration-1000 ease-in-out group-hover:scale-[1.05]" />
                     ) : (
-                      <div className="text-astera-gold font-serif tracking-[0.3em] text-xl uppercase italic">
+                      <div className="text-astera-gold font-serif tracking-widest text-xl uppercase italic">
                         {product.name}
                       </div>
                     )}
@@ -121,50 +121,50 @@ export default function ProductDetailClient({ productId }: { productId: string }
               <div className="lg:col-span-5 lg:sticky lg:top-48">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}>
                    {/* Breadcrumb / Category */}
-                   <nav className="subheading-luxury flex items-center gap-3 mb-8 text-astera-gold">
-                     <Link href="/shop" className="hover:text-black transition-colors">Kolekcija</Link>
+                   <nav className="font-sans text-xs tracking-widest uppercase flex items-center gap-3 mb-10 text-astera-gold font-bold">
+                     <Link href="/shop" className="hover:text-astera-dark transition-colors duration-500 ease-in-out">Kolekcija</Link>
                      <span className="opacity-30">/</span>
-                     <span className="opacity-60">{t(product.category)}</span>
+                     <span className="opacity-60 text-astera-dark">{t(product.category)}</span>
                    </nav>
 
                    {/* Pills / Badges */}
                    {product.badges.length > 0 && (
-                     <div className="flex flex-wrap gap-3 mb-8">
+                     <div className="flex flex-wrap gap-4 mb-10">
                        {product.badges.map((b) => (
-                         <span key={b} className="pill-luxury">{b === 'New In' ? 'Novo' : b}</span>
+                         <span key={b} className="px-5 py-2 backdrop-blur-md bg-white/70 rounded-full border border-astera-border/50 text-[10px] font-sans font-bold uppercase tracking-widest text-astera-dark shadow-sm">{b === 'New In' ? 'Novo' : b}</span>
                        ))}
                      </div>
                    )}
 
                    {/* Identity */}
-                   <h1 className="heading-luxury text-4xl md:text-5xl lg:text-6xl mb-6 leading-[1.1]">
+                   <h1 className="font-serif tracking-widest uppercase text-4xl md:text-5xl lg:text-6xl mb-6 leading-[1.1] text-astera-dark">
                      {product.name}
                    </h1>
                    
-                   <p className="font-serif text-3xl text-astera-dark font-light italic mb-10">
+                   <p className="font-serif text-3xl text-astera-dark font-light italic mb-12">
                      €{getPrice()}
                    </p>
 
                    {/* Refined Description */}
-                   <p className="font-sans text-[15px] text-astera-text/70 leading-relaxed mb-12 italic border-l-2 border-astera-border pl-8">
+                   <p className="font-sans text-[15px] text-astera-dark/70 leading-relaxed mb-16 italic border-l-2 border-astera-gold pl-8">
                      "{product.description}"
                    </p>
 
                    {/* Form Elements */}
-                   <div className="space-y-12">
+                   <div className="space-y-16">
                       {/* Material */}
                       {product.material.length > 1 && (
                         <div>
-                          <label className="subheading-luxury uppercase tracking-widest mb-4 block">Odaberite Materijal</label>
+                          <label className="font-serif text-sm uppercase tracking-widest mb-6 block text-astera-dark">Odaberite Materijal</label>
                           <div className="flex flex-wrap gap-4">
                             {product.material.map((m) => (
                               <button
                                 key={m}
                                 onClick={() => setSelectedMetal(m)}
-                                className={`px-8 py-4 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all duration-500 ${
+                                className={`px-8 py-4 rounded-full text-[11px] font-sans font-bold uppercase tracking-widest transition-all duration-500 ease-in-out hover:scale-[1.01] hover:opacity-80 ${
                                   selectedMetal === m
-                                    ? "bg-black text-white shadow-xl scale-105"
-                                    : "bg-transparent border border-black/10 text-astera-text/70 hover:border-black hover:text-black"
+                                    ? "bg-astera-dark text-astera-cream shadow-sm"
+                                    : "bg-transparent border border-astera-border text-astera-dark/70 hover:border-astera-gold hover:text-astera-dark"
                                 }`}
                               >
                                 {t(m)}
@@ -176,16 +176,16 @@ export default function ProductDetailClient({ productId }: { productId: string }
 
                       {/* Quantity & Action */}
                       <div className="flex flex-col gap-6">
-                        <label className="subheading-luxury uppercase tracking-widest block text-center lg:text-left">Količina</label>
+                        <label className="font-serif text-sm uppercase tracking-widest block text-center lg:text-left text-astera-dark">Količina</label>
                         <div className="flex flex-col sm:flex-row items-center gap-6">
-                           <div className="flex items-center bg-astera-cream rounded-2xl border border-black/5 p-1 px-4">
-                              <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-4 text-astera-text/70 hover:text-black transition-colors">
+                           <div className="flex items-center bg-astera-cream rounded-full border border-astera-border p-1.5 shadow-sm hover:shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 ease-in-out">
+                              <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-12 h-12 flex items-center justify-center rounded-full text-astera-dark/70 hover:text-astera-gold hover:bg-astera-white transition-all duration-500 ease-in-out">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
                                 </svg>
                               </button>
-                              <span className="px-6 font-serif text-lg font-bold min-w-[60px] text-center">{quantity}</span>
-                              <button onClick={() => setQuantity(quantity + 1)} className="p-4 text-astera-text/70 hover:text-black transition-colors">
+                              <span className="px-6 font-serif text-lg min-w-[60px] text-center text-astera-dark">{quantity}</span>
+                              <button onClick={() => setQuantity(quantity + 1)} className="w-12 h-12 flex items-center justify-center rounded-full text-astera-dark/70 hover:text-astera-gold hover:bg-astera-white transition-all duration-500 ease-in-out">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                 </svg>
@@ -194,10 +194,10 @@ export default function ProductDetailClient({ productId }: { productId: string }
 
                            <button
                              onClick={handleAddToBag}
-                             className={`flex-1 w-full py-6 rounded-3xl font-sans text-[11px] font-bold uppercase tracking-[0.25em] transition-all duration-700 ${
+                             className={`flex-1 w-full py-6 rounded-full font-sans text-[11px] font-bold uppercase tracking-widest transition-all duration-500 ease-in-out ${
                                added 
-                               ? "bg-emerald-50 text-emerald-600 border border-emerald-200" 
-                               : "bg-black text-white hover:bg-astera-dark hover:scale-[1.02] shadow-xl"
+                               ? "bg-astera-cream text-astera-gold border border-astera-gold" 
+                               : "bg-astera-dark text-astera-cream hover:bg-astera-gold hover:scale-[1.01] hover:opacity-80 shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
                              }`}
                            >
                              {added ? "✦ U Košarici" : `Dodaj u Košaricu — €${getPrice() * quantity}`}
@@ -207,24 +207,24 @@ export default function ProductDetailClient({ productId }: { productId: string }
                    </div>
 
                    {/* Composition / Origin */}
-                   <div className="mt-20 pt-12 border-t border-black/5">
-                     <h4 className="subheading-luxury uppercase tracking-widest mb-8">Umjetnički Detalji</h4>
-                     <ul className="grid grid-cols-2 gap-y-6">
-                        <li className="flex flex-col gap-1">
-                           <span className="text-[10px] text-astera-text/70 uppercase tracking-widest font-bold">Kategorija</span>
-                           <span className="text-[13px] font-sans text-black font-semibold">{t(product.category)}</span>
+                   <div className="mt-20 pt-12 border-t border-astera-border">
+                     <h4 className="font-serif text-sm uppercase tracking-widest mb-10 text-astera-dark">Umjetnički Detalji</h4>
+                     <ul className="grid grid-cols-2 gap-y-8">
+                        <li className="flex flex-col gap-2">
+                           <span className="text-[10px] text-astera-dark/70 font-sans uppercase tracking-widest font-bold">Kategorija</span>
+                           <span className="text-[13px] font-serif text-astera-dark tracking-wide">{t(product.category)}</span>
                         </li>
-                        <li className="flex flex-col gap-1">
-                           <span className="text-[10px] text-astera-text/70 uppercase tracking-widest font-bold">Tema</span>
-                           <span className="text-[13px] font-sans text-black font-semibold">{t(product.theme)}</span>
+                        <li className="flex flex-col gap-2">
+                           <span className="text-[10px] text-astera-dark/70 font-sans uppercase tracking-widest font-bold">Tema</span>
+                           <span className="text-[13px] font-serif text-astera-dark tracking-wide">{t(product.theme)}</span>
                         </li>
-                        <li className="flex flex-col gap-1">
-                           <span className="text-[10px] text-astera-text/70 uppercase tracking-widest font-bold">Esencija</span>
-                           <span className="text-[13px] font-sans text-black font-semibold">{t(product.stoneColor)}</span>
+                        <li className="flex flex-col gap-2">
+                           <span className="text-[10px] text-astera-dark/70 font-sans uppercase tracking-widest font-bold">Esencija</span>
+                           <span className="text-[13px] font-serif text-astera-dark tracking-wide">{t(product.stoneColor)}</span>
                         </li>
-                        <li className="flex flex-col gap-1">
-                           <span className="text-[10px] text-astera-text/70 uppercase tracking-widest font-bold">Materijal</span>
-                           <span className="text-[13px] font-sans text-black font-semibold">{product.material.map(m => t(m)).join(" & ")}</span>
+                        <li className="flex flex-col gap-2">
+                           <span className="text-[10px] text-astera-dark/70 font-sans uppercase tracking-widest font-bold">Materijal</span>
+                           <span className="text-[13px] font-serif text-astera-dark tracking-wide">{product.material.map(m => t(m)).join(" & ")}</span>
                         </li>
                      </ul>
                    </div>
@@ -236,16 +236,16 @@ export default function ProductDetailClient({ productId }: { productId: string }
         </section>
 
         {/* ========== COMPLIMENTARY SERVICES ========== */}
-        <section className="section-luxury bg-astera-cream">
-           <div className="container-luxury grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
+        <section className="py-32 bg-astera-cream border-t border-b border-astera-border">
+           <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-20 text-center">
               {[
                 { label: "Luksuzno Pakiranje", icon: "🎁" },
                 { label: "Certifikat o Autentičnosti", icon: "✨" },
                 { label: "Brza Dostava", icon: "🕊️" }
               ].map(s => (
-                <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col items-center">
-                   <div className="text-3xl mb-6 grayscale opacity-80">{s.icon}</div>
-                   <p className="subheading-luxury !text-astera-700">{s.label}</p>
+                <motion.div key={s.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col items-center group">
+                   <div className="text-4xl mb-8 grayscale opacity-80 group-hover:scale-110 transition-transform duration-500 ease-in-out group-hover:grayscale-0">{s.icon}</div>
+                   <p className="font-serif tracking-widest uppercase text-sm text-astera-dark">{s.label}</p>
                 </motion.div>
               ))}
            </div>

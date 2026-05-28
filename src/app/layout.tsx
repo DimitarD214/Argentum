@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang='hr' className={`${fontSerif.variable} ${fontSans.variable}`}>
-       <body className='min-h-screen flex flex-col antialiased bg-astera-cream text-astera-text'>
+       <body className='min-h-screen flex flex-col antialiased bg-astera-cream text-astera-dark'>
          <Navbar />
          <main className='flex-1 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-32 pb-32'>
            {children}
