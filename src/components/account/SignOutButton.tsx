@@ -16,10 +16,10 @@ export default function SignOutButton() {
   return (
     <button 
       onClick={handleSignOut}
-      className="flex items-center gap-2 text-white/40 hover:text-white transition-colors text-xs font-sans uppercase tracking-[0.2em]"
+      className="flex items-center gap-3 text-astera-text hover:text-astera-gold transition-colors duration-500 text-xs font-sans font-bold uppercase tracking-[0.2em] px-6 py-3 border border-astera-border rounded-full hover:shadow-sm hover:scale-[1.01]"
     >
-      <LogOut size={14} />
-      Sign Out
+      <LogOut size={16} />
+      Odjava
     </button>
   );
 }

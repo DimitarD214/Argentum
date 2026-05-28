@@ -20,22 +20,22 @@ export const InformationStep = ({ validationErrors = {} }: InformationStepProps)
   };
 
   const getInputClasses = (fieldName: string) => {
-    const baseClasses = "w-full bg-slate-50 border rounded-sm px-6 py-5 font-sans text-sm focus:ring-1 focus:ring-astera-900 transition-all placeholder:text-slate-300 h-16 outline-none";
+    const baseClasses = "w-full bg-astera-white border rounded-sm px-6 py-5 font-sans text-sm focus:ring-1 focus:ring-astera-900 transition-all placeholder:text-astera-text/50 h-16 outline-none";
     const errorClasses = "border-red-500 focus:ring-red-500 bg-red-50/30";
     const normalClasses = "border-transparent";
     
     return `${baseClasses} ${validationErrors[fieldName] ? errorClasses : normalClasses}`;
   };
 
-  const labelClasses = "block text-[11px] uppercase font-bold tracking-[0.2em] text-slate-400 mb-3";
+  const labelClasses = "block text-[11px] uppercase font-bold tracking-[0.2em] text-astera-text/70 mb-3";
   const errorTextClasses = "text-red-500 text-[11px] mt-2 font-sans absolute left-2 bottom-0";
 
   return (
-    <div className="flex flex-col h-full bg-pure-white w-full">
+    <div className="flex flex-col h-full bg-astera-white w-full">
       {/* FORM SECTION - MASSIVE WIDTH & HEIGHT */}
       <div className="space-y-12">
         <div className="border-b border-black/5 pb-6">
-          <h2 className="heading-luxury text-xl tracking-widest uppercase text-astera-900">VAŠI PODACI</h2>
+          <h2 className="heading-luxury text-xl tracking-widest uppercase text-astera-dark">VAŠI PODACI</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10">
@@ -129,9 +129,9 @@ export const InformationStep = ({ validationErrors = {} }: InformationStepProps)
             className="flex items-center gap-4 cursor-pointer group"
           >
             <div className={`w-5 h-5 rounded-sm border transition-all duration-300 flex items-center justify-center ${
-              isR1 ? 'bg-astera-900 border-astera-900' : 'bg-pure-white border-slate-300 group-hover:border-astera-400'
+              isR1 ? 'bg-astera-dark border-astera-dark' : 'bg-astera-white border-slate-300 group-hover:border-astera-400'
             }`}>
-              {isR1 && <div className="w-2 h-2 bg-pure-white" />}
+              {isR1 && <div className="w-2 h-2 bg-astera-white" />}
             </div>
             <span className="font-sans font-bold text-xs tracking-widest uppercase text-slate-500">Trebam R1 račun za tvrtku</span>
           </div>
@@ -167,23 +167,23 @@ export const InformationStep = ({ validationErrors = {} }: InformationStepProps)
         <div className="grid grid-cols-2 gap-20 px-12">
           
           <div className="text-center space-y-6">
-            <div className="flex justify-center gap-1 text-astera-600">
+            <div className="flex justify-center gap-1 text-astera-gold">
                {'★'.repeat(5).split('').map((star, i) => <span key={i} className="text-lg">{star}</span>)}
             </div>
             <p className="font-serif italic text-base text-slate-500 leading-relaxed px-8">
               "Predivno iskustvo. Nakit je uživo još ljepši, prepun detalja, a dostava je bila brza i elegantno zapakirana. Apsolutna preporuka za sve koji traže luksuz."
             </p>
-            <span className="block text-xs font-bold uppercase tracking-[0.3em] text-astera-900">— Mia H., Zagreb</span>
+            <span className="block text-xs font-bold uppercase tracking-[0.3em] text-astera-dark">— Mia H., Zagreb</span>
           </div>
 
           <div className="text-center space-y-6">
-            <div className="flex justify-center gap-1 text-astera-600">
+            <div className="flex justify-center gap-1 text-astera-gold">
                {'★'.repeat(5).split('').map((star, i) => <span key={i} className="text-lg">{star}</span>)}
             </div>
             <p className="font-serif italic text-base text-slate-500 leading-relaxed px-8">
               "Kupovao sam zaručnički prsten i usluga je bila besprijekorna od početka do kraja. Izuzetno profesionalno osoblje i istinska kvaliteta izrade."
             </p>
-            <span className="block text-xs font-bold uppercase tracking-[0.3em] text-astera-900">— Luka P., Split</span>
+            <span className="block text-xs font-bold uppercase tracking-[0.3em] text-astera-dark">— Luka P., Split</span>
           </div>
 
         </div>

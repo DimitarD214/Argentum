@@ -63,10 +63,10 @@ export default function ProductDetailClient({ productId }: { productId: string }
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-luxury-beige">
+      <div className="min-h-screen flex items-center justify-center bg-astera-cream">
         <div className="text-center">
           <h1 className="heading-luxury text-4xl mb-6">Komad Nije Pronađen</h1>
-          <p className="font-sans text-gray-500 mb-12 italic">Umjetnička kreacija koju tražite vratila se među zvijezde.</p>
+          <p className="font-sans text-astera-text/70 mb-12 italic">Umjetnička kreacija koju tražite vratila se među zvijezde.</p>
           <a href="/shop" className="btn-luxury px-12 py-4">Povratak na Kolekciju</a>
         </div>
       </div>
@@ -94,7 +94,7 @@ export default function ProductDetailClient({ productId }: { productId: string }
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-astera-white">
       <Navbar />
 
       <main className="min-h-screen pt-40 lg:pt-56 pb-24">
@@ -105,11 +105,11 @@ export default function ProductDetailClient({ productId }: { productId: string }
               {/* Left — Product Visuals (7 Cols) */}
               <div className="lg:col-span-7">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
-                  <div className="aspect-[4/5] bg-luxury-beige rounded-[3rem] overflow-hidden flex items-center justify-center border border-black/5 shadow-sm group">
+                  <div className="aspect-[4/5] bg-astera-cream rounded-[3rem] overflow-hidden flex items-center justify-center border border-black/5 shadow-sm group">
                     {product.images && product.images.length > 0 ? (
                       <Image src={product.images[0]} alt={product.name} fill className="object-cover opacity-90 mix-blend-multiply transition-transform duration-1000 group-hover:scale-105" />
                     ) : (
-                      <div className="text-astera-300 font-serif tracking-[0.3em] text-xl uppercase italic">
+                      <div className="text-astera-gold font-serif tracking-[0.3em] text-xl uppercase italic">
                         {product.name}
                       </div>
                     )}
@@ -121,7 +121,7 @@ export default function ProductDetailClient({ productId }: { productId: string }
               <div className="lg:col-span-5 lg:sticky lg:top-48">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}>
                    {/* Breadcrumb / Category */}
-                   <nav className="subheading-luxury flex items-center gap-3 mb-8 text-astera-600">
+                   <nav className="subheading-luxury flex items-center gap-3 mb-8 text-astera-gold">
                      <Link href="/shop" className="hover:text-black transition-colors">Kolekcija</Link>
                      <span className="opacity-30">/</span>
                      <span className="opacity-60">{t(product.category)}</span>
@@ -141,12 +141,12 @@ export default function ProductDetailClient({ productId }: { productId: string }
                      {product.name}
                    </h1>
                    
-                   <p className="font-serif text-3xl text-astera-900 font-light italic mb-10">
+                   <p className="font-serif text-3xl text-astera-dark font-light italic mb-10">
                      €{getPrice()}
                    </p>
 
                    {/* Refined Description */}
-                   <p className="font-sans text-[15px] text-gray-500 leading-relaxed mb-12 italic border-l-2 border-astera-100 pl-8">
+                   <p className="font-sans text-[15px] text-astera-text/70 leading-relaxed mb-12 italic border-l-2 border-astera-border pl-8">
                      "{product.description}"
                    </p>
 
@@ -164,7 +164,7 @@ export default function ProductDetailClient({ productId }: { productId: string }
                                 className={`px-8 py-4 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all duration-500 ${
                                   selectedMetal === m
                                     ? "bg-black text-white shadow-xl scale-105"
-                                    : "bg-transparent border border-black/10 text-gray-400 hover:border-black hover:text-black"
+                                    : "bg-transparent border border-black/10 text-astera-text/70 hover:border-black hover:text-black"
                                 }`}
                               >
                                 {t(m)}
@@ -178,14 +178,14 @@ export default function ProductDetailClient({ productId }: { productId: string }
                       <div className="flex flex-col gap-6">
                         <label className="subheading-luxury uppercase tracking-widest block text-center lg:text-left">Količina</label>
                         <div className="flex flex-col sm:flex-row items-center gap-6">
-                           <div className="flex items-center bg-luxury-beige rounded-2xl border border-black/5 p-1 px-4">
-                              <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-4 text-gray-400 hover:text-black transition-colors">
+                           <div className="flex items-center bg-astera-cream rounded-2xl border border-black/5 p-1 px-4">
+                              <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="p-4 text-astera-text/70 hover:text-black transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
                                 </svg>
                               </button>
                               <span className="px-6 font-serif text-lg font-bold min-w-[60px] text-center">{quantity}</span>
-                              <button onClick={() => setQuantity(quantity + 1)} className="p-4 text-gray-400 hover:text-black transition-colors">
+                              <button onClick={() => setQuantity(quantity + 1)} className="p-4 text-astera-text/70 hover:text-black transition-colors">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                                 </svg>
@@ -197,7 +197,7 @@ export default function ProductDetailClient({ productId }: { productId: string }
                              className={`flex-1 w-full py-6 rounded-3xl font-sans text-[11px] font-bold uppercase tracking-[0.25em] transition-all duration-700 ${
                                added 
                                ? "bg-emerald-50 text-emerald-600 border border-emerald-200" 
-                               : "bg-black text-white hover:bg-astera-900 hover:scale-[1.02] shadow-xl"
+                               : "bg-black text-white hover:bg-astera-dark hover:scale-[1.02] shadow-xl"
                              }`}
                            >
                              {added ? "✦ U Košarici" : `Dodaj u Košaricu — €${getPrice() * quantity}`}
@@ -211,19 +211,19 @@ export default function ProductDetailClient({ productId }: { productId: string }
                      <h4 className="subheading-luxury uppercase tracking-widest mb-8">Umjetnički Detalji</h4>
                      <ul className="grid grid-cols-2 gap-y-6">
                         <li className="flex flex-col gap-1">
-                           <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Kategorija</span>
+                           <span className="text-[10px] text-astera-text/70 uppercase tracking-widest font-bold">Kategorija</span>
                            <span className="text-[13px] font-sans text-black font-semibold">{t(product.category)}</span>
                         </li>
                         <li className="flex flex-col gap-1">
-                           <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Tema</span>
+                           <span className="text-[10px] text-astera-text/70 uppercase tracking-widest font-bold">Tema</span>
                            <span className="text-[13px] font-sans text-black font-semibold">{t(product.theme)}</span>
                         </li>
                         <li className="flex flex-col gap-1">
-                           <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Esencija</span>
+                           <span className="text-[10px] text-astera-text/70 uppercase tracking-widest font-bold">Esencija</span>
                            <span className="text-[13px] font-sans text-black font-semibold">{t(product.stoneColor)}</span>
                         </li>
                         <li className="flex flex-col gap-1">
-                           <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Materijal</span>
+                           <span className="text-[10px] text-astera-text/70 uppercase tracking-widest font-bold">Materijal</span>
                            <span className="text-[13px] font-sans text-black font-semibold">{product.material.map(m => t(m)).join(" & ")}</span>
                         </li>
                      </ul>
@@ -236,7 +236,7 @@ export default function ProductDetailClient({ productId }: { productId: string }
         </section>
 
         {/* ========== COMPLIMENTARY SERVICES ========== */}
-        <section className="section-luxury bg-luxury-beige">
+        <section className="section-luxury bg-astera-cream">
            <div className="container-luxury grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
               {[
                 { label: "Luksuzno Pakiranje", icon: "🎁" },

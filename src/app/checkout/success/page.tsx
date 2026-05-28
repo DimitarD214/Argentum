@@ -22,10 +22,10 @@ function SuccessContent() {
   if (!mounted) return null;
 
   return (
-    <div className="min-h-[80vh] bg-pure-white flex items-center justify-center px-4">
+    <div className="min-h-[80vh] bg-astera-white flex items-center justify-center px-4">
       <div className="max-w-md w-full text-center space-y-8">
         <div className="flex justify-center">
-          <div className="w-24 h-24 bg-astera-50 rounded-full flex items-center justify-center text-astera-500 animate-pulse">
+          <div className="w-24 h-24 bg-astera-cream rounded-full flex items-center justify-center text-astera-500 animate-pulse">
             <CheckCircle size={48} strokeWidth={1.5} />
           </div>
         </div>
@@ -36,7 +36,7 @@ function SuccessContent() {
             Vaša narudžba je uspješno zaprimljena. Potvrdu smo poslali na vašu email adresu.
           </p>
           {sessionId && (
-            <p className="text-[10px] text-slate-300 font-sans uppercase tracking-widest">
+            <p className="text-[10px] text-astera-text/50 font-sans uppercase tracking-widest">
               ID Transakcije: {sessionId.substring(0, 12)}...
             </p>
           )}
@@ -45,7 +45,7 @@ function SuccessContent() {
         <div className="pt-8">
           <a 
             href="/shop" 
-            className="inline-flex items-center gap-3 bg-foreground text-pure-white px-10 py-4 rounded-xl font-sans font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-astera-700 transition-all duration-500 shadow-xl shadow-black/10 hover:shadow-black/20 hover:-translate-y-1"
+            className="inline-flex items-center gap-3 bg-astera-dark text-pure-white px-10 py-4 rounded-xl font-sans font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-astera-700 transition-all duration-500 shadow-xl shadow-black/10 hover:shadow-black/20 hover:-translate-y-1"
           >
             <span>Natrag u trgovinu</span>
             <ArrowRight size={16} strokeWidth={3} />
@@ -58,7 +58,7 @@ function SuccessContent() {
 
 export default function CheckoutSuccessPage() {
   return (
-    <Suspense fallback={<div className="min-h-[80vh] bg-pure-white flex items-center justify-center">Loading...</div>}>
+    <Suspense fallback={<div className="min-h-[80vh] bg-astera-white flex items-center justify-center">Loading...</div>}>
       <SuccessContent />
     </Suspense>
   );

@@ -37,11 +37,11 @@ const DeliverySelector = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-8 bg-white rounded-xl shadow-lg border border-gray-100">
-      <h2 className="text-2xl font-semibold mb-6 text-gray-900 tracking-tight">Delivery Method</h2>
+    <div className="max-w-xl mx-auto p-8 bg-astera-white rounded-xl shadow-lg border border-astera-border">
+      <h2 className="text-2xl font-semibold mb-6 text-astera-dark tracking-tight">Delivery Method</h2>
       
       <div className="flex space-x-4 mb-8">
-        <label className={`flex-1 cursor-pointer p-5 border rounded-xl flex flex-col items-center transition-all duration-200 ${deliveryMethod === 'home_delivery' ? 'border-gray-900 bg-gray-50 ring-1 ring-gray-900 shadow-sm' : 'border-gray-200 hover:border-gray-300'}`}>
+        <label className={`flex-1 cursor-pointer p-5 border rounded-xl flex flex-col items-center transition-all duration-200 ${deliveryMethod === 'home_delivery' ? 'border-gray-900 bg-gray-50 ring-1 ring-gray-900 shadow-sm' : 'border-astera-border hover:border-gray-300'}`}>
           <input 
             type="radio" 
             name="delivery_method" 
@@ -50,11 +50,11 @@ const DeliverySelector = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
             onChange={() => setDeliveryMethod('home_delivery')}
             className="sr-only"
           />
-          <span className="font-medium text-gray-900">Dostava na adresu</span>
-          <span className="text-sm text-gray-500 mt-1">Home Delivery</span>
+          <span className="font-medium text-astera-dark">Dostava na adresu</span>
+          <span className="text-sm text-astera-text/70 mt-1">Home Delivery</span>
         </label>
         
-        <label className={`flex-1 cursor-pointer p-5 border rounded-xl flex flex-col items-center transition-all duration-200 ${deliveryMethod === 'box_now' ? 'border-gray-900 bg-gray-50 ring-1 ring-gray-900 shadow-sm' : 'border-gray-200 hover:border-gray-300'}`}>
+        <label className={`flex-1 cursor-pointer p-5 border rounded-xl flex flex-col items-center transition-all duration-200 ${deliveryMethod === 'box_now' ? 'border-gray-900 bg-gray-50 ring-1 ring-gray-900 shadow-sm' : 'border-astera-border hover:border-gray-300'}`}>
           <input 
             type="radio" 
             name="delivery_method" 
@@ -63,8 +63,8 @@ const DeliverySelector = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
             onChange={() => setDeliveryMethod('box_now')}
             className="sr-only"
           />
-          <span className="font-medium text-gray-900">Box Now paketomat</span>
-          <span className="text-sm text-gray-500 mt-1">Locker Pick-up</span>
+          <span className="font-medium text-astera-dark">Box Now paketomat</span>
+          <span className="text-sm text-astera-text/70 mt-1">Locker Pick-up</span>
         </label>
       </div>
 
@@ -108,8 +108,8 @@ const DeliverySelector = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
 
         {deliveryMethod === 'box_now' && (
           <div className="space-y-4 animate-in fade-in duration-300">
-            <div className="p-1 bg-gray-50 rounded-xl border border-gray-200">
-               <div id="boxnowmap" className="w-full h-[400px] rounded-lg overflow-hidden bg-white"></div>
+            <div className="p-1 bg-gray-50 rounded-xl border border-astera-border">
+               <div id="boxnowmap" className="w-full h-[400px] rounded-lg overflow-hidden bg-astera-white"></div>
             </div>
             {boxnowLockerId && (
               <div className="flex items-center text-sm font-medium text-green-700 bg-green-50 p-3 rounded-lg border border-green-200">

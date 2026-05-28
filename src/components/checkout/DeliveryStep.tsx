@@ -88,21 +88,21 @@ export const DeliveryStep = () => {
   const total = getCartTotal() + (deliveryMethod === 'boxnow' ? 2.50 : 4.90);
 
   if (loadingProfile) {
-    return <div className="py-12 flex justify-center"><Loader2 className="animate-spin text-slate-300 w-8 h-8" /></div>;
+    return <div className="py-12 flex justify-center"><Loader2 className="animate-spin text-astera-text/50 w-8 h-8" /></div>;
   }
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
-      <div className="border-b border-slate-100 pb-4">
+      <div className="border-b border-astera-border pb-4">
         <h2 className="heading-luxury text-lg tracking-widest uppercase">Način dostave</h2>
-        <p className="text-slate-400 font-sans text-xs mt-1">Odaberite kako želite primiti vašu pošiljku.</p>
+        <p className="text-astera-text/70 font-sans text-xs mt-1">Odaberite kako želite primiti vašu pošiljku.</p>
       </div>
 
-      <div className="flex bg-slate-50 p-1 rounded-2xl">
+      <div className="flex bg-astera-white p-1 rounded-2xl">
         <button
           onClick={() => setDeliveryMethod('post')}
           className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-sans text-xs font-bold transition-all ${
-            deliveryMethod === 'post' ? 'bg-white shadow-sm text-foreground' : 'text-slate-400 hover:text-slate-600'
+            deliveryMethod === 'post' ? 'bg-astera-white shadow-sm text-astera-dark' : 'text-astera-text/70 hover:text-slate-600'
           }`}
         >
           <Truck size={16} />
@@ -111,7 +111,7 @@ export const DeliveryStep = () => {
         <button
           onClick={() => setDeliveryMethod('boxnow')}
           className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-sans text-xs font-bold transition-all ${
-            deliveryMethod === 'boxnow' ? 'bg-white shadow-sm text-foreground' : 'text-slate-400 hover:text-slate-600'
+            deliveryMethod === 'boxnow' ? 'bg-astera-white shadow-sm text-astera-dark' : 'text-astera-text/70 hover:text-slate-600'
           }`}
         >
           <Box size={16} />
@@ -129,7 +129,7 @@ export const DeliveryStep = () => {
                   type="text" 
                   value={customerInfo.street}
                   onChange={(e) => updateCustomerInfo({ street: e.target.value })}
-                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
+                  className="w-full bg-astera-white border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
                   placeholder="Ime ulice"
                 />
               </div>
@@ -139,7 +139,7 @@ export const DeliveryStep = () => {
                   type="text" 
                   value={customerInfo.houseNumber}
                   onChange={(e) => updateCustomerInfo({ houseNumber: e.target.value })}
-                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
+                  className="w-full bg-astera-white border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
                   placeholder="Broj"
                 />
               </div>
@@ -151,7 +151,7 @@ export const DeliveryStep = () => {
                   type="text" 
                   value={customerInfo.city}
                   onChange={(e) => updateCustomerInfo({ city: e.target.value })}
-                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
+                  className="w-full bg-astera-white border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
                   placeholder="Vaš grad"
                 />
               </div>
@@ -161,7 +161,7 @@ export const DeliveryStep = () => {
                   type="text" 
                   value={customerInfo.postalCode}
                   onChange={(e) => updateCustomerInfo({ postalCode: e.target.value })}
-                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
+                  className="w-full bg-astera-white border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
                   placeholder="10000"
                 />
               </div>
@@ -172,7 +172,7 @@ export const DeliveryStep = () => {
                 type="tel" 
                 value={customerInfo.phone}
                 onChange={(e) => updateCustomerInfo({ phone: e.target.value })}
-                className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
+                className="w-full bg-astera-white border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
                 placeholder="+385 91 123 4567"
               />
             </div>
@@ -180,17 +180,17 @@ export const DeliveryStep = () => {
         ) : (
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2">
             {boxNowLocation && (
-              <div className="p-4 bg-astera-50 text-astera-900 rounded-xl border border-astera-200 flex items-center justify-between">
+              <div className="p-4 bg-astera-cream text-astera-dark rounded-xl border border-astera-200 flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest font-bold text-astera-600 mb-1">Odabrani Paketomat</p>
+                  <p className="text-[10px] uppercase tracking-widest font-bold text-astera-gold mb-1">Odabrani Paketomat</p>
                   <p className="text-sm font-sans font-bold">ID: {boxNowLocation}</p>
                 </div>
-                <Check className="text-astera-600" />
+                <Check className="text-astera-gold" />
               </div>
             )}
-            <div className="w-full h-[400px] bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 relative">
+            <div className="w-full h-[400px] bg-astera-border rounded-2xl overflow-hidden border border-astera-border relative">
               {!isBoxNowLoaded && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 gap-3">
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-astera-text/70 gap-3">
                   <Loader2 className="animate-spin w-6 h-6" />
                   <span className="text-xs font-sans uppercase tracking-widest">Učitavanje karte...</span>
                 </div>
@@ -205,7 +205,7 @@ export const DeliveryStep = () => {
         <div 
           onClick={() => setSaveAsDefault(!saveAsDefault)}
           className={`w-5 h-5 rounded border flex items-center justify-center cursor-pointer transition-colors ${
-            saveAsDefault ? 'bg-foreground border-foreground text-pure-white' : 'bg-white border-slate-200 text-transparent'
+            saveAsDefault ? 'bg-astera-dark border-foreground text-pure-white' : 'bg-astera-white border-astera-border text-transparent'
           }`}
         >
           <Check size={14} />
@@ -215,7 +215,7 @@ export const DeliveryStep = () => {
         </span>
       </div>
 
-      <div className="bg-slate-50 rounded-2xl p-6 flex justify-between items-center">
+      <div className="bg-astera-white rounded-2xl p-6 flex justify-between items-center">
         <span className="text-xs font-sans text-slate-500">Ukupno sa dostavom:</span>
         <span className="font-sans font-bold text-lg">{total.toFixed(2)} EUR</span>
       </div>
