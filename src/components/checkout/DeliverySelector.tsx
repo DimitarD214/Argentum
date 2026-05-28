@@ -1,6 +1,7 @@
+declare global { interface Window { _bn_map_widget_config: any; } }
 import React, { useState, useEffect } from 'react';
 
-const DeliverySelector = ({ onSubmit }) => {
+const DeliverySelector = ({ onSubmit }: { onSubmit: (data: any) => void }) => {
   const [deliveryMethod, setDeliveryMethod] = useState('home_delivery');
   const [boxnowLockerId, setBoxnowLockerId] = useState('');
   const [address, setAddress] = useState({ street: '', city: '', zip: '' });
@@ -10,7 +11,7 @@ const DeliverySelector = ({ onSubmit }) => {
       window._bn_map_widget_config = {
         partnerId: process.env.NEXT_PUBLIC_BOXNOW_PARTNER_ID || "REPLACE_WITH_ID",
         parentElement: "#boxnowmap",
-        afterSelect: function(selected) {
+        afterSelect: function(selected: any) {
           setBoxnowLockerId(selected.boxnowLockerId);
         }
       };
@@ -26,7 +27,7 @@ const DeliverySelector = ({ onSubmit }) => {
     }
   }, [deliveryMethod]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit({
       deliveryMethod,

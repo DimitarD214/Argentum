@@ -20,7 +20,7 @@ interface Product {
     platinum?: number;
   };
   badges: string[];
-  description: string;
+  description: string | null;
   images: string[];
   material: string[];
   category: string;
