@@ -62,7 +62,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </div>
+
 
         {/* Bottom Bar */}
         <div className="pt-12 border-t border-astera-border/20 flex flex-col md:flex-row justify-between items-center gap-16">
