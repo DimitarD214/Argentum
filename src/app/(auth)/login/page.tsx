@@ -1,6 +1,7 @@
 "use client";
 import { useState, Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import Navbar from "@/components/Navbar";
 import { login, signup } from "./actions";
 import { toast } from "sonner";
 
@@ -83,8 +84,11 @@ function LoginForm() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-astera-cream" />}>
-      <LoginForm />
-    </Suspense>
+    <>
+      <Navbar />
+      <Suspense fallback={<div className="min-h-screen bg-luxury-beige" />}>
+        <LoginForm />
+      </Suspense>
+    </>
   );
 }

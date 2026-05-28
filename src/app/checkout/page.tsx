@@ -87,12 +87,12 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className='min-h-[70vh] flex flex-col items-center justify-center bg-astera-white px-10'>
-        <div className="w-28 h-28 bg-astera-cream rounded-full flex items-center justify-center mb-10 shadow-inner">
-           <ShoppingBasket size={42} strokeWidth={1} className="text-astera-gold" />
+      <div className='min-h-[70vh] flex flex-col items-center justify-center bg-pure-white px-10'>
+        <div className="w-28 h-28 bg-luxury-beige rounded-full flex items-center justify-center mb-10 shadow-inner">
+           <ShoppingBasket size={42} strokeWidth={1} className="text-astera-300" />
         </div>
         <h2 className='heading-luxury text-3xl md:text-5xl mb-6 tracking-[0.3em] uppercase opacity-80'>Vaša košarica je prazna</h2>
-        <p className="text-astera-text/70 font-sans text-sm md:text-base mb-16 max-w-lg text-center leading-relaxed">
+        <p className="text-slate-400 font-sans text-sm md:text-base mb-16 max-w-lg text-center leading-relaxed">
           Zaronite u svijet umjetničke izrade i pronađite komad koji govori vašoj prepoznatljivoj eleganciji.
         </p>
         <Link href='/shop' className='btn-bespoke-elegant py-5 px-10'>
@@ -104,32 +104,32 @@ export default function CheckoutPage() {
 
   // Widescreen No-Restriction Layout
   return (
-    <div className="min-h-screen bg-astera-white flex flex-col px-8 md:px-16 lg:px-32">
+    <div className="h-screen overflow-hidden bg-pure-white flex flex-col px-8 md:px-16 lg:px-32">
       <div className="w-full h-full flex flex-col pt-12 pb-8">
         
         {/* Header with Navigation - MASSIVE SPACING */}
         <div className="flex items-center justify-between mb-16 border-b border-black/5 pb-10 relative shrink-0">
           <Link href="/" className="group flex items-center gap-6">
-             <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-astera-dark group-hover:border-astera-dark transition-all duration-700">
-                <ArrowLeft size={18} className="text-astera-text/70 group-hover:text-pure-white transition-colors" />
+             <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-astera-900 group-hover:border-astera-900 transition-all duration-700">
+                <ArrowLeft size={18} className="text-gray-400 group-hover:text-pure-white transition-colors" />
              </div>
-             <span className="text-[12px] font-sans font-bold uppercase tracking-[0.3em] text-astera-text/70 group-hover:text-black transition-colors hidden sm:block">POČETNA</span>
+             <span className="text-[12px] font-sans font-bold uppercase tracking-[0.3em] text-gray-400 group-hover:text-black transition-colors hidden sm:block">POČETNA</span>
           </Link>
 
           <Link href="/" className="absolute left-1/2 -translate-x-1/2 group">
-             <h1 className="text-[32px] md:text-[42px] font-serif font-light tracking-[0.6em] uppercase text-astera-dark transition-all duration-700 group-hover:tracking-[0.7em]">ASTERA</h1>
+             <h1 className="text-[32px] md:text-[42px] font-serif font-light tracking-[0.6em] uppercase text-astera-900 transition-all duration-700 group-hover:tracking-[0.7em]">ASTERA</h1>
           </Link>
 
-          <Link href="/shop" className="text-[12px] font-sans font-bold uppercase tracking-[0.3em] text-astera-text/70 hover:text-black transition-colors flex items-center gap-4 hidden sm:flex">
+          <Link href="/shop" className="text-[12px] font-sans font-bold uppercase tracking-[0.3em] text-gray-400 hover:text-black transition-colors flex items-center gap-4 hidden sm:flex">
             <span>NASTAVI KUPOVINU</span>
-            <div className="w-10 h-[1px] bg-astera-border" />
+            <div className="w-10 h-[1px] bg-slate-200" />
           </Link>
         </div>
 
         {/* Progress Tracker - FULL WIDTH UNRESTRICTED */}
         <div className="mb-16 w-full shrink-0">
           <div className="flex items-center justify-between relative px-2 sm:px-12">
-            <div className="absolute top-1/2 left-0 w-full h-[1px] bg-astera-border -z-10" />
+            <div className="absolute top-1/2 left-0 w-full h-[1px] bg-slate-100 -z-10" />
             
             {steps.map((step) => {
               const Icon = step.icon;
@@ -140,15 +140,15 @@ export default function CheckoutPage() {
                 <div key={step.id} className="flex flex-col items-center group">
                   <div className={`w-16 h-16 rounded-[2rem] flex items-center justify-center transition-all duration-1000 transform border ${
                     isActive 
-                      ? 'bg-astera-dark text-pure-white shadow-2xl shadow-astera-dark/30 scale-110 z-10 border-astera-dark' 
+                      ? 'bg-astera-900 text-pure-white shadow-2xl shadow-astera-900/30 scale-110 z-10 border-astera-900' 
                       : isCompleted
-                      ? 'bg-astera-cream text-astera-dark border-astera-border'
-                      : 'bg-astera-white border-black/5 text-astera-text/30 font-light'
+                      ? 'bg-astera-50 text-astera-900 border-astera-100'
+                      : 'bg-pure-white border-black/5 text-slate-200 font-light'
                   }`}>
-                    {isCompleted ? <Icon size={22} strokeWidth={1.5} className="text-astera-dark" /> : <span className={`font-serif text-[18px] italic ${isActive ? 'text-pure-white' : 'text-astera-text/50'}`}>{step.id}</span>}
+                    {isCompleted ? <Icon size={22} strokeWidth={1.5} className="text-astera-900" /> : <span className={`font-serif text-[18px] italic ${isActive ? 'text-pure-white' : 'text-slate-300'}`}>{step.id}</span>}
                   </div>
                   <span className={`mt-8 text-[11px] uppercase tracking-[0.25em] font-bold font-sans transition-all duration-700 ${
-                    isActive ? 'text-astera-dark' : 'text-astera-text/50'
+                    isActive ? 'text-astera-900' : 'text-slate-300'
                   }`}>
                     {step.name}
                   </span>
@@ -179,7 +179,7 @@ export default function CheckoutPage() {
           <button
             onClick={prevStep}
             disabled={currentStep === 1}
-            className={`btn-bespoke-elegant !bg-transparent !text-astera-text/70 hover:!text-black !py-6 !px-10 text-sm ${
+            className={`btn-bespoke-elegant !bg-transparent !text-gray-400 hover:!text-black !py-6 !px-10 text-sm ${
               currentStep === 1 ? 'opacity-0 pointer-events-none' : ''
             }`}
           >

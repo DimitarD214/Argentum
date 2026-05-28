@@ -301,7 +301,7 @@ export default function ProductGrid({ initialProducts }: { initialProducts: Prod
                    { id: 'Material', label: 'Visoka Alkemija', options: materials, current: filterMaterial, setter: setFilterMaterial },
                    { id: 'Price', label: 'Investicija', options: prices, current: filterPrice, setter: setFilterPrice }
                 ].map(section => (
-                  <div key={section.id} className="border-b border-astera-border pb-12 last:border-0">
+                  <div key={section.id} className="border-b border-slate-50 pb-12 last:border-0">
                     <button 
                       className="flex w-full justify-between items-center mb-10 group" 
                       onClick={() => toggleSection(section.id as any)}

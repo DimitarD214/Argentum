@@ -63,7 +63,7 @@ export default function ProductDetailClient({ productId }: { productId: string }
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-astera-cream">
+      <div className="min-h-screen flex items-center justify-center bg-luxury-beige">
         <div className="text-center">
           <h1 className="font-serif tracking-widest uppercase text-4xl mb-6 text-astera-dark">Komad Nije Pronađen</h1>
           <p className="font-sans text-astera-dark/70 mb-12 italic leading-relaxed">Umjetnička kreacija koju tražite vratila se među zvijezde.</p>
@@ -94,7 +94,7 @@ export default function ProductDetailClient({ productId }: { productId: string }
   };
 
   return (
-    <div className="bg-astera-white">
+    <div className="bg-white">
       <Navbar />
 
       <main className="min-h-screen pt-40 lg:pt-56 pb-24">

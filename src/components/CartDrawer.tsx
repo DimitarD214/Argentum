@@ -66,8 +66,8 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
                 className="h-full flex flex-col items-center justify-center text-center space-y-8"
               >
                 <div className="relative">
-                  <div className="w-32 h-32 bg-astera-cream rounded-full flex items-center justify-center animate-pulse">
-                    <ShoppingBag size={48} strokeWidth={0.5} className="text-astera-gold" />
+                  <div className="w-32 h-32 bg-astera-50 rounded-full flex items-center justify-center animate-pulse">
+                    <ShoppingBag size={48} strokeWidth={0.5} className="text-astera-200" />
                   </div>
                   <div className="absolute -top-4 -right-4 w-12 h-12 bg-astera-white rounded-full shadow-sm flex items-center justify-center text-2xl border border-astera-border">🏺</div>
                 </div>

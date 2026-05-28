@@ -42,12 +42,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Newsletter */}
+          {/* Column 4: Newsletter/Brand */}
           <div className="flex flex-col">
             <h3 className="text-xs uppercase tracking-widest font-serif text-astera-gold mb-10">
               Svijet Astere
             </h3>
-            <p className="text-sm text-astera-cream/70 font-sans leading-relaxed mb-8 italic">
+            <p className="text-[14px] text-astera-100/60 font-sans leading-relaxed mb-8 italic">
               Pretplatite se na naš newsletter kako biste primali najnovije vijesti o našim kolekcijama i umjetnosti izrade.
             </p>
             <div className="relative group">
@@ -62,6 +62,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
+      </div>
 
         {/* Bottom Bar */}
         <div className="pt-12 border-t border-astera-border/20 flex flex-col md:flex-row justify-between items-center gap-16">
@@ -69,7 +70,7 @@ export default function Footer() {
              <h2 className="font-serif text-3xl md:text-4xl tracking-widest uppercase text-astera-cream mb-4 transition-all duration-500 ease-in-out hover:scale-[1.01] hover:opacity-80">
                ASTERA
              </h2>
-             <p className="text-xs text-astera-cream/50 font-sans tracking-widest uppercase">
+             <p className="text-[9px] text-astera-600 font-sans tracking-[0.2em] uppercase">
                © 2026 Astera Artisan Nakit. Sva prava pridržana.
              </p>
           </div>
