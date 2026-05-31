@@ -2,72 +2,78 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-astera-dark text-astera-cream pt-32 pb-20 mt-auto">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 lg:gap-32 mb-32">
+    <footer className="bg-astera-900 text-white border-t border-black/5">
+      <div className="container-luxury section-luxury">
+        {/* Top Links Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-20">
           {/* Column 1 */}
           <div className="flex flex-col">
-            <h3 className="text-xs uppercase tracking-widest font-serif text-astera-gold mb-10">
+            <h3 className="text-[11px] uppercase tracking-[0.25em] font-bold mb-10 font-sans text-astera-300">
               Korisnička podrška
             </h3>
-            <ul className="flex flex-col space-y-6">
-              <li><Link href="#" className="block text-sm font-sans text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Status narudžbe</Link></li>
-              <li><Link href="#" className="block text-sm font-sans text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Dostava i isporuka</Link></li>
-              <li><Link href="#" className="block text-sm font-sans text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Povrati i zamjene</Link></li>
-              <li><Link href="/services" className="block text-sm font-sans text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Kontaktirajte nas</Link></li>
+            <ul className="flex flex-col space-y-5">
+              <li><Link href="#" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Status narudžbe</Link></li>
+              <li><Link href="#" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Dostava i isporuka</Link></li>
+              <li><Link href="#" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Povrati i zamjene</Link></li>
+              <li><Link href="#" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Poklon kartice</Link></li>
+              <li><Link href="/services" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Kontaktirajte nas</Link></li>
+              <li><Link href="#" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Vodič za veličine</Link></li>
             </ul>
           </div>
 
           {/* Column 2 */}
           <div className="flex flex-col">
-            <h3 className="text-xs uppercase tracking-widest font-serif text-astera-gold mb-10">
+            <h3 className="text-[11px] uppercase tracking-[0.25em] font-bold mb-10 font-sans text-astera-300">
               Članstvo
             </h3>
-            <ul className="flex flex-col space-y-6">
-              <li><Link href="/account" className="block text-sm font-sans text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Moj račun</Link></li>
-              <li><Link href="/account" className="block text-sm font-sans text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Astera Klub</Link></li>
-              <li><Link href="/account" className="block text-sm font-sans text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Kristalno Društvo</Link></li>
+            <ul className="flex flex-col space-y-5">
+              <li><Link href="/account" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Moj račun</Link></li>
+              <li><Link href="/account" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Astera Klub</Link></li>
+              <li><Link href="/account" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Kristalno Društvo</Link></li>
             </ul>
           </div>
 
           {/* Column 3 */}
           <div className="flex flex-col">
-            <h3 className="text-xs uppercase tracking-widest font-serif text-astera-gold mb-10">
+            <h3 className="text-[11px] uppercase tracking-[0.25em] font-bold mb-10 font-sans text-astera-300">
               O tvrtki Astera
             </h3>
-            <ul className="flex flex-col space-y-6">
-              <li><Link href="#" className="block text-sm font-sans text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Naša baština</Link></li>
-              <li><Link href="#" className="block text-sm font-sans text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Održivost</Link></li>
-              <li><Link href="#" className="block text-sm font-sans text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Karijera</Link></li>
+            <ul className="flex flex-col space-y-5">
+              <li><Link href="#" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Naša baština</Link></li>
+              <li><Link href="#" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Održivost</Link></li>
+              <li><Link href="#" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Karijera</Link></li>
+              <li><Link href="#" className="text-[13px] text-astera-100/70 font-sans hover:text-white transition-all duration-300">Za profesionalce</Link></li>
             </ul>
           </div>
 
           {/* Column 4: Newsletter/Brand */}
           <div className="flex flex-col">
-            <h3 className="text-xs uppercase tracking-widest font-serif text-astera-gold mb-10">
+            <h3 className="text-[11px] uppercase tracking-[0.25em] font-bold mb-10 font-sans text-astera-300">
               Svijet Astere
             </h3>
             <p className="text-[14px] text-astera-100/60 font-sans leading-relaxed mb-8 italic">
               Pretplatite se na naš newsletter kako biste primali najnovije vijesti o našim kolekcijama i umjetnosti izrade.
             </p>
-            <div className="relative group">
+            <div className="relative">
               <input 
                 type="email" 
                 placeholder="E-MAIL ADRESA" 
-                className="w-full px-6 py-4 bg-transparent border border-astera-border/30 rounded-full focus:ring-1 focus:ring-astera-gold focus:border-astera-gold outline-none transition-all duration-500 ease-in-out font-sans text-xs tracking-widest text-astera-cream placeholder:text-astera-cream/30" 
+                className="w-full bg-transparent border-b border-astera-700 py-3 text-[11px] font-sans tracking-widest text-white focus:outline-none focus:border-white transition-colors placeholder:text-astera-700" 
               />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 text-[10px] font-bold tracking-widest uppercase text-astera-gold transition-all duration-500 ease-in-out hover:text-astera-cream hover:scale-[1.01] hover:opacity-80">
+              <button className="absolute right-0 bottom-3 text-[10px] font-bold tracking-widest uppercase text-astera-300 hover:text-white transition-colors">
                 Pridruži se
               </button>
             </div>
           </div>
         </div>
+      </div>
 
-
-        {/* Bottom Bar */}
-        <div className="pt-12 border-t border-astera-border/20 flex flex-col md:flex-row justify-between items-center gap-16">
+      {/* Bottom Bar */}
+      <div className="bg-black/20 py-12 border-t border-white/5">
+        <div className="container-luxury flex flex-col md:flex-row justify-between items-center gap-12">
+          {/* Logo */}
           <div className="flex flex-col items-center md:items-start order-2 md:order-1">
-             <h2 className="font-serif text-3xl md:text-4xl tracking-widest uppercase text-astera-cream mb-4 transition-all duration-500 ease-in-out hover:scale-[1.01] hover:opacity-80">
+             <h2 className="font-serif text-[32px] md:text-[40px] tracking-[0.4em] uppercase text-white mb-4">
                ASTERA
              </h2>
              <p className="text-[9px] text-astera-600 font-sans tracking-[0.2em] uppercase">
@@ -75,10 +81,22 @@ export default function Footer() {
              </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-6 order-3 md:order-2">
-            <Link href="#" className="text-[10px] font-sans font-bold tracking-widest uppercase text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Pravila Privatnosti</Link>
-            <Link href="#" className="text-[10px] font-sans font-bold tracking-widest uppercase text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Uvjeti Korištenja</Link>
-            <Link href="#" className="text-[10px] font-sans font-bold tracking-widest uppercase text-astera-cream/70 transition-all duration-500 ease-in-out hover:text-astera-gold hover:scale-[1.01] hover:opacity-80">Kolačići</Link>
+          {/* Social Icons Placeholder */}
+          <div className="flex gap-6 items-center order-1 md:order-2">
+            {['facebook', 'instagram', 'pinterest'].map((social) => (
+              <a key={social} href="#" className="text-astera-500 hover:text-white transition-all duration-500 hover:scale-125">
+                 <div className="w-5 h-5 rounded-full border border-current flex items-center justify-center p-1">
+                    <div className="w-1.5 h-1.5 bg-current rounded-full"></div>
+                 </div>
+              </a>
+            ))}
+          </div>
+
+          {/* Legal Links */}
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 order-3">
+            <Link href="#" className="text-[10px] font-sans font-bold tracking-widest uppercase text-astera-600 hover:text-white transition-colors">Pravila Privatnosti</Link>
+            <Link href="#" className="text-[10px] font-sans font-bold tracking-widest uppercase text-astera-600 hover:text-white transition-colors">Uvjeti Korištenja</Link>
+            <Link href="#" className="text-[10px] font-sans font-bold tracking-widest uppercase text-astera-600 hover:text-white transition-colors">Kolačići</Link>
           </div>
         </div>
       </div>

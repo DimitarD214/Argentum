@@ -3,7 +3,6 @@ import { Playfair_Display, Montserrat } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'sonner';
 import StoreHydration from '@/components/StoreHydration';
-import Navbar from '@/components/Navbar';
 
 const fontSerif = Playfair_Display({
   variable: '--font-serif',
@@ -24,10 +23,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang='hr' className={`${fontSerif.variable} ${fontSans.variable}`}>
-       <body className='min-h-screen flex flex-col antialiased bg-astera-cream text-astera-dark'>
-         <Navbar />
-         <main className='flex-1 max-w-7xl mx-auto px-6 lg:px-8 w-full pt-32 pb-32'>
+    <html lang='en' className={fontSerif.variable + ' ' + fontSans.variable}>
+       <body className='min-h-screen flex flex-col antialiased'>
+         <main className='flex-1 px-4 md:px-8 lg:px-12'>
            {children}
          </main>
          <StoreHydration />

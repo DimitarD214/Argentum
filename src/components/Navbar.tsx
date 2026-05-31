@@ -45,6 +45,7 @@ export default function Navbar() {
   const isCartOpen = useCartStore((state) => state.isCartOpen);
   const setIsCartOpen = useCartStore((state) => state.updateCartOpen); 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFavOpen, setIsFavOpen] = useState(false);
   const favCount = useFavouritesStore((state) => state.items.length);
   const [mounted, setMounted] = useState(false);
@@ -81,40 +82,50 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-1000 ease-in-out ${
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-1000 ${
           isCompact
-            ? "bg-astera-white border-b border-astera-border shadow-sm"
+            ? "bg-white border-b border-black/5 shadow-[0_30px_90px_rgba(0,0,0,0.04)]"
             : "bg-transparent"
         }`}
       >
         {/* Compact utility bar */}
-        <div className="flex items-center justify-center py-2.5 text-[9px] tracking-widest uppercase bg-astera-dark text-astera-cream font-sans font-bold">
+        <div className="flex items-center justify-center py-2.5 text-[9px] tracking-[0.4em] uppercase bg-astera-900/90 text-astera-100 font-sans font-bold">
           Ručna izrada • Isporuka unutar 24 sata
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 transition-all duration-1000 relative">
+        <div className="container-luxury px-10 md:px-20 lg:px-24 transition-all duration-1000 relative">
           <div 
             className="flex items-center justify-between transition-all duration-1000"
             style={{ paddingTop: headerPaddingTop, paddingBottom: headerPaddingBottom }}
           >
+            {/* Mobile Hamburger Button */}
+            <button
+              className="xl:hidden flex flex-col justify-center items-center w-8 h-8 z-50 relative"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <span className={`bg-current transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} style={{ backgroundColor: isCompact || isMobileMenuOpen ? 'var(--color-astera-900)' : 'white' }}></span>
+              <span className={`bg-current transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} style={{ backgroundColor: isCompact || isMobileMenuOpen ? 'var(--color-astera-900)' : 'white' }}></span>
+              <span className={`bg-current transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`} style={{ backgroundColor: isCompact || isMobileMenuOpen ? 'var(--color-astera-900)' : 'white' }}></span>
+            </button>
+
             {/* Left Nav */}
             <nav className="hidden xl:flex items-center gap-10" onMouseLeave={handleMouseLeave}>
               {navItems.slice(0, 2).map((item) => (
                 <div key={item} onMouseEnter={() => handleMouseEnter(item)} className="relative group py-3">
                   <Link
                     href={`/shop/${item.toLowerCase().replace(/ /g, "-")}`}
-                    className={`text-[11px] font-sans font-bold tracking-widest uppercase transition-all duration-500 ease-in-out block hover:scale-[1.01] hover:opacity-80 ${
+                    className={`text-[11px] font-sans font-bold tracking-[0.2em] uppercase transition-all duration-500 block ${
                       activeMenu === item
-                        ? "text-astera-gold"
+                        ? "text-astera-900"
                         : isCompact
-                        ? "text-astera-dark/70 hover:text-astera-dark"
-                        : "text-astera-cream/80 hover:text-astera-cream"
+                        ? "text-gray-400 hover:text-black"
+                        : "text-white/80 hover:text-white"
                     }`}
                   >
                     {item}
                   </Link>
                   <div className={`absolute bottom-0 left-0 w-full flex justify-center`}>
-                    <div className={`h-[1px] bg-astera-gold transition-all duration-500 ease-in-out w-0 group-hover:w-full ${activeMenu === item ? "w-full" : ""}`} />
+                    <div className={`h-[1px] bg-astera-600 transition-all duration-500 w-0 group-hover:w-full ${activeMenu === item ? "w-full" : ""}`} />
                   </div>
                 </div>
               ))}
@@ -122,10 +133,10 @@ export default function Navbar() {
 
             {/* High-Performance Centered Logo */}
             <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center min-w-[280px] h-full z-20 pointer-events-none">
-              <Link href="/" className="pointer-events-auto group transition-all duration-500 ease-in-out hover:scale-[1.01] hover:opacity-80">
+              <Link href="/" className="pointer-events-auto group">
                 <h1
-                  className={`text-[28px] md:text-[34px] font-serif font-light tracking-widest uppercase transition-all duration-1000 group-hover:tracking-[0.6em] ${
-                    isCompact ? "text-astera-dark" : "text-astera-cream drop-shadow-2xl"
+                  className={`text-[28px] md:text-[34px] font-serif font-light tracking-[0.55em] uppercase transition-all duration-1000 group-hover:tracking-[0.6em] ${
+                    isCompact ? "text-astera-900" : "text-white drop-shadow-2xl"
                   }`}
                 >
                   ASTERA
@@ -140,38 +151,28 @@ export default function Navbar() {
                   <div key={item} onMouseEnter={() => handleMouseEnter(item)} className="relative group py-3">
                     <Link
                       href={`/shop/${item.toLowerCase().replace(/ /g, "-")}`}
-                      className={`text-[11px] font-sans font-bold tracking-widest uppercase transition-all duration-500 ease-in-out block hover:scale-[1.01] hover:opacity-80 ${
+                      className={`text-[11px] font-sans font-bold tracking-[0.2em] uppercase transition-all duration-500 block ${
                         activeMenu === item
-                          ? "text-astera-gold"
+                          ? "text-astera-900"
                           : isCompact
-                          ? "text-astera-dark/70 hover:text-astera-dark"
-                          : "text-astera-cream/80 hover:text-astera-cream"
+                          ? "text-gray-400 hover:text-black"
+                          : "text-white/80 hover:text-white"
                       }`}
                     >
                       {item}
                     </Link>
                     <div className={`absolute bottom-0 left-0 w-full flex justify-center`}>
-                        <div className={`h-[1px] bg-astera-gold transition-all duration-500 ease-in-out w-0 group-hover:w-full ${activeMenu === item ? "w-full" : ""}`} />
+                        <div className={`h-[1px] bg-astera-600 transition-all duration-500 w-0 group-hover:w-full ${activeMenu === item ? "w-full" : ""}`} />
                     </div>
                   </div>
                 ))}
               </nav>
 
               <div className="flex items-center gap-8">
-                <Link
-                  href="/account"
-                  className={`transition-all duration-500 ease-in-out hover:scale-[1.01] hover:opacity-80 ${
-                    isCompact ? "text-astera-dark hover:text-astera-gold" : "text-astera-cream hover:text-astera-gold"
-                  }`}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                  </svg>
-                </Link>
                 <button
                   onClick={() => setIsSearchOpen(true)}
-                  className={`transition-all duration-500 ease-in-out hover:scale-[1.01] hover:opacity-80 ${
-                    isCompact ? "text-astera-dark hover:text-astera-gold" : "text-astera-cream hover:text-astera-gold"
+                  className={`transition-all duration-500 hover:scale-110 ${
+                    isCompact ? "text-astera-900" : "text-white"
                   }`}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
@@ -181,15 +182,15 @@ export default function Navbar() {
 
                 <button
                   onClick={() => setIsFavOpen(true)}
-                  className={`relative transition-all duration-500 ease-in-out hover:scale-[1.01] hover:opacity-80 ${
-                    isCompact ? "text-astera-dark hover:text-astera-gold" : "text-astera-cream hover:text-astera-gold"
+                  className={`relative transition-all duration-500 hover:scale-110 ${
+                    isCompact ? "text-astera-900" : "text-white"
                   }`}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                   </svg>
                   {mounted && favCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-astera-gold text-astera-cream text-[7px] font-sans tracking-widest w-4 h-4 rounded-full flex items-center justify-center">
+                    <span className="absolute -top-1 -right-1 bg-astera-600 text-white text-[7px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">
                         {favCount}
                     </span>
                   )}
@@ -197,15 +198,15 @@ export default function Navbar() {
 
                 <button
                   onClick={() => setIsCartOpen(true)}
-                  className={`relative transition-all duration-500 ease-in-out hover:scale-[1.01] hover:opacity-80 ${
-                    isCompact ? "text-astera-dark hover:text-astera-gold" : "text-astera-cream hover:text-astera-gold"
+                  className={`relative transition-all duration-500 hover:scale-110 ${
+                    isCompact ? "text-astera-900" : "text-white"
                   }`}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                   </svg>
-                  <span className={`absolute -top-1 -right-1.5 text-[8px] font-sans tracking-widest w-4 h-4 rounded-full flex items-center justify-center transition-all duration-500 ease-in-out ${
-                    isCompact ? "bg-astera-dark text-astera-cream" : "bg-astera-cream text-astera-dark shadow-sm"
+                  <span className={`absolute -top-1 -right-1.5 text-[8px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-all duration-500 ${
+                    isCompact ? "bg-astera-900 text-white" : "bg-white text-astera-900 shadow-lg"
                   }`}>
                     {mounted ? cartCount : 0}
                   </span>
@@ -215,25 +216,54 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* MOBILE FULL SCREEN MENU */}
+        <div className={`fixed inset-0 bg-white z-[90] transition-all duration-500 xl:hidden overflow-y-auto ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-10'}`}>
+          <div className="pt-32 pb-20 px-8 flex flex-col gap-8 min-h-screen">
+             {navItems.map((item) => (
+               <div key={item} className="border-b border-black/10 pb-6">
+                 <h3 className="text-2xl font-serif text-astera-900 mb-6">{item}</h3>
+                 {menuData[item] && menuData[item].columns.map((col, idx) => (
+                    <div key={idx} className="mb-6 last:mb-0">
+                      <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-astera-400 mb-4">{col.title}</p>
+                      <ul className="flex flex-col gap-3">
+                        {col.links.map(link => (
+                          <li key={link}>
+                            <Link 
+                              href={`/shop/${item.toLowerCase().replace(/ /g, "-")}/${link.toLowerCase().replace(/ /g, "-")}`}
+                              className="text-gray-600 text-sm font-sans tracking-wide hover:text-astera-900 transition-colors"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {link}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                 ))}
+               </div>
+             ))}
+          </div>
+        </div>
+
         {/* FULL-SCREEN CINEMATIC MEGA MENU */}
         <div
-          className={`absolute left-0 w-full bg-astera-cream transition-all duration-700 ease-in-out origin-top shadow-[0_8px_30px_rgb(0,0,0,0.04)] ${
+          className={`absolute left-0 w-full bg-white transition-all duration-700 origin-top shadow-[0_80px_250px_rgba(0,0,0,0.3)] ${
             activeMenu
-              ? "opacity-100 scale-y-100 pointer-events-auto border-t border-astera-border"
+              ? "opacity-100 scale-y-100 pointer-events-auto border-t border-black/5"
               : "opacity-0 scale-y-95 pointer-events-none"
           }`}
           onMouseEnter={() => { if (menuTimeout) clearTimeout(menuTimeout); }}
           onMouseLeave={handleMouseLeave}
         >
           {activeMenu && menuData[activeMenu] && (
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 md:py-32 min-h-[65vh] flex items-center">
+            <div className="container-luxury py-16 md:py-24 lg:py-32 min-h-[65vh] flex items-center">
               <div className="grid grid-cols-12 gap-12 xl:gap-20 w-full h-full">
                 {/* Information Columns */}
                 <div className="col-span-12 lg:col-span-8 flex items-center">
                   <div className="grid grid-cols-3 gap-10 xl:gap-16 w-full">
                     {menuData[activeMenu].columns.map((col) => (
                       <div key={col.title} className="space-y-10">
-                        <h4 className="text-[10px] font-sans font-bold tracking-widest uppercase text-astera-dark border-b border-astera-border pb-4 mb-6">
+                        <h4 className="text-[10px] font-sans font-bold tracking-[0.4em] uppercase text-astera-300 border-b border-astera-50 pb-4 mb-6">
                           {col.title}
                         </h4>
                         <ul className="space-y-4 md:space-y-6">
@@ -241,7 +271,7 @@ export default function Navbar() {
                             <li key={link}>
                               <Link
                                 href={`/shop/${activeMenu.toLowerCase().replace(/ /g, "-")}/${link.toLowerCase().replace(/ /g, "-")}`}
-                                className="text-[16px] md:text-[20px] font-sans text-astera-dark hover:text-astera-gold hover:translate-x-2 transition-all duration-500 ease-in-out block font-light leading-relaxed hover:scale-[1.01] hover:opacity-80"
+                                className="text-[16px] md:text-[20px] font-serif text-gray-400 hover:text-astera-800 hover:translate-x-2 transition-all duration-500 block italic font-light"
                               >
                                 {link}
                               </Link>
@@ -254,19 +284,19 @@ export default function Navbar() {
                 </div>
 
                 {/* THE CINEMATIC IMAGE ZONE */}
-                <div className="hidden lg:flex col-span-4 pl-12 border-l border-astera-border h-full min-h-[45vh] flex-col justify-center">
-                  <div className="relative w-full h-[320px] rounded-3xl overflow-hidden group shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+                <div className="hidden lg:flex col-span-4 pl-12 border-l border-astera-50 h-full min-h-[45vh] flex-col justify-center">
+                  <div className="relative w-full h-[320px] rounded-[3rem] overflow-hidden group shadow-xl">
                     <Image src={menuData[activeMenu].featuredImage} alt={menuData[activeMenu].featuredTitle} fill className="object-cover transition-transform duration-[3000ms] group-hover:scale-110" />
                     <div className="absolute inset-0 bg-black/5" />
-                    <div className="absolute bottom-10 left-0 w-full flex justify-center px-8">
-                         <p className="backdrop-blur-md bg-white/70 rounded-full px-4 py-1.5 text-astera-dark text-[13px] font-serif tracking-widest uppercase">
+                    <div className="absolute bottom-10 left-0 w-full text-center px-8">
+                         <p className="text-white text-[13px] font-serif italic tracking-[0.5em] uppercase drop-shadow-md">
                             {menuData[activeMenu].featuredTitle}
                          </p>
                     </div>
                   </div>
-                  <Link href={`/shop/${activeMenu.toLowerCase().replace(/ /g, "-")}`} className="mt-8 group/btn flex items-center gap-8 text-[12px] font-sans font-bold tracking-widest uppercase text-astera-dark hover:text-astera-gold transition-all duration-500 ease-in-out hover:scale-[1.01] hover:opacity-80 ml-4">
+                  <Link href={`/shop/${activeMenu.toLowerCase().replace(/ /g, "-")}`} className="mt-8 group/btn flex items-center gap-8 text-[12px] font-sans font-bold tracking-[0.3em] uppercase text-black hover:text-astera-900 transition-colors ml-4">
                     Istražite
-                    <div className="w-12 h-[1px] bg-astera-dark group-hover:w-24 transition-all duration-700 ease-in-out" />
+                    <div className="w-12 h-[1px] bg-black group-hover:w-24 transition-all duration-700" />
                   </Link>
                 </div>
               </div>
