@@ -66,7 +66,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
+      </div>
 
       {/* Bottom Bar */}
       <div className="bg-black/20 py-12 border-t border-white/5">

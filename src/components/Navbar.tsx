@@ -45,6 +45,7 @@ export default function Navbar() {
   const isCartOpen = useCartStore((state) => state.isCartOpen);
   const setIsCartOpen = useCartStore((state) => state.updateCartOpen); 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isFavOpen, setIsFavOpen] = useState(false);
   const favCount = useFavouritesStore((state) => state.items.length);
   const [mounted, setMounted] = useState(false);
@@ -97,6 +98,16 @@ export default function Navbar() {
             className="flex items-center justify-between transition-all duration-1000"
             style={{ paddingTop: headerPaddingTop, paddingBottom: headerPaddingBottom }}
           >
+            {/* Mobile Hamburger Button */}
+            <button
+              className="xl:hidden flex flex-col justify-center items-center w-8 h-8 z-50 relative"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <span className={`bg-current transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMobileMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} style={{ backgroundColor: isCompact || isMobileMenuOpen ? 'var(--color-astera-900)' : 'white' }}></span>
+              <span className={`bg-current transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} style={{ backgroundColor: isCompact || isMobileMenuOpen ? 'var(--color-astera-900)' : 'white' }}></span>
+              <span className={`bg-current transition-all duration-300 ease-out h-0.5 w-6 rounded-sm ${isMobileMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`} style={{ backgroundColor: isCompact || isMobileMenuOpen ? 'var(--color-astera-900)' : 'white' }}></span>
+            </button>
+
             {/* Left Nav */}
             <nav className="hidden xl:flex items-center gap-10" onMouseLeave={handleMouseLeave}>
               {navItems.slice(0, 2).map((item) => (
@@ -202,6 +213,35 @@ export default function Navbar() {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* MOBILE FULL SCREEN MENU */}
+        <div className={`fixed inset-0 bg-white z-[90] transition-all duration-500 xl:hidden overflow-y-auto ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto translate-y-0' : 'opacity-0 pointer-events-none -translate-y-10'}`}>
+          <div className="pt-32 pb-20 px-8 flex flex-col gap-8 min-h-screen">
+             {navItems.map((item) => (
+               <div key={item} className="border-b border-black/10 pb-6">
+                 <h3 className="text-2xl font-serif text-astera-900 mb-6">{item}</h3>
+                 {menuData[item] && menuData[item].columns.map((col, idx) => (
+                    <div key={idx} className="mb-6 last:mb-0">
+                      <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-astera-400 mb-4">{col.title}</p>
+                      <ul className="flex flex-col gap-3">
+                        {col.links.map(link => (
+                          <li key={link}>
+                            <Link 
+                              href={`/shop/${item.toLowerCase().replace(/ /g, "-")}/${link.toLowerCase().replace(/ /g, "-")}`}
+                              className="text-gray-600 text-sm font-sans tracking-wide hover:text-astera-900 transition-colors"
+                              onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                              {link}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                 ))}
+               </div>
+             ))}
           </div>
         </div>
 

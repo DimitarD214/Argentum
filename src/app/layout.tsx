@@ -3,7 +3,6 @@ import { Playfair_Display, Montserrat } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'sonner';
 import StoreHydration from '@/components/StoreHydration';
-import Navbar from '@/components/Navbar';
 
 const fontSerif = Playfair_Display({
   variable: '--font-serif',
