@@ -1,11 +1,9 @@
 /* ASTERA DESIGN SYSTEM REMINDER: ALWAYS use card-luxury for product cards. Rounded-3xl, soft shadows. */
 "use client";
-import Image from "next/image";
 import { useState } from 'react';
-import { useFavouritesStore } from '@/store/favouritesStore';
-import { useCartStore } from '@/store/cartStore';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import ProductCard from '@/components/shop/ProductCard';
+import FilterDrawer from '@/components/shop/FilterDrawer';
 
 interface Product {
   id: string;
@@ -57,17 +55,6 @@ export default function ProductGrid({ initialProducts }: { initialProducts: Prod
   const [sortOption, setSortOption] = useState('Featured');
   const [isSortOpen, setIsSortOpen] = useState(false);
 
-  const [expandedSections, setExpandedSections] = useState({
-    Theme: true,
-    Color: true,
-    Material: true,
-    Price: true
-  });
-
-  const { items: favItems, toggleFavourite } = useFavouritesStore();
-  const updateCartOpen = useCartStore((state) => state.updateCartOpen);
-  const addItem = useCartStore((state) => state.addItem);
-
   const themes = ['All', 'Butterflies', 'Flowers', 'Classic'];
   const colors = ['All', 'Green', 'Clear', 'Rose'];
   const materials = ['All', 'Sterling Silver', '14k Gold', 'Rose Gold', 'Platinum'];
@@ -93,42 +80,11 @@ export default function ProductGrid({ initialProducts }: { initialProducts: Prod
     return 0;
   });
 
-  const handleToggleFav = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    e.stopPropagation();
-    toggleFavourite(id);
-  };
-
-  const handleQuickAdd = (e: React.MouseEvent, product: Product) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    // We assume the first material, translating default behavior if necessary
-    const defaultMaterial = product.material[0] || 'Sterling Silver';
-    const materialKey = defaultMaterial.toLowerCase().replace(' ', '_');
-    const price = product.price[materialKey as keyof typeof product.price] || getBasePrice(product);
-
-    addItem({
-      id: product.id,
-      name: product.name,
-      price: price,
-      quantity: 1,
-      image: product.images[0],
-      metal: t(defaultMaterial) // Save the translated metal to the cart
-    });
-    
-    updateCartOpen(true);
-  };
-
   const resetAllFilters = () => {
     setFilterTheme('All');
     setFilterColor('All');
     setFilterMaterial('All');
     setFilterPrice('All');
-  };
-
-  const toggleSection = (section: keyof typeof expandedSections) => {
-    setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }));
   };
 
   return (
@@ -187,71 +143,11 @@ export default function ProductGrid({ initialProducts }: { initialProducts: Prod
       </div>
 
       {/* Luxury Product Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-24 py-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 py-16">
         <AnimatePresence mode="popLayout">
-          {filteredProducts.map((product, i) => {
-            const isFav = favItems.includes(product.id);
-            const badge = product.badges && product.badges.length > 0 ? product.badges[0] : null;
-
-            return (
-              <motion.div 
-                layout
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: i * 0.1 }}
-                className="card-luxury group bg-white border border-slate-50 transition-all duration-700 hover:shadow-2xl hover:shadow-black/5"
-              >
-                {/* Image Section */}
-                <div className="relative aspect-[4/5] bg-luxury-beige flex items-center justify-center overflow-hidden">
-                  {badge && (
-                    <div className="absolute top-6 left-6 z-20 pill-luxury shadow-lg">
-                      {badge}
-                    </div>
-                  )}
-
-                  <button 
-                    onClick={(e) => handleToggleFav(e, product.id)}
-                    className="absolute top-6 right-6 z-20 p-3 bg-white/70 backdrop-blur-xl rounded-full text-astera-900 border border-black/5 hover:scale-110 active:scale-90 transition-all duration-700 shadow-md"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill={isFav ? "currentColor" : "none"} viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-5 h-5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-                    </svg>
-                  </button>
-                  
-                  <Link href={`/shop/${product.id}`} className="absolute inset-0 block group-hover:scale-110 transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                    <Image src={product.images[0]} alt={product.name} fill className="object-cover opacity-90 mix-blend-multiply" />
-                  </Link>
-
-                  <div className="absolute inset-x-0 bottom-0 z-20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] px-6 pb-8">
-                    <button
-                      onClick={(e) => handleQuickAdd(e, product)}
-                      className="w-full bg-white/95 backdrop-blur-xl text-foreground font-sans font-bold text-[10px] uppercase tracking-[0.25em] py-5 rounded-sm shadow-2xl hover:bg-foreground hover:text-white transition-all duration-500"
-                    >
-                      Brzo Dodavanje
-                    </button>
-                  </div>
-                </div>
-
-                {/* Info Section */}
-                <div className="p-10 pb-12 flex flex-col items-center text-center">
-                  <Link href={`/shop/${product.id}`} className="block mb-4 overflow-hidden w-full">
-                    <h2 className="heading-luxury text-[14px] line-clamp-1 group-hover:text-astera-600 transition-colors duration-500">{product.name}</h2>
-                  </Link>
-                  <div className="h-[1px] w-8 bg-astera-100 mb-6 group-hover:w-20 transition-all duration-700" />
-                  <p className="font-sans text-[11px] text-slate-400 font-medium uppercase tracking-[0.1em] mb-8">
-                    {product.category === 'Jewelry' ? 'Nakit' : product.category} • {t(product.stoneColor)}
-                  </p>
-                  <div className="pt-6 border-t border-slate-50 w-full flex flex-col items-center">
-                    <p className="font-serif text-[22px] text-astera-900 font-light mb-1">
-                      €{getBasePrice(product).toFixed(2)}
-                    </p>
-                    <span className="text-[9px] uppercase tracking-[0.3em] text-astera-300 font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-700">Detaljan Prikaz</span>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+          {filteredProducts.map((product, i) => (
+            <ProductCard key={product.id} product={product} index={i} t={t} />
+          ))}
         </AnimatePresence>
       </div>
       
@@ -263,98 +159,18 @@ export default function ProductGrid({ initialProducts }: { initialProducts: Prod
         </div>
       )}
 
-      {/* FILTER DRAWER REFINED */}
-      <AnimatePresence>
-        {isFilterOpen && (
-          <>
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-md z-[200]"
-              onClick={() => setIsFilterOpen(false)}
-            />
-            
-            <motion.div 
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed top-0 right-0 h-full w-full sm:w-[580px] bg-white z-[210] shadow-[0_0_100px_rgba(0,0,0,0.1)] flex flex-col"
-            >
-              <div className="flex items-center justify-between p-12 lg:p-16 border-b border-black/5 bg-luxury-beige/50">
-                <div className="space-y-1">
-                  <h2 className="heading-luxury text-2xl tracking-[0.1em] uppercase">Pročistite Odabir</h2>
-                  <p className="text-[10px] font-sans font-bold uppercase tracking-widest text-slate-400">Prilagodite svoj umjetnički horizont</p>
-                </div>
-                <button onClick={() => setIsFilterOpen(false)} className="w-12 h-12 flex items-center justify-center rounded-sm border border-slate-200 text-astera-900 hover:bg-slate-50 transition-all duration-700">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-
-              <div className="flex-1 overflow-y-auto p-12 lg:p-16 space-y-16 custom-scrollbar">
-                {[
-                   { id: 'Theme', label: 'Tema Kolekcije', options: themes, current: filterTheme, setter: setFilterTheme },
-                   { id: 'Color', label: 'Mineralna Esencija', options: colors, current: filterColor, setter: setFilterColor },
-                   { id: 'Material', label: 'Visoka Alkemija', options: materials, current: filterMaterial, setter: setFilterMaterial },
-                   { id: 'Price', label: 'Investicija', options: prices, current: filterPrice, setter: setFilterPrice }
-                ].map(section => (
-                  <div key={section.id} className="border-b border-slate-50 pb-12 last:border-0">
-                    <button 
-                      className="flex w-full justify-between items-center mb-10 group" 
-                      onClick={() => toggleSection(section.id as any)}
-                    >
-                      <span className="subheading-luxury !text-astera-900 !text-[15px] group-hover:tracking-[0.4em] transition-all duration-700 uppercase tracking-[0.2em]">{section.label}</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className={`w-5 h-5 transition-transform duration-700 ${expandedSections[section.id as keyof typeof expandedSections] ? 'rotate-180' : ''}`}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                      </svg>
-                    </button>
-                    <AnimatePresence>
-                      {expandedSections[section.id as keyof typeof expandedSections] && (
-                        <motion.div 
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="grid grid-cols-2 gap-4 pb-4">
-                            {section.options.map(opt => (
-                              <button 
-                                 key={opt}
-                                 onClick={() => section.setter(opt)}
-                                 className={`py-5 px-8 rounded-sm text-[10px] font-sans font-bold tracking-[0.25em] uppercase transition-all duration-700 ${section.current === opt ? 'bg-foreground text-white shadow-2xl scale-105' : 'bg-transparent border border-slate-100 text-slate-400 hover:border-foreground hover:text-foreground'}`}
-                              >
-                                 {t(opt)}
-                              </button>
-                            ))}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="p-12 lg:p-16 border-t border-slate-100 bg-white grid flex-col gap-4 shadow-2xl relative z-10 w-full flex">
-                 <button 
-                    onClick={resetAllFilters} 
-                    className="btn-bespoke-elegant w-full"
-                 >
-                    Poništi Filter
-                </button>
-                <button 
-                    onClick={() => setIsFilterOpen(false)} 
-                    className="btn-bespoke-elegant w-full bg-astera-900 text-white"
-                >
-                    Primijeni Prikaz
-                </button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {/* Filter Drawer Component */}
+      <FilterDrawer 
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+        filterTheme={filterTheme} setFilterTheme={setFilterTheme}
+        filterColor={filterColor} setFilterColor={setFilterColor}
+        filterMaterial={filterMaterial} setFilterMaterial={setFilterMaterial}
+        filterPrice={filterPrice} setFilterPrice={setFilterPrice}
+        resetAllFilters={resetAllFilters}
+        t={t}
+        themes={themes} colors={colors} materials={materials} prices={prices}
+      />
     </div>
   );
 }

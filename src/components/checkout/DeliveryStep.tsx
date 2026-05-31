@@ -57,7 +57,6 @@ export const DeliveryStep = () => {
     fetchProfile();
   }, [setDeliveryMethod, setBoxNowLocation, updateCustomerInfo]);
 
-  // Initialize BoxNow Widget
   useEffect(() => {
     if (deliveryMethod !== 'boxnow') return;
 
@@ -88,111 +87,126 @@ export const DeliveryStep = () => {
   const total = getCartTotal() + (deliveryMethod === 'boxnow' ? 2.50 : 4.90);
 
   if (loadingProfile) {
-    return <div className="py-12 flex justify-center"><Loader2 className="animate-spin text-slate-300 w-8 h-8" /></div>;
+    return <div className="py-24 flex justify-center"><Loader2 className="animate-spin text-astera-300 w-8 h-8" /></div>;
   }
 
+  const inputClasses = "w-full bg-transparent border-b border-slate-200 px-0 py-3 font-sans text-[13px] text-astera-900 focus:border-astera-900 transition-colors placeholder:text-slate-300 outline-none";
+  const labelClasses = "block text-[9px] font-sans font-bold uppercase tracking-[0.2em] mb-1 text-slate-400";
+
   return (
-    <div className="space-y-8 animate-in fade-in duration-500">
-      <div className="border-b border-slate-100 pb-4">
-        <h2 className="heading-luxury text-lg tracking-widest uppercase">Način dostave</h2>
+    <div className="space-y-10 animate-in fade-in duration-500">
+      <div className="border-b border-black/5 pb-6">
+        <h2 className="heading-luxury text-xl tracking-widest uppercase text-astera-900">NAČIN DOSTAVE</h2>
         <p className="text-slate-400 font-sans text-xs mt-1">Odaberite kako želite primiti vašu pošiljku.</p>
       </div>
 
-      <div className="flex bg-slate-50 p-1 rounded-2xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <button
           onClick={() => setDeliveryMethod('post')}
-          className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-sans text-xs font-bold transition-all ${
-            deliveryMethod === 'post' ? 'bg-white shadow-sm text-foreground' : 'text-slate-400 hover:text-slate-600'
+          className={`flex items-center gap-4 p-6 border rounded-lg transition-all duration-300 text-left ${
+            deliveryMethod === 'post' ? 'border-astera-900 bg-astera-50/50 shadow-[0_0_20px_rgba(0,0,0,0.03)]' : 'border-slate-200 hover:border-astera-300 bg-white'
           }`}
         >
-          <Truck size={16} />
-          Dostava na adresu
+          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${deliveryMethod === 'post' ? 'bg-astera-900 text-white' : 'bg-slate-100 text-slate-400'}`}>
+            <Truck size={18} />
+          </div>
+          <div>
+            <p className="font-sans font-bold text-xs uppercase tracking-widest text-astera-900">Dostava na adresu</p>
+            <p className="text-[10px] text-slate-500 mt-1 uppercase tracking-wider font-sans">GLS Hrvatska • €4.90</p>
+          </div>
         </button>
+
         <button
           onClick={() => setDeliveryMethod('boxnow')}
-          className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl font-sans text-xs font-bold transition-all ${
-            deliveryMethod === 'boxnow' ? 'bg-white shadow-sm text-foreground' : 'text-slate-400 hover:text-slate-600'
+          className={`flex items-center gap-4 p-6 border rounded-lg transition-all duration-300 text-left ${
+            deliveryMethod === 'boxnow' ? 'border-astera-900 bg-astera-50/50 shadow-[0_0_20px_rgba(0,0,0,0.03)]' : 'border-slate-200 hover:border-astera-300 bg-white'
           }`}
         >
-          <Box size={16} />
-          Box Now Paketomat
+          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${deliveryMethod === 'boxnow' ? 'bg-astera-900 text-white' : 'bg-slate-100 text-slate-400'}`}>
+            <Box size={18} />
+          </div>
+          <div>
+            <p className="font-sans font-bold text-xs uppercase tracking-widest text-astera-900">Box Now Paketomat</p>
+            <p className="text-[10px] text-slate-500 mt-1 uppercase tracking-wider font-sans">Brzo preuzimanje • €2.50</p>
+          </div>
         </button>
       </div>
 
-      <div className="min-h-[300px]">
+      <div className="min-h-[300px] mt-8">
         {deliveryMethod === 'post' ? (
-          <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[10px] font-sans font-bold uppercase tracking-widest mb-2 text-slate-500">Ulica</label>
+          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2">
+            <h3 className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-astera-900 mb-6">Podaci za dostavu</h3>
+            <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+              <div className="col-span-2 sm:col-span-1">
+                <label className={labelClasses}>Ulica</label>
                 <input 
                   type="text" 
                   value={customerInfo.street}
                   onChange={(e) => updateCustomerInfo({ street: e.target.value })}
-                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
-                  placeholder="Ime ulice"
+                  className={inputClasses}
+                  placeholder="Unesite naziv ulice"
                 />
               </div>
-              <div>
-                <label className="block text-[10px] font-sans font-bold uppercase tracking-widest mb-2 text-slate-500">Kućni broj</label>
+              <div className="col-span-2 sm:col-span-1">
+                <label className={labelClasses}>Kućni broj</label>
                 <input 
                   type="text" 
                   value={customerInfo.houseNumber}
                   onChange={(e) => updateCustomerInfo({ houseNumber: e.target.value })}
-                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
-                  placeholder="Broj"
+                  className={inputClasses}
+                  placeholder="npr. 12A"
                 />
               </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-[10px] font-sans font-bold uppercase tracking-widest mb-2 text-slate-500">Grad</label>
+              <div className="col-span-2 sm:col-span-1">
+                <label className={labelClasses}>Grad</label>
                 <input 
                   type="text" 
                   value={customerInfo.city}
                   onChange={(e) => updateCustomerInfo({ city: e.target.value })}
-                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
-                  placeholder="Vaš grad"
+                  className={inputClasses}
+                  placeholder="Unesite grad"
                 />
               </div>
-              <div>
-                <label className="block text-[10px] font-sans font-bold uppercase tracking-widest mb-2 text-slate-500">Poštanski broj</label>
+              <div className="col-span-2 sm:col-span-1">
+                <label className={labelClasses}>Poštanski broj</label>
                 <input 
                   type="text" 
                   value={customerInfo.postalCode}
                   onChange={(e) => updateCustomerInfo({ postalCode: e.target.value })}
-                  className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
-                  placeholder="10000"
+                  className={inputClasses}
+                  placeholder="npr. 10000"
                 />
               </div>
-            </div>
-            <div>
-              <label className="block text-[10px] font-sans font-bold uppercase tracking-widest mb-2 text-slate-500">Broj telefona</label>
-              <input 
-                type="tel" 
-                value={customerInfo.phone}
-                onChange={(e) => updateCustomerInfo({ phone: e.target.value })}
-                className="w-full bg-slate-50 border-none rounded-xl p-4 font-sans text-xs focus:ring-2 focus:ring-foreground transition-all"
-                placeholder="+385 91 123 4567"
-              />
+              <div className="col-span-2">
+                <label className={labelClasses}>Broj telefona</label>
+                <input 
+                  type="tel" 
+                  value={customerInfo.phone}
+                  onChange={(e) => updateCustomerInfo({ phone: e.target.value })}
+                  className={inputClasses}
+                  placeholder="+385 91 123 4567"
+                />
+              </div>
             </div>
           </div>
         ) : (
           <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2">
             {boxNowLocation && (
-              <div className="p-4 bg-astera-50 text-astera-900 rounded-xl border border-astera-200 flex items-center justify-between">
+              <div className="p-5 bg-astera-50 text-astera-900 rounded-lg border border-astera-200 flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest font-bold text-astera-600 mb-1">Odabrani Paketomat</p>
-                  <p className="text-sm font-sans font-bold">ID: {boxNowLocation}</p>
+                  <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-astera-600 mb-1">Odabrani Paketomat</p>
+                  <p className="text-[13px] font-sans font-bold tracking-wide">ID: {boxNowLocation}</p>
                 </div>
-                <Check className="text-astera-600" />
+                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
+                   <Check size={16} className="text-astera-600" />
+                </div>
               </div>
             )}
-            <div className="w-full h-[400px] bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 relative">
+            <div className="w-full h-[450px] bg-slate-50 rounded-lg overflow-hidden border border-slate-200 relative">
               {!isBoxNowLoaded && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 gap-3">
                   <Loader2 className="animate-spin w-6 h-6" />
-                  <span className="text-xs font-sans uppercase tracking-widest">Učitavanje karte...</span>
+                  <span className="text-[10px] font-sans uppercase tracking-widest">Učitavanje karte...</span>
                 </div>
               )}
               <div id="boxnowmap" className="w-full h-full"></div>
@@ -201,23 +215,25 @@ export const DeliveryStep = () => {
         )}
       </div>
 
-      <div className="flex items-center gap-3 pt-4">
-        <div 
-          onClick={() => setSaveAsDefault(!saveAsDefault)}
-          className={`w-5 h-5 rounded border flex items-center justify-center cursor-pointer transition-colors ${
-            saveAsDefault ? 'bg-foreground border-foreground text-pure-white' : 'bg-white border-slate-200 text-transparent'
-          }`}
-        >
-          <Check size={14} />
+      <div className="flex items-center justify-between border-t border-slate-100 pt-8 mt-8">
+        <div className="flex items-center gap-3">
+          <div 
+            onClick={() => setSaveAsDefault(!saveAsDefault)}
+            className={`w-5 h-5 rounded-sm border flex items-center justify-center cursor-pointer transition-colors ${
+              saveAsDefault ? 'bg-astera-900 border-astera-900 text-white' : 'bg-white border-slate-300 text-transparent'
+            }`}
+          >
+            <Check size={14} />
+          </div>
+          <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-slate-500 cursor-pointer select-none" onClick={() => setSaveAsDefault(!saveAsDefault)}>
+            Spremi kao moju zadanu adresu
+          </span>
         </div>
-        <span className="text-xs font-sans text-slate-500 cursor-pointer select-none" onClick={() => setSaveAsDefault(!saveAsDefault)}>
-          Spremi kao moju zadanu adresu/paketomat
-        </span>
-      </div>
 
-      <div className="bg-slate-50 rounded-2xl p-6 flex justify-between items-center">
-        <span className="text-xs font-sans text-slate-500">Ukupno sa dostavom:</span>
-        <span className="font-sans font-bold text-lg">{total.toFixed(2)} EUR</span>
+        <div className="text-right">
+           <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-slate-400 block mb-1">Ukupno za plaćanje</span>
+           <span className="font-serif text-2xl text-astera-900">€{total.toFixed(2)}</span>
+        </div>
       </div>
     </div>
   );
