@@ -10,10 +10,10 @@ export default function Newsletter() {
       <div className="absolute top-0 left-0 w-96 h-96 bg-astera-600/30 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-astera-800/50 rounded-full blur-[120px] translate-x-1/3 translate-y-1/3" />
       
-      <div className="container-luxury relative z-10 max-w-3xl text-center backdrop-blur-sm bg-black/10 p-8 md:p-16 lg:p-20 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
+      <div className="max-w-3xl mx-auto px-6 md:px-8 relative z-10 text-center backdrop-blur-sm bg-black/10 p-8 md:p-16 lg:p-20 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
         <ScrollReveal>
-          <p className="subheading-luxury text-astera-300 mb-6 font-bold tracking-[0.3em] md:tracking-[0.5em]">Pridružite se Asteri</p>
-          <h3 className="heading-luxury text-white text-3xl md:text-5xl lg:text-6xl mb-8 leading-[1.2] tracking-[0.1em] md:tracking-[0.15em]">
+          <p className="subfont-serif tracking-widest uppercase leading-tight text-astera-900 text-astera-300 mb-6 font-bold tracking-[0.1em] md:tracking-[0.15em]">Pridružite se Asteri</p>
+          <h3 className="font-serif tracking-widest uppercase leading-tight text-astera-900 text-white text-3xl md:text-5xl lg:text-6xl mb-8 leading-tight tracking-[0.1em] md:tracking-[0.15em]">
             Pristup Ekskluzivi
           </h3>
           <p className="text-astera-100/70 font-sans text-sm md:text-base leading-relaxed mb-10 max-w-xl mx-auto italic">

@@ -28,7 +28,7 @@ export default async function AccountPage(props: { searchParams?: Promise<{ tab?
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-luxury-beige text-gray-900 px-6 md:px-24 lg:px-64 pt-[180px] pb-24 font-sans">
+      <div className="min-h-screen bg-warm-beige text-gray-900 px-6 md:px-24 lg:px-64 pt-[180px] pb-24 font-sans">
         <div className="max-w-4xl mx-auto">
           <header className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-16 border-b border-gray-200 pb-8">
             <div>
@@ -41,7 +41,7 @@ export default async function AccountPage(props: { searchParams?: Promise<{ tab?
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {/* Profile Sidebar */}
             <div className="md:col-span-1 space-y-4">
-              <div className="card-luxury p-6 space-y-6 mb-4">
+              <div className="bg-white rounded-3xl border border-black/5 shadow-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-xl p-6 space-y-6 mb-4">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-astera-50 rounded-full flex items-center justify-center text-astera-900 border border-astera-100">
                     <User size={20} />
@@ -55,7 +55,7 @@ export default async function AccountPage(props: { searchParams?: Promise<{ tab?
               
               <AccountTabs />
               
-              <div className="card-luxury p-8 relative overflow-hidden group mt-4">
+              <div className="bg-white rounded-3xl border border-black/5 shadow-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-xl p-8 relative overflow-hidden group mt-4">
                 <div className="absolute top-[-20%] right-[-20%] w-[50%] h-[50%] bg-astera-100/50 blur-[80px] rounded-full pointer-events-none transition-all duration-1000 group-hover:bg-astera-200/50" />
                 
                 <h3 className="text-lg font-serif mb-6 flex items-center gap-3 text-astera-900">
@@ -76,12 +76,12 @@ export default async function AccountPage(props: { searchParams?: Promise<{ tab?
                 <OrdersList email={user.email!} />
               )}
               {tab === 'payment' && (
-                <div className="card-luxury p-8 flex flex-col items-center justify-center space-y-4 min-h-[300px]">
+                <div className="bg-white rounded-3xl border border-black/5 shadow-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-xl p-8 flex flex-col items-center justify-center space-y-4 min-h-[300px]">
                   <p className="text-soft-taupe text-sm">Payment methods management is coming soon.</p>
                 </div>
               )}
               {tab === 'security' && (
-                <div className="card-luxury p-8 flex flex-col items-center justify-center space-y-4 min-h-[300px]">
+                <div className="bg-white rounded-3xl border border-black/5 shadow-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-xl p-8 flex flex-col items-center justify-center space-y-4 min-h-[300px]">
                   <p className="text-soft-taupe text-sm">Security settings are managed by Supabase and will be available here soon.</p>
                 </div>
               )}

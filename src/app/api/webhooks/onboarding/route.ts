@@ -38,11 +38,17 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // 3. Update Supabase Profile with the new Stripe Customer ID
+    // 3. Update or Insert Supabase Profile with the new Stripe Customer ID
     const { error: dbError } = await supabaseAdmin
       .from('profiles')
-      .update({ stripe_customer_id: customer.id })
-      .eq('id', user.id);
+      .upsert({
+        id: user.id,
+        email: user.email,
+        full_name: user.raw_user_meta_data?.full_name || null,
+        avatar_url: user.raw_user_meta_data?.avatar_url || null,
+        stripe_customer_id: customer.id,
+        updated_at: new Date().toISOString()
+      });
 
     if (dbError) {
       console.error('Error updating profile with Stripe ID:', dbError);

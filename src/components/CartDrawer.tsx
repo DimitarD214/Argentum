@@ -37,7 +37,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
         className="fixed top-0 right-0 h-full w-full md:w-[600px] bg-white z-[210] shadow-[0_0_100px_rgba(0,0,0,0.25)] flex flex-col"
       >
         {/* Header - SPACIOUS MASTERPIECE */}
-        <div className="flex items-center justify-between p-8 md:p-10 border-b border-black/5 bg-luxury-beige/50">
+        <div className="flex items-center justify-between p-8 md:p-10 border-b border-black/5 bg-warm-beige/50">
           <div className="flex items-center gap-8">
              <div className="w-14 h-14 bg-astera-50 rounded-[2rem] flex items-center justify-center text-astera-700 shadow-inner">
                 <ShoppingBag size={24} strokeWidth={1} />
@@ -80,7 +80,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
                 <Link 
                   href="/shop" 
                   onClick={onClose}
-                  className="group flex items-center gap-6 text-[13px] font-bold uppercase tracking-[0.45em] text-astera-900 hover:text-black transition-all duration-700 bg-luxury-beige px-10 py-5 rounded-full hover:shadow-2xl shadow-luxury-beige/50"
+                  className="group flex items-center gap-6 text-[13px] font-bold uppercase tracking-[0.45em] text-astera-900 hover:text-black transition-all duration-700 bg-warm-beige px-10 py-5 rounded-full hover:shadow-2xl shadow-luxury-beige/50"
                 >
                   <span>ISTRAŽITE PROLJEĆE 2026</span>
                   <ArrowRight size={20} className="group-hover:translate-x-3 transition-transform duration-700" />
@@ -98,7 +98,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
                     transition={{ duration: 0.6, delay: idx * 0.1 }}
                     className="flex gap-8 group"
                   >
-                    <div className="w-36 h-48 bg-luxury-beige/40 rounded-[2.5rem] flex-shrink-0 flex items-center justify-center overflow-hidden relative shadow-inner border border-black/5 group-hover:border-astera-100 transition-all duration-1000">
+                    <div className="w-36 h-48 bg-warm-beige/40 rounded-[2.5rem] flex-shrink-0 flex items-center justify-center overflow-hidden relative shadow-inner border border-black/5 group-hover:border-astera-100 transition-all duration-1000">
                       {item.image ? (
                         <Image src={item.image} alt={item.name} fill className="object-cover transition-transform duration-1000 group-hover:scale-125" />
                       ) : (
@@ -108,7 +108,7 @@ export default function CartDrawer({ isOpen, onClose }: { isOpen: boolean; onClo
                     <div className="flex-1 flex flex-col py-4">
                       <div className="flex justify-between items-start mb-4">
                         <div className="space-y-2">
-                          <h3 className="heading-luxury text-base tracking-[0.2em]">{item.name}</h3>
+                          <h3 className="font-serif tracking-widest uppercase leading-tight text-astera-900 text-base tracking-[0.2em]">{item.name}</h3>
                           {item.metal && <p className="font-sans text-[11px] font-bold uppercase tracking-widest text-astera-300 group-hover:text-astera-600 transition-colors">{item.metal.replace('_', ' ')}</p>}
                         </div>
                         <button onClick={() => removeItem(item.id, item.metal)} className="w-10 h-10 flex items-center justify-center rounded-full text-gray-300 hover:text-red-500 hover:bg-red-50 transition-all duration-500">

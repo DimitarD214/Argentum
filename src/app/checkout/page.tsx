@@ -86,10 +86,10 @@ export default function CheckoutPage() {
   if (items.length === 0) {
     return (
       <div className='min-h-[70vh] flex flex-col items-center justify-center bg-pure-white px-10'>
-        <div className="w-24 h-24 bg-luxury-beige rounded-full flex items-center justify-center mb-10 shadow-inner">
+        <div className="w-24 h-24 bg-warm-beige rounded-full flex items-center justify-center mb-10 shadow-inner">
            <ShoppingBasket size={32} strokeWidth={1} className="text-astera-400" />
         </div>
-        <h2 className='heading-luxury text-3xl md:text-4xl mb-6 tracking-[0.2em] uppercase text-astera-900'>Vaša košarica je prazna</h2>
+        <h2 className='font-serif tracking-widest uppercase leading-tight text-astera-900 text-3xl md:text-4xl mb-6 tracking-[0.2em] uppercase text-astera-900'>Vaša košarica je prazna</h2>
         <p className="text-slate-400 font-sans text-sm mb-12 max-w-md text-center leading-relaxed">
           Zaronite u svijet umjetničke izrade i pronađite komad koji govori vašoj prepoznatljivoj eleganciji.
         </p>
@@ -102,7 +102,7 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
-      <div className="w-full max-w-4xl mx-auto flex flex-col pt-12 pb-16 px-6 lg:px-0">
+      <div className="w-full max-w-[1600px] mx-auto flex-1 flex flex-col pt-12 pb-16 px-6 lg:px-12 xl:px-24">
         
         {/* Header with Navigation */}
         <div className="flex items-center justify-between mb-16 pb-6 border-b border-black/5 relative shrink-0">

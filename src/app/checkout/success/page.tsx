@@ -31,7 +31,7 @@ function SuccessContent() {
         </div>
         
         <div className="space-y-4">
-          <h1 className="heading-luxury text-3xl uppercase tracking-widest">Hvala vam na kupnji!</h1>
+          <h1 className="font-serif tracking-widest uppercase leading-tight text-astera-900 text-3xl uppercase tracking-widest">Hvala vam na kupnji!</h1>
           <p className="text-slate-500 font-sans text-sm leading-relaxed">
             Vaša narudžba je uspješno zaprimljena. Potvrdu smo poslali na vašu email adresu.
           </p>

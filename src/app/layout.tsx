@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang='en' className={fontSerif.variable + ' ' + fontSans.variable}>
-       <body className='min-h-screen flex flex-col antialiased'>
-         <main className='flex-1 px-4 md:px-8 lg:px-12'>
+    <html lang='en' className={`${fontSerif.variable} ${fontSans.variable}`}>
+       <body className={`min-h-screen flex flex-col antialiased bg-white text-charcoal font-sans`}>
+         <main className='flex-1 w-full'>
            {children}
          </main>
          <StoreHydration />

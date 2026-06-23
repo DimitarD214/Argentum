@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-astera-900 text-white border-t border-black/5">
-      <div className="container-luxury section-luxury">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 lg:py-24">
         {/* Top Links Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-20">
           {/* Column 1 */}
@@ -70,7 +70,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="bg-black/20 py-12 border-t border-white/5">
-        <div className="container-luxury flex flex-col md:flex-row justify-between items-center gap-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-12">
           {/* Logo */}
           <div className="flex flex-col items-center md:items-start order-2 md:order-1">
              <h2 className="font-serif text-[32px] md:text-[40px] tracking-[0.4em] uppercase text-white mb-4">

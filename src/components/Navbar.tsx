@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cartStore";
 import dynamic from "next/dynamic";
+import { createClient } from "@/utils/supabase/client";
 const CartDrawer = dynamic(() => import("./CartDrawer"), { ssr: false }); 
 const SearchOverlay = dynamic(() => import("./SearchOverlay"), { ssr: false });
 const FavouritesDrawer = dynamic(() => import("./FavouritesDrawer"), { ssr: false });
@@ -51,12 +52,35 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const cartCount = useCartStore((state) => state.getCartCount());
   const pathname = usePathname();
+  const [user, setUser] = useState<any>(null);
+  const [showUserDropdown, setShowUserDropdown] = useState(false);
+
+  const handleSignOut = async () => {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    setUser(null);
+    setShowUserDropdown(false);
+    window.location.href = "/";
+  };
 
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      subscription.unsubscribe();
+    };
   }, []);
 
   const handleMouseEnter = (item: string) => {
@@ -93,7 +117,7 @@ export default function Navbar() {
           Ručna izrada • Isporuka unutar 24 sata
         </div>
 
-        <div className="container-luxury px-10 md:px-20 lg:px-24 transition-all duration-1000 relative">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 transition-all duration-1000 relative">
           <div 
             className="flex items-center justify-between transition-all duration-1000"
             style={{ paddingTop: headerPaddingTop, paddingBottom: headerPaddingBottom }}
@@ -196,6 +220,42 @@ export default function Navbar() {
                   )}
                 </button>
 
+                <div 
+                  className="relative group/user py-2"
+                  onMouseEnter={() => setShowUserDropdown(true)}
+                  onMouseLeave={() => setShowUserDropdown(false)}
+                >
+                  <Link
+                    href={user ? "/account" : "/login"}
+                    className={`transition-all duration-500 hover:scale-110 block ${
+                      isCompact ? "text-astera-900" : "text-white"
+                    }`}
+                    aria-label="Account"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" className="w-6 h-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+                  </Link>
+                  
+                  {user && showUserDropdown && (
+                    <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-black/5 rounded-2xl shadow-xl py-3 z-50 transition-all duration-300">
+                      <Link 
+                        href="/account" 
+                        className="block px-5 py-2.5 text-xs text-gray-700 hover:bg-astera-50 hover:text-astera-900 transition-colors font-sans font-bold uppercase tracking-wider border-b border-black/5"
+                        onClick={() => setShowUserDropdown(false)}
+                      >
+                        Moj profil
+                      </Link>
+                      <button 
+                        onClick={handleSignOut}
+                        className="w-full text-left block px-5 py-2.5 text-xs text-red-600 hover:bg-red-50 hover:text-red-700 transition-colors font-sans font-bold uppercase tracking-wider cursor-pointer"
+                      >
+                        Odjava
+                      </button>
+                    </div>
+                  )}
+                </div>
+
                 <button
                   onClick={() => setIsCartOpen(true)}
                   className={`relative transition-all duration-500 hover:scale-110 ${
@@ -242,6 +302,24 @@ export default function Navbar() {
                  ))}
                </div>
              ))}
+
+               <div className="border-t border-black/10 pt-6 mt-4 space-y-4">
+                 <Link
+                   href={user ? "/account" : "/login"}
+                   className="text-2xl font-serif text-astera-900 tracking-wide hover:text-astera-700 transition-colors block"
+                   onClick={() => setIsMobileMenuOpen(false)}
+                 >
+                   {user ? "Moj profil (Account)" : "Prijava (Login)"}
+                 </Link>
+                 {user && (
+                   <button
+                     onClick={handleSignOut}
+                     className="text-2xl font-serif text-red-600 tracking-wide hover:text-red-800 transition-colors block w-full text-left cursor-pointer"
+                   >
+                     Odjava (Sign Out)
+                   </button>
+                 )}
+               </div>
           </div>
         </div>
 
@@ -256,7 +334,7 @@ export default function Navbar() {
           onMouseLeave={handleMouseLeave}
         >
           {activeMenu && menuData[activeMenu] && (
-            <div className="container-luxury py-16 md:py-24 lg:py-32 min-h-[65vh] flex items-center">
+            <div className="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-24 lg:py-32 min-h-[65vh] flex items-center">
               <div className="grid grid-cols-12 gap-12 xl:gap-20 w-full h-full">
                 {/* Information Columns */}
                 <div className="col-span-12 lg:col-span-8 flex items-center">

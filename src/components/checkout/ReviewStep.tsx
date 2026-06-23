@@ -68,7 +68,7 @@ export const ReviewStep = () => {
   return (
     <div className="space-y-10">
       <div className="border-b border-black/5 pb-6">
-        <h2 className="heading-luxury text-xl tracking-widest uppercase text-astera-900">PREGLED NARUDŽBE</h2>
+        <h2 className="font-serif tracking-widest uppercase leading-tight text-astera-900 text-xl tracking-widest uppercase text-astera-900">PREGLED NARUDŽBE</h2>
         <p className="text-slate-400 font-sans text-xs mt-1">Spremni ste. Provjerite podatke prije sigurnog plaćanja.</p>
       </div>
 
@@ -119,7 +119,7 @@ export const ReviewStep = () => {
               </div>
               <div className="h-[1px] bg-astera-200/50 my-2" />
               <div className="flex justify-between items-end">
-                <span className="heading-luxury text-sm uppercase text-astera-900">Ukupno</span>
+                <span className="font-serif tracking-widest uppercase leading-tight text-astera-900 text-sm uppercase text-astera-900">Ukupno</span>
                 <span className="font-serif font-light text-4xl text-astera-900">€{total.toFixed(2)}</span>
               </div>
               <p className="text-[9px] text-slate-400 mt-6 uppercase tracking-[0.2em] text-center font-bold">

@@ -16,7 +16,7 @@ export default function AccountTabs() {
   ];
 
   return (
-    <div className="card-luxury p-6 space-y-2">
+    <div className="bg-white rounded-3xl border border-black/5 shadow-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-xl p-6 space-y-2">
       <nav className="space-y-1">
         {tabs.map((tab) => {
           const isActive = currentTab === tab.id;

@@ -96,7 +96,7 @@ export const DeliveryStep = () => {
   return (
     <div className="space-y-10 animate-in fade-in duration-500">
       <div className="border-b border-black/5 pb-6">
-        <h2 className="heading-luxury text-xl tracking-widest uppercase text-astera-900">NAČIN DOSTAVE</h2>
+        <h2 className="font-serif tracking-widest uppercase leading-tight text-astera-900 text-xl tracking-widest uppercase text-astera-900">NAČIN DOSTAVE</h2>
         <p className="text-slate-400 font-sans text-xs mt-1">Odaberite kako želite primiti vašu pošiljku.</p>
       </div>
 

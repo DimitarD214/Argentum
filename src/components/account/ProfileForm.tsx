@@ -41,7 +41,7 @@ export default function ProfileForm({ profile, email, userId }: { profile: any, 
     <div className="space-y-8">
       <h2 className="font-serif text-2xl text-astera-900 mb-6">Profile Information</h2>
       
-      <div className="card-luxury p-8">
+      <div className="bg-white rounded-3xl border border-black/5 shadow-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-xl p-8">
         <form onSubmit={handleSave} className="space-y-6">
           <div className="space-y-2">
             <label className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-soft-taupe flex items-center gap-2">
@@ -71,7 +71,7 @@ export default function ProfileForm({ profile, email, userId }: { profile: any, 
           <button 
             type="submit" 
             disabled={isSaving || fullName === profile?.full_name}
-            className="btn-luxury px-8 py-3 rounded-none uppercase tracking-[0.1em] text-xs font-bold disabled:opacity-50 mt-4"
+            className="inline-flex items-center justify-center px-8 py-3 font-sans text-[11px] font-bold tracking-[0.2em] uppercase rounded-sm bg-charcoal text-white hover:bg-black transition-all rounded-none uppercase tracking-[0.1em] text-xs font-bold disabled:opacity-50 mt-4"
           >
             {isSaving ? 'Saving...' : 'Save Changes'}
           </button>

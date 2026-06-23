@@ -48,19 +48,19 @@ export default async function ShopSlugPage({ params }: { params: Promise<{ slug:
       <div className="bg-white">
         <Navbar />
         <main className="min-h-screen">
-          <header className="section-luxury bg-luxury-beige border-b border-black/5 flex flex-col items-center justify-center py-32">
-            <div className="container-luxury text-center">
-              <p className="subheading-luxury mb-6 tracking-[0.4em] uppercase text-astera-400">
+          <header className="bg-warm-beige border-b border-black/5 flex flex-col items-center justify-center py-32 lg:py-40">
+            <div className="max-w-7xl mx-auto px-6 md:px-8 text-center">
+              <p className="subfont-serif tracking-widest uppercase leading-tight text-astera-900 mb-6 tracking-[0.4em] uppercase text-astera-400">
                 {slug[1] ? slug[1].replace(/-/g, ' ') : mainCategory}
               </p>
-              <h1 className="heading-luxury text-5xl md:text-7xl lg:text-[8rem] mb-12 drop-shadow-xl capitalize">
+              <h1 className="font-serif tracking-widest uppercase leading-tight text-astera-900 text-5xl md:text-7xl lg:text-[8rem] mb-12 drop-shadow-xl capitalize">
                 {mainCategory}
               </h1>
               <div className="w-48 h-[1px] bg-astera-300 mx-auto opacity-30 mt-8" />
             </div>
           </header>
-          <section className="section-luxury">
-            <div className="container-luxury">
+          <section className="py-20 md:py-24 lg:py-32">
+            <div className="max-w-7xl mx-auto px-6 md:px-8">
               <ProductGrid initialProducts={products as any} />
             </div>
           </section>
