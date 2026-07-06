@@ -6,9 +6,23 @@ export async function updateSession(request: NextRequest) {
     request,
   })
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  // 1. Guard against missing environment variables on Vercel deployment
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.warn('Supabase environment variables are missing. Skipping session update to avoid timeout.')
+    return supabaseResponse
+  }
+
+  // 2. Optimization: Skip session check/refresh on Next.js prefetch requests
+  if (request.headers.get('x-middleware-prefetch') === 'true') {
+    return supabaseResponse
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         getAll() {
@@ -27,17 +41,22 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
+  // 3. Wrap getUser call in try-catch to prevent crashing middleware and timing out
+  try {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
 
-  if (
-    !user &&
-    request.nextUrl.pathname.startsWith('/account')
-  ) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/login'
-    return NextResponse.redirect(url)
+    if (
+      !user &&
+      request.nextUrl.pathname.startsWith('/account')
+    ) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      return NextResponse.redirect(url)
+    }
+  } catch (error) {
+    console.error('Failed to get user session in middleware:', error)
   }
 
   return supabaseResponse
