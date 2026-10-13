@@ -5,44 +5,55 @@ import ScrollReveal from "../ScrollReveal";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full min-h-screen flex flex-col lg:flex-row overflow-hidden bg-obsidian pt-24 lg:pt-0">
-      <div className="w-full lg:w-[30%] flex flex-col justify-center items-start px-6 md:px-16 lg:pl-12 lg:pr-6 xl:pl-20 xl:pr-10 py-24 lg:py-0 z-10 lg:min-h-screen">
-        <div className="max-w-2xl transform transition-all duration-1000 animate-in fade-in slide-in-from-bottom-10 w-full">
-           <ScrollReveal delay={100} duration={1200} direction="up">
-              <h2 className="text-white font-serif text-5xl md:text-7xl lg:text-5xl xl:text-6xl 2xl:text-[5.5rem] leading-[1.1] tracking-wider uppercase mb-10 md:mb-12 drop-shadow-lg">
-                Majstori <br/> Vječnosti
-              </h2>
-           </ScrollReveal>
-           <ScrollReveal delay={300} duration={1200} direction="up">
-              <p className="text-gray-300 font-sans text-base md:text-lg leading-relaxed mb-12 max-w-lg">
-                Otkrijte dizajn gdje se besprijekorna preciznost susreće sa sirovom ljepotom prirode. Svaki komad je ručno izrađen bezvremenski klasik.
-              </p>
-              <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch sm:items-center lg:items-stretch xl:items-center justify-start gap-4 sm:gap-6 mt-8">
-                <Link href="/shop" className="w-full sm:w-auto">
-                  <Button variant="white" size="xl" className="w-full text-[11px] md:text-[12px] tracking-[0.25em] uppercase font-bold py-5 px-10 rounded-sm">
-                    Istražite Trgovinu
-                  </Button>
-                </Link>
-                <Link href="#discover" className="w-full sm:w-auto">
-                  <Button variant="outline" size="xl" className="w-full text-[11px] md:text-[12px] tracking-[0.25em] uppercase font-bold py-5 px-10 rounded-sm border-white/20 text-white hover:bg-white hover:text-black transition-all">
-                    Naša Baština
-                  </Button>
-                </Link>
-              </div>
-           </ScrollReveal>
-        </div>
-      </div>
-      <div className="w-full lg:w-[70%] relative min-h-[60vh] lg:min-h-screen">
+    <section className="relative w-full min-h-screen flex flex-col justify-end items-center overflow-hidden bg-obsidian pb-6 md:pb-10 lg:pb-12">
+      {/* Full-Bleed Video Background */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
         <video 
           autoPlay 
           loop 
           muted 
           playsInline 
-          className="absolute inset-0 w-full h-full object-cover" 
-          src="/hero-campaign.mp4" 
-        />
-        <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-obsidian to-transparent hidden lg:block" />
-        <div className="absolute inset-x-0 top-0 h-16 md:h-32 bg-gradient-to-b from-obsidian to-transparent block lg:hidden" />
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover scale-[1.08] origin-center"
+        >
+          <source src="/hero-campaign.mp4" type="video/mp4" />
+          Vaš preglednik ne podržava video element.
+        </video>
+        {/* Cinematic gradients & overlay for high-contrast luxury readability */}
+        <div className="absolute inset-0 bg-black/30 z-0" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/60 to-transparent z-0" />
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-obsidian via-obsidian/45 to-transparent z-0" />
+      </div>
+
+      {/* Immersive Lowered Content */}
+      <div className="relative z-10 w-full max-w-4xl px-6 text-center flex flex-col items-center">
+        <ScrollReveal delay={100} duration={1200} direction="up">
+          <h2 className="text-white font-serif text-4xl sm:text-5xl md:text-7xl lg:text-[5rem] xl:text-[5.5rem] leading-[1.15] tracking-[0.25em] uppercase mb-6 drop-shadow-[0_4px_20px_rgba(0,0,0,0.65)]">
+            Majstori <br className="sm:hidden" /> Vječnosti
+          </h2>
+        </ScrollReveal>
+        <ScrollReveal delay={300} duration={1200} direction="up">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 sm:gap-6 w-full sm:w-auto">
+            <Link href="/shop" className="w-full sm:w-auto">
+              <Button 
+                variant="white" 
+                size="xl" 
+                className="w-full text-[10px] md:text-[11px] tracking-[0.3em] uppercase font-bold py-5 px-12 rounded-none transition-all duration-300 hover:bg-transparent hover:text-white hover:ring-1 hover:ring-white"
+              >
+                Istražite Trgovinu
+              </Button>
+            </Link>
+            <Link href="#discover" className="w-full sm:w-auto">
+              <Button 
+                variant="glass" 
+                size="xl" 
+                className="w-full text-[10px] md:text-[11px] tracking-[0.3em] uppercase font-bold py-5 px-12 rounded-none text-white border-white/20 hover:bg-white hover:text-astera-900 transition-all duration-300"
+              >
+                Naša Baština
+              </Button>
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

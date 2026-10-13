@@ -1,8 +1,52 @@
+import { Metadata } from 'next';
 import ProductDetailClient from './ProductDetailClient';
 import ProductGrid from '../ProductGrid';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { getStripeProducts } from '@/lib/stripe-products';
+
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string[] }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const slug = resolvedParams?.slug || [];
+  const categories = ["astera-nakit", "tradicijski-nakit", "vjerski-nakit"];
+  
+  if (categories.includes(slug[0])) {
+    const categoryMap: Record<string, string> = {
+      "astera-nakit": "Astera nakit",
+      "tradicijski-nakit": "Tradicijski nakit",
+      "vjerski-nakit": "Vjerski nakit"
+    };
+    const title = categoryMap[slug[0]] || "Collection";
+    return {
+      title,
+      description: `Shop the exquisite ${title} collection from Astera.`,
+      alternates: { canonical: `https://astera.com/shop/${slug[0]}` }
+    };
+  }
+
+  // Fetch product for dynamic metadata
+  const stripeProducts = await getStripeProducts();
+  const product = stripeProducts.find(p => p.id === slug[0] || p.metadata.original_id === slug[0]);
+  
+  if (!product) {
+    return { title: 'Product Not Found' };
+  }
+
+  const price = product.prices.length > 0 ? (product.prices[0].unit_amount || 0) / 100 : 0;
+  
+  return {
+    title: product.name,
+    description: product.description || `Buy ${product.name} at Astera`,
+    alternates: { canonical: `https://astera.com/shop/${slug[0]}` },
+    openGraph: {
+      title: product.name,
+      description: product.description || `Buy ${product.name} at Astera`,
+      images: product.images.length > 0 ? [product.images[0]] : [],
+      type: 'website',
+    },
+  };
+}
 
 export default async function ShopSlugPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const resolvedParams = await params;
@@ -71,5 +115,37 @@ export default async function ShopSlugPage({ params }: { params: Promise<{ slug:
   }
 
   // Else, it's a product
-  return <ProductDetailClient productId={slug[0]} />;
+
+  // (Re-fetch products if not loaded by categories block)
+  let stripeProducts = null;
+  try { stripeProducts = await getStripeProducts(); } catch(e){}
+  const product = stripeProducts ? stripeProducts.find(p => p.id === slug[0] || p.metadata.original_id === slug[0]) : null;
+  const jsonLd = product ? {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: product.images,
+    description: product.description,
+    offers: {
+      '@type': 'AggregateOffer',
+      offerCount: product.prices.length,
+      lowPrice: product.prices.length > 0 ? Math.min(...product.prices.map(p => (p.unit_amount || 0)/100)) : 0,
+      highPrice: product.prices.length > 0 ? Math.max(...product.prices.map(p => (p.unit_amount || 0)/100)) : 0,
+      priceCurrency: product.prices.length > 0 ? product.prices[0].currency.toUpperCase() : 'EUR',
+      availability: 'https://schema.org/InStock',
+    },
+  } : null;
+
+  return (
+    <>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
+      <ProductDetailClient productId={slug[0]} />
+    </>
+  );
+
 }

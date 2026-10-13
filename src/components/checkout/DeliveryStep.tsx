@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { useCheckoutStore } from '@/store/checkoutStore';
-import { useCartStore } from '@/store/cartStore';
 import { Truck, Box, Check, Loader2 } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 
@@ -17,7 +16,6 @@ export const DeliveryStep = () => {
     saveAsDefault,
     setSaveAsDefault
   } = useCheckoutStore();
-  const { getCartTotal } = useCartStore();
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [isBoxNowLoaded, setIsBoxNowLoaded] = useState(false);
 
@@ -28,10 +26,10 @@ export const DeliveryStep = () => {
         const { data: { user } } = await supabase.auth.getUser();
         if (user) {
           const { data: profile } = await supabase
-            .from('profiles')
-            .select('default_delivery_method, default_boxnow_locker_id, default_shipping_address')
-            .eq('id', user.id)
-            .single();
+              .from('profiles')
+              .select('default_delivery_method, default_boxnow_locker_id, default_shipping_address')
+              .eq('id', user.id)
+              .single();
 
           if (profile) {
             if (profile.default_delivery_method === 'post' || profile.default_delivery_method === 'home_delivery') {
@@ -84,8 +82,6 @@ export const DeliveryStep = () => {
     };
   }, [deliveryMethod, setBoxNowLocation]);
 
-  const total = getCartTotal() + (deliveryMethod === 'boxnow' ? 2.50 : 4.90);
-
   if (loadingProfile) {
     return <div className="py-24 flex justify-center"><Loader2 className="animate-spin text-astera-300 w-8 h-8" /></div>;
   }
@@ -94,54 +90,54 @@ export const DeliveryStep = () => {
   const labelClasses = "block text-[9px] font-sans font-bold uppercase tracking-[0.2em] mb-1 text-slate-400";
 
   return (
-    <div className="space-y-10 animate-in fade-in duration-500">
-      <div className="border-b border-black/5 pb-6">
-        <h2 className="font-serif tracking-widest uppercase leading-tight text-astera-900 text-xl tracking-widest uppercase text-astera-900">NAČIN DOSTAVE</h2>
+    <div className="space-y-8 animate-in fade-in duration-300">
+      <div className="border-b border-black/5 pb-4">
+        <h2 className="font-serif tracking-widest uppercase leading-tight text-astera-900 text-lg">NAČIN DOSTAVE</h2>
         <p className="text-slate-400 font-sans text-xs mt-1">Odaberite kako želite primiti vašu pošiljku.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <button
           onClick={() => setDeliveryMethod('post')}
-          className={`flex items-center gap-4 p-6 border rounded-lg transition-all duration-300 text-left ${
-            deliveryMethod === 'post' ? 'border-astera-900 bg-astera-50/50 shadow-[0_0_20px_rgba(0,0,0,0.03)]' : 'border-slate-200 hover:border-astera-300 bg-white'
+          className={`flex items-center gap-4 p-5 border rounded-sm transition-all duration-300 text-left ${
+            deliveryMethod === 'post' ? 'border-astera-900 bg-astera-50/50 shadow-[0_0_20px_rgba(0,0,0,0.01)]' : 'border-slate-200 hover:border-astera-300 bg-white'
           }`}
         >
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${deliveryMethod === 'post' ? 'bg-astera-900 text-white' : 'bg-slate-100 text-slate-400'}`}>
-            <Truck size={18} />
+          <div className={`w-9 h-9 rounded-sm flex items-center justify-center ${deliveryMethod === 'post' ? 'bg-astera-900 text-white' : 'bg-slate-100 text-slate-400'}`}>
+            <Truck size={16} />
           </div>
           <div>
             <p className="font-sans font-bold text-xs uppercase tracking-widest text-astera-900">Dostava na adresu</p>
-            <p className="text-[10px] text-slate-500 mt-1 uppercase tracking-wider font-sans">GLS Hrvatska • €4.90</p>
+            <p className="text-[9px] text-slate-500 mt-0.5 uppercase tracking-wider font-sans">GLS Hrvatska • €4.90</p>
           </div>
         </button>
 
         <button
           onClick={() => setDeliveryMethod('boxnow')}
-          className={`flex items-center gap-4 p-6 border rounded-lg transition-all duration-300 text-left ${
-            deliveryMethod === 'boxnow' ? 'border-astera-900 bg-astera-50/50 shadow-[0_0_20px_rgba(0,0,0,0.03)]' : 'border-slate-200 hover:border-astera-300 bg-white'
+          className={`flex items-center gap-4 p-5 border rounded-sm transition-all duration-300 text-left ${
+            deliveryMethod === 'boxnow' ? 'border-astera-900 bg-astera-50/50 shadow-[0_0_20px_rgba(0,0,0,0.01)]' : 'border-slate-200 hover:border-astera-300 bg-white'
           }`}
         >
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${deliveryMethod === 'boxnow' ? 'bg-astera-900 text-white' : 'bg-slate-100 text-slate-400'}`}>
-            <Box size={18} />
+          <div className={`w-9 h-9 rounded-sm flex items-center justify-center ${deliveryMethod === 'boxnow' ? 'bg-astera-900 text-white' : 'bg-slate-100 text-slate-400'}`}>
+            <Box size={16} />
           </div>
           <div>
             <p className="font-sans font-bold text-xs uppercase tracking-widest text-astera-900">Box Now Paketomat</p>
-            <p className="text-[10px] text-slate-500 mt-1 uppercase tracking-wider font-sans">Brzo preuzimanje • €2.50</p>
+            <p className="text-[9px] text-slate-500 mt-0.5 uppercase tracking-wider font-sans">Brzo preuzimanje • €2.50</p>
           </div>
         </button>
       </div>
 
-      <div className="min-h-[300px] mt-8">
+      <div className="min-h-[280px] mt-6">
         {deliveryMethod === 'post' ? (
-          <div className="space-y-6 animate-in fade-in slide-in-from-bottom-2">
-            <h3 className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-astera-900 mb-6">Podaci za dostavu</h3>
+          <div className="space-y-6 animate-in fade-in duration-300">
+            <h3 className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-astera-900">Podaci za dostavu</h3>
             <div className="grid grid-cols-2 gap-x-8 gap-y-6">
               <div className="col-span-2 sm:col-span-1">
                 <label className={labelClasses}>Ulica</label>
                 <input 
                   type="text" 
-                  value={customerInfo.street}
+                  value={customerInfo.street || ''}
                   onChange={(e) => updateCustomerInfo({ street: e.target.value })}
                   className={inputClasses}
                   placeholder="Unesite naziv ulice"
@@ -151,7 +147,7 @@ export const DeliveryStep = () => {
                 <label className={labelClasses}>Kućni broj</label>
                 <input 
                   type="text" 
-                  value={customerInfo.houseNumber}
+                  value={customerInfo.houseNumber || ''}
                   onChange={(e) => updateCustomerInfo({ houseNumber: e.target.value })}
                   className={inputClasses}
                   placeholder="npr. 12A"
@@ -161,7 +157,7 @@ export const DeliveryStep = () => {
                 <label className={labelClasses}>Grad</label>
                 <input 
                   type="text" 
-                  value={customerInfo.city}
+                  value={customerInfo.city || ''}
                   onChange={(e) => updateCustomerInfo({ city: e.target.value })}
                   className={inputClasses}
                   placeholder="Unesite grad"
@@ -171,7 +167,7 @@ export const DeliveryStep = () => {
                 <label className={labelClasses}>Poštanski broj</label>
                 <input 
                   type="text" 
-                  value={customerInfo.postalCode}
+                  value={customerInfo.postalCode || ''}
                   onChange={(e) => updateCustomerInfo({ postalCode: e.target.value })}
                   className={inputClasses}
                   placeholder="npr. 10000"
@@ -181,7 +177,7 @@ export const DeliveryStep = () => {
                 <label className={labelClasses}>Broj telefona</label>
                 <input 
                   type="tel" 
-                  value={customerInfo.phone}
+                  value={customerInfo.phone || ''}
                   onChange={(e) => updateCustomerInfo({ phone: e.target.value })}
                   className={inputClasses}
                   placeholder="+385 91 123 4567"
@@ -190,19 +186,19 @@ export const DeliveryStep = () => {
             </div>
           </div>
         ) : (
-          <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2">
+          <div className="space-y-4 animate-in fade-in duration-300">
             {boxNowLocation && (
-              <div className="p-5 bg-astera-50 text-astera-900 rounded-lg border border-astera-200 flex items-center justify-between">
+              <div className="p-4 bg-astera-50 text-astera-900 rounded-sm border border-astera-200 flex items-center justify-between">
                 <div>
-                  <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-astera-600 mb-1">Odabrani Paketomat</p>
-                  <p className="text-[13px] font-sans font-bold tracking-wide">ID: {boxNowLocation}</p>
+                  <p className="text-[8px] uppercase tracking-[0.2em] font-bold text-astera-600 mb-0.5">Odabrani Paketomat</p>
+                  <p className="text-xs font-sans font-bold">ID: {boxNowLocation}</p>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm">
-                   <Check size={16} className="text-astera-600" />
+                <div className="w-6 h-6 rounded-sm bg-white flex items-center justify-center shadow-sm">
+                   <Check size={14} className="text-astera-600" />
                 </div>
               </div>
             )}
-            <div className="w-full h-[450px] bg-slate-50 rounded-lg overflow-hidden border border-slate-200 relative">
+            <div className="w-full h-[400px] bg-slate-50 rounded-sm overflow-hidden border border-slate-200 relative">
               {!isBoxNowLoaded && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 gap-3">
                   <Loader2 className="animate-spin w-6 h-6" />
@@ -215,7 +211,7 @@ export const DeliveryStep = () => {
         )}
       </div>
 
-      <div className="flex items-center justify-between border-t border-slate-100 pt-8 mt-8">
+      <div className="flex items-center justify-between border-t border-slate-100 pt-6 mt-6">
         <div className="flex items-center gap-3">
           <div 
             onClick={() => setSaveAsDefault(!saveAsDefault)}
@@ -228,11 +224,6 @@ export const DeliveryStep = () => {
           <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-slate-500 cursor-pointer select-none" onClick={() => setSaveAsDefault(!saveAsDefault)}>
             Spremi kao moju zadanu adresu
           </span>
-        </div>
-
-        <div className="text-right">
-           <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-slate-400 block mb-1">Ukupno za plaćanje</span>
-           <span className="font-serif text-2xl text-astera-900">€{total.toFixed(2)}</span>
         </div>
       </div>
     </div>

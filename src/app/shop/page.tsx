@@ -34,7 +34,7 @@ export default async function ShopPage() {
             <div className="max-w-2xl">
               <p className="font-sans text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase text-astera-400 mb-6 md:mb-10">Katalog • Proljeće/Ljeto '26</p>
               <h1 className="font-serif text-6xl md:text-8xl lg:text-[10rem] leading-tight tracking-tighter text-charcoal">
-                Arhiv.
+                Kolekcija Astera
               </h1>
             </div>
             <div className="max-w-xs md:pb-4">

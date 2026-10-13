@@ -11,6 +11,7 @@ const CartDrawer = dynamic(() => import("./CartDrawer"), { ssr: false });
 const SearchOverlay = dynamic(() => import("./SearchOverlay"), { ssr: false });
 const FavouritesDrawer = dynamic(() => import("./FavouritesDrawer"), { ssr: false });
 import { useFavouritesStore } from "@/store/favouritesStore";
+import { motion, AnimatePresence } from "framer-motion";
 
 const menuData: Record<string, { columns: { title: string; links: string[] }[]; featuredImage: string; featuredTitle: string }> = {
   "Astera nakit": {
@@ -89,7 +90,7 @@ export default function Navbar() {
   };
 
   const handleMouseLeave = () => {
-    const timeout = setTimeout(() => setActiveMenu(null), 150);
+    const timeout = setTimeout(() => setActiveMenu(null), 250);
     setMenuTimeout(timeout);
   };
 
@@ -382,6 +383,18 @@ export default function Navbar() {
           )}
         </div>
       </header>
+
+      <AnimatePresence>
+        {mounted && activeMenu && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black/15 backdrop-blur-sm z-[80] pointer-events-none"
+          />
+        )}
+      </AnimatePresence>
     
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} /> 
       <SearchOverlay isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
