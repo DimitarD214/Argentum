@@ -5,7 +5,7 @@ import { createClient } from '@/utils/supabase/client';
 
 export default function SignOutButton() {
   const router = useRouter();
-  
+
   const handleSignOut = async () => {
     const supabase = createClient();
     await supabase.auth.signOut();
@@ -14,12 +14,12 @@ export default function SignOutButton() {
   };
 
   return (
-    <button 
+    <button
       onClick={handleSignOut}
-      className="flex items-center gap-2 text-white/40 hover:text-white transition-colors text-xs font-sans uppercase tracking-[0.2em]"
+      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white border border-astera-200 text-astera-900 hover:text-red-700 hover:border-red-300 transition-colors text-xs font-sans font-bold uppercase tracking-[0.2em] shadow-xs cursor-pointer"
     >
       <LogOut size={14} />
-      Sign Out
+      Odjava
     </button>
   );
 }

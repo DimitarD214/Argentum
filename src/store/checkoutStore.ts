@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type DeliveryMethod = 'manual' | 'post' | 'boxnow';
+export type DeliveryMethod = 'free_delivery' | 'manual' | 'post' | 'boxnow';
 
 export interface CheckoutState {
   currentStep: number;
@@ -16,6 +16,9 @@ export interface CheckoutState {
     postalCode: string;
     street: string;
     houseNumber: string;
+    lat?: number;
+    lng?: number;
+    formattedAddress?: string;
   };
   saveAsDefault: boolean;
   isR1: boolean;
@@ -40,7 +43,7 @@ export const useCheckoutStore = create<CheckoutState>()(
   persist(
     (set) => ({
       currentStep: 1,
-      deliveryMethod: 'post',
+      deliveryMethod: 'free_delivery',
       boxNowLocation: '',
       customerInfo: {
         firstName: '',
@@ -52,7 +55,7 @@ export const useCheckoutStore = create<CheckoutState>()(
         street: '',
         houseNumber: '',
       },
-      saveAsDefault: false,
+      saveAsDefault: true,
       isR1: false,
       r1Info: {
         companyName: '',
@@ -75,17 +78,25 @@ export const useCheckoutStore = create<CheckoutState>()(
       nextStep: () => set((state) => ({ currentStep: Math.min(state.currentStep + 1, 4) })),
       prevStep: () => set((state) => ({ currentStep: Math.max(state.currentStep - 1, 1) })),
       resetCheckout: () =>
-        set({
+        set((state) => ({
           currentStep: 1,
-          deliveryMethod: 'post',
+          deliveryMethod: 'free_delivery',
           boxNowLocation: '',
-          customerInfo: {
-            firstName: '', lastName: '', email: '', phone: '', city: '', postalCode: '', street: '', houseNumber: '',
-          },
-          saveAsDefault: false,
+          customerInfo: state.saveAsDefault
+            ? state.customerInfo
+            : {
+                firstName: '',
+                lastName: '',
+                email: '',
+                phone: '',
+                city: '',
+                postalCode: '',
+                street: '',
+                houseNumber: '',
+              },
           isR1: false,
           r1Info: { companyName: '', oib: '' },
-        }),
+        })),
     }),
     { name: 'astera-checkout-storage' }
   )

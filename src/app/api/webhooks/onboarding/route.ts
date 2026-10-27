@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     // 1. Verify Authorization Header (Security)
     const authHeader = req.headers.get('authorization');
     const secret = process.env.ONBOARDING_WEBHOOK_SECRET;
-    
+
     // In development, you might not have the secret set yet, so we only enforce if it exists
     if (secret && authHeader !== `Bearer ${secret}`) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
         full_name: user.raw_user_meta_data?.full_name || null,
         avatar_url: user.raw_user_meta_data?.avatar_url || null,
         stripe_customer_id: customer.id,
-        updated_at: new Date().toISOString()
+        updated_at: new Date().toISOString(),
       });
 
     if (dbError) {
@@ -55,23 +55,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Database update failed' }, { status: 500 });
     }
 
-    // 4. (Optional) Boilerplate for Welcome Email via Resend
-    /*
-    import { Resend } from 'resend';
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    
-    await resend.emails.send({
-      from: 'Astera Concierge <concierge@astera.com>',
-      to: user.email,
-      subject: 'Welcome to the Inner Circle',
-      html: '<p>Your premium account has been fully activated.</p>'
-    });
-    */
-
     return NextResponse.json({ success: true, customerId: customer.id }, { status: 200 });
-
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Internal server error';
     console.error('Native Onboarding Webhook Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

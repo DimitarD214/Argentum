@@ -11,12 +11,22 @@ export async function updateSession(request: NextRequest) {
 
   // 1. Guard against missing environment variables on Vercel deployment
   if (!supabaseUrl || !supabaseAnonKey) {
-    console.warn('Supabase environment variables are missing. Skipping session update to avoid timeout.')
     return supabaseResponse
   }
 
   // 2. Optimization: Skip session check/refresh on Next.js prefetch requests
   if (request.headers.get('x-middleware-prefetch') === 'true') {
+    return supabaseResponse
+  }
+
+  // 3. Fast path: If the visitor has no Supabase auth cookies, skip the network round-trip
+  const hasAuthCookie = request.cookies.getAll().some((c) => c.name.startsWith('sb-'))
+  if (!hasAuthCookie) {
+    if (request.nextUrl.pathname.startsWith('/account')) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/login'
+      return NextResponse.redirect(url)
+    }
     return supabaseResponse
   }
 
@@ -29,7 +39,7 @@ export async function updateSession(request: NextRequest) {
           return request.cookies.getAll()
         },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value, options }) => request.cookies.set(name, value))
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
           supabaseResponse = NextResponse.next({
             request,
           })
@@ -41,7 +51,7 @@ export async function updateSession(request: NextRequest) {
     }
   )
 
-  // 3. Wrap getUser call in try-catch to prevent crashing middleware and timing out
+  // 4. Wrap getUser call in try-catch to prevent crashing middleware and timing out
   try {
     const {
       data: { user },

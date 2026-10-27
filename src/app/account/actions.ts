@@ -7,7 +7,9 @@ import { revalidatePath } from 'next/cache'
 export async function updateOrderStatus(orderId: string, status: string) {
   try {
     const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
     if (!user) {
       throw new Error('Unauthorized')
     }
@@ -41,8 +43,9 @@ export async function updateOrderStatus(orderId: string, status: string) {
 
     revalidatePath('/account')
     return { success: true }
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Failed to update status'
     console.error('Error updating order status:', error)
-    return { success: false, error: error.message }
+    return { success: false, error: message }
   }
 }

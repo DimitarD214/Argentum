@@ -1,148 +1,3013 @@
 [
   {
-    "id": "luna-pendant-test",
-    "name": "Celestial Luna Pendant (Test)",
-    "theme": "Classic",
-    "stoneColor": "Clear",
+    "id": "zlatni-prsten-kameja",
+    "name": "Zlatni Prsten Kameja",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "prstenje",
+    "theme": "Tradicijski",
+    "stoneColor": "Kameja Koralj",
     "price": {
-      "sterling_silver": 89,
-      "gold_14k": 320
+      "gold_14k": 440
     },
+    "basePrice": 440,
+    "rating": 4.8,
+    "reviewCount": 412,
     "badges": [
-      "Test Item"
+      "Bestseller",
+      "Ručni Rad"
     ],
-    "description": "A stunning crescent moon pendant that symbolizes guidance and change.",
-    "images": [],
-    "category": "Necklaces",
-    "material": [
-      "Sterling Silver",
-      "14k Gold"
-    ]
-  },
-  {
-    "id": "emerald-butterfly-ring",
-    "name": "Emerald Butterfly Ring",
-    "theme": "Butterflies",
-    "stoneColor": "Green",
-    "price": {
-      "sterling_silver": 120,
-      "gold_14k": 450
-    },
-    "badges": [
-      "New In"
-    ],
-    "description": "An exquisite ring featuring delicate butterfly wings.",
+    "description": "Profinjeni zlatni prsten s autentičnom kamejom u toplim jesenskim tonovima terakote i bjelokosti, obrubljen zlatnim granulama.",
     "images": [
-      "/emerald-butterfly-ring.png"
+      "/jewelry/zlatni-prsten-kameja.jpg",
+      "/jewelry/zlatne-nausnice-kameja.jpg"
     ],
     "category": "Rings",
     "material": [
-      "Sterling Silver",
       "14k Gold"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "rings",
+      "kameja",
+      "cameo",
+      "koralj",
+      "coral",
+      "zlato",
+      "zlatni",
+      "14k",
+      "gold",
+      "tradicijski",
+      "granulacija",
+      "vintage"
     ]
   },
   {
-    "id": "floral-droplet-earrings",
-    "name": "Floral Droplet Earrings",
-    "theme": "Flowers",
-    "stoneColor": "Rose",
+    "id": "splitske-kosarice",
+    "name": "Splitske Zlatne Košarice",
+    "brand": "Splitska Baština",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
     "price": {
-      "sterling_silver": 150,
-      "gold_14k": 550
+      "gold_14k": 520
     },
+    "basePrice": 520,
+    "rating": 4.9,
+    "reviewCount": 530,
     "badges": [
-      "Limited Edition"
+      "Sniženje",
+      "Bestseller",
+      "Ručni Rad"
     ],
-    "description": "Elegant earrings blooming with rose-colored stones.",
+    "description": "Autentične splitske zlatne košarice izrađene tehnikom filigrana s prepoznatljivim zrakastim motivom koji simbolizira sunce i vječnost.",
     "images": [
+      "/jewelry/splitske-kosarice-1.jpg",
+      "/jewelry/splitske-kosarice-2.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "rećine",
+      "earrings",
+      "splitske košarice",
+      "kosarice",
+      "split",
+      "filigran",
+      "filigree",
+      "zlato",
+      "zlatne",
+      "14k",
+      "gold",
+      "tradicijski"
+    ],
+    "priceHistory30d": {
+      "gold_14k": 580
+    }
+  },
+  {
+    "id": "filigranske-recine-masna",
+    "name": "Svečane Filigranske Rećine s Mašnom",
+    "brand": "Splitska Baština",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 690
+    },
+    "basePrice": 690,
+    "rating": 4.8,
+    "reviewCount": 164,
+    "badges": [
+      "Ekskluzivno"
+    ],
+    "description": "Raskošne tradicijske zlatne naušnice s filigranskom mašnom i pet visećih šupljih botuna koji stvaraju prepoznatljivu igru svjetlosti.",
+    "images": [
+      "/jewelry/filigranske-recine-masna.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "rećine",
+      "recine",
+      "earrings",
+      "mašna",
+      "bow",
+      "filigran",
+      "botuni",
+      "viseće",
+      "svečane",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "dubrovacke-nausnice-koralj",
+    "name": "Dubrovačke Naušnice s Koraljima",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "Crveni Koralj",
+    "price": {
+      "gold_14k": 580
+    },
+    "basePrice": 580,
+    "rating": 4.9,
+    "reviewCount": 388,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Elegantne duguljaste zlatne naušnice s nizom prirodnih jadranskih crvenih koralja uokvirenih finim zlatnim čipkastim rubom.",
+    "images": [
+      "/jewelry/dubrovacke-nausnice-koralj.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "dubrovačke",
+      "dubrovnik",
+      "koralj",
+      "crveni koralj",
+      "coral",
+      "red coral",
+      "jadranski",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "paske-peruzine-biseri",
+    "name": "Kraljevske Peružine s Biserima",
+    "brand": "Paška Čipka & Biser",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 640
+    },
+    "basePrice": 640,
+    "rating": 4.9,
+    "reviewCount": 295,
+    "badges": [
+      "Bestseller",
+      "Ručni Rad"
+    ],
+    "description": "Impresivne zlatne rozete bogato optočene koncentričnim krugovima prirodnih bisera, vrhunac hrvatske zlatarske baštine s otoka Paga.",
+    "images": [
+      "/jewelry/paske-peruzine-biseri.jpg",
+      "/jewelry/raskosne-peruzine-biseri.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "paške peružine",
+      "peruzine",
+      "pag",
+      "biser",
+      "biseri",
+      "pearl",
+      "pearls",
+      "rozeta",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "zlatna-narukvica-botuni",
+    "name": "Zlatna Narukvica Šibenski Botun",
+    "brand": "Šibenski Majstori",
+    "line": "tradicijski-nakit",
+    "subcategory": "narukvice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 590
+    },
+    "basePrice": 590,
+    "rating": 4.8,
+    "reviewCount": 310,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Otvorena kruta narukvica od punog 14-karatnog zlata čije krajeve krase dva ručno izrađena filigranska šibenska botuna.",
+    "images": [
+      "/jewelry/zlatna-narukvica-botuni.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "bangle",
+      "cuff",
+      "šibenski botun",
+      "sibenski botun",
+      "botun",
+      "filigran",
+      "zlato",
+      "zlatna",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "cvjetne-filigran-biser",
+    "name": "Cvjetne Filigranske Naušnice s Biserom",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "nausnice",
+    "theme": "Cvijeće",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 430
+    },
+    "basePrice": 430,
+    "rating": 4.7,
+    "reviewCount": 245,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Nježne zlatne latice izrađene prozračnom tehnikom filigrana sa središnjim biserom visokog sjaja.",
+    "images": [
+      "/jewelry/cvjetne-filigran-biser-1.jpg",
+      "/jewelry/cvjetne-filigran-biser-2.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "cvijet",
+      "cvjetne",
+      "floral",
+      "flower",
+      "filigran",
+      "filigree",
+      "biser",
+      "pearl",
+      "zlato",
+      "14k",
+      "astera"
+    ]
+  },
+  {
+    "id": "filigran-lepeza-ogrlica",
+    "name": "Zlatna Filigranska Ogrlica Lepeza",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Klasično",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 490
+    },
+    "basePrice": 490,
+    "rating": 4.8,
+    "reviewCount": 198,
+    "badges": [
+      "Novo"
+    ],
+    "description": "Profinjena zlatna ogrlica s geometrijskim filigranskim privjeskom u obliku lepeze i prirodnim biserom.",
+    "images": [
+      "/jewelry/filigran-lepeza-ogrlica.jpg",
+      "/jewelry/filigran-lepeza-nausnice.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "lančić",
+      "necklace",
+      "pendant",
+      "lepeza",
+      "fan",
+      "filigran",
+      "biser",
+      "pearl",
+      "zlato",
+      "zlatna",
+      "14k",
+      "astera"
+    ]
+  },
+  {
+    "id": "filigran-lepeza-nausnice",
+    "name": "Zlatne Lepeza Naušnice s Biserom",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "nausnice",
+    "theme": "Klasično",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 390
+    },
+    "basePrice": 390,
+    "rating": 4.7,
+    "reviewCount": 176,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Elegantne naušnice na klin od 14k zlata s finim čipkastim filigranom i središnjim biserom.",
+    "images": [
+      "/jewelry/filigran-lepeza-nausnice.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "studs",
+      "lepeza",
+      "filigran",
+      "biser",
+      "pearl",
+      "zlato",
+      "14k",
+      "astera"
+    ]
+  },
+  {
+    "id": "zlatne-nausnice-kameja",
+    "name": "Zlatne Naušnice Kameja",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "Kameja Koralj",
+    "price": {
+      "gold_14k": 460
+    },
+    "basePrice": 460,
+    "rating": 4.8,
+    "reviewCount": 221,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Klasične viseće naušnice s ručno izrezbarenim portretom u koraljnoj kameji i okvirom od 14k zlata.",
+    "images": [
+      "/jewelry/zlatne-nausnice-kameja.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "kameja",
+      "cameo",
+      "koralj",
+      "coral",
+      "portret",
+      "zlato",
+      "zlatne",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "konavoske-zlatne-verizice",
+    "name": "Konavoske Zlatne Verižice",
+    "brand": "Konavle Zlatarna",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 470
+    },
+    "basePrice": 470,
+    "rating": 4.9,
+    "reviewCount": 264,
+    "badges": [
+      "Tradicijski"
+    ],
+    "description": "Prepoznatljive konavoske zlatne naušnice s fasetiranim zlatnim zrnom i trostrukim zlatnim lukom.",
+    "images": [
+      "/jewelry/konavoske-zlatne-verizice.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "konavoske",
+      "konavle",
+      "verižice",
+      "verizice",
+      "hoops",
+      "zlato",
+      "zlatne",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "konavoske-obruci-biseri",
+    "name": "Konavoske Naušnice s Biserima",
+    "brand": "Konavle Zlatarna",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 495
+    },
+    "basePrice": 495,
+    "rating": 4.8,
+    "reviewCount": 192,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Tradicijski zlatni obruči ukrašeni finom granulacijom i visećim dvostrukim biserima iz Konavala.",
+    "images": [
+      "/jewelry/konavoske-obruci-biseri.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "konavoske",
+      "konavle",
+      "obruči",
+      "hoops",
+      "biser",
+      "biseri",
+      "pearl",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "visece-nausnice-niz-bisera",
+    "name": "Zlatne Viseće Naušnice s Nizom Bisera",
+    "brand": "Paška Čipka & Biser",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 540
+    },
+    "basePrice": 540,
+    "rating": 4.7,
+    "reviewCount": 143,
+    "badges": [
+      "Ekskluzivno"
+    ],
+    "description": "Izdužene zlatne naušnice sa sedam prirodnih bisera uokvirenih finim graviranim zlatnim rubom.",
+    "images": [
+      "/jewelry/visece-nausnice-niz-bisera.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "viseće",
+      "drop",
+      "biser",
+      "biseri",
+      "pearl",
+      "zlato",
+      "zlatne",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "rozeta-nausnice-biseri",
+    "name": "Zlatne Rozeta Naušnice s Biserima",
+    "brand": "Paška Čipka & Biser",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 450
+    },
+    "basePrice": 450,
+    "rating": 4.8,
+    "reviewCount": 168,
+    "badges": [
+      "Novo"
+    ],
+    "description": "Tradicijske zlatne rozete sa središnjom zlatnom kalotom okruženom vijencem bijelih bisera.",
+    "images": [
+      "/jewelry/rozeta-nausnice-biseri.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "rozeta",
+      "rosette",
+      "biser",
+      "biseri",
+      "pearl",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "rozeta-nausnice-tirkiz",
+    "name": "Zlatne Rozeta Naušnice s Tirkizom",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "nausnice",
+    "theme": "Klasično",
+    "stoneColor": "Tirkiz",
+    "price": {
+      "gold_14k": 465
+    },
+    "basePrice": 465,
+    "rating": 4.8,
+    "reviewCount": 154,
+    "badges": [
+      "Unikat"
+    ],
+    "description": "Spoj tradicijske zlatne rozete i prirodnih tirkiznih kabošona koji donose upečatljiv kontrast toplom 14k zlatu.",
+    "images": [
+      "/jewelry/rozeta-nausnice-tirkiz.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "rozeta",
+      "tirkiz",
+      "turquoise",
+      "plavi kamen",
+      "zlato",
+      "14k",
+      "astera",
+      "unikat"
+    ]
+  },
+  {
+    "id": "zlatni-cvjetni-botuni",
+    "name": "Zlatne Naušnice Cvjetni Filigran",
+    "brand": "Splitska Baština",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 480
+    },
+    "basePrice": 480,
+    "rating": 4.7,
+    "reviewCount": 139,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Bogato granulirane zlatne naušnice u obliku osmerolisne rozete, ručno rađene u našem splitskom ateljeu.",
+    "images": [
+      "/jewelry/zlatni-cvjetni-botuni.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "cvjetni",
+      "filigran",
+      "granulacija",
+      "rozeta",
+      "botuni",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "sibenski-botun-biser",
+    "name": "Zlatne Naušnice Šibenski Botun & Biser",
+    "brand": "Šibenski Majstori",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 430
+    },
+    "basePrice": 430,
+    "rating": 4.9,
+    "reviewCount": 312,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Elegantne viseće naušnice koje spajaju prozračni zlatni šibenski botun i nježni prirodni biser.",
+    "images": [
+      "/jewelry/sibenski-botun-biser.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "šibenski botun",
+      "sibenski botun",
+      "botun",
+      "biser",
+      "pearl",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "zlatne-polumjesec-nausnice",
+    "name": "Tradicijske Zlatne Naušnice Polumjesec",
+    "brand": "Zadar Gold Heritage",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 410
+    },
+    "basePrice": 410,
+    "rating": 4.6,
+    "reviewCount": 118,
+    "badges": [
+      "Tradicijski"
+    ],
+    "description": "Polirane zlatne naušnice s valovitim urezanim rubom i zlatnom kuglicom, inspirirane starohrvatskim nakitom iz Zadra i Nina.",
+    "images": [
+      "/jewelry/zlatne-polumjesec-nausnice.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "polumjesec",
+      "crescent",
+      "moon",
+      "starohrvatski",
+      "zadar",
+      "nin",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "srebrna-narukvica-botun",
+    "name": "Srebrna Narukvica Filigranski Botun",
+    "brand": "Šibenski Majstori",
+    "line": "tradicijski-nakit",
+    "subcategory": "narukvice",
+    "theme": "Tradicijski",
+    "stoneColor": "Srebro 925",
+    "price": {
+      "sterling_silver": 165
+    },
+    "basePrice": 165,
+    "rating": 4.7,
+    "reviewCount": 284,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Nježna lančana narukvica od 925 sterling srebra sa središnjim patiniranim filigranskim šibenskim botunom.",
+    "images": [
+      "/jewelry/srebrna-narukvica-botun.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "Sterling Silver"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "srebro",
+      "srebrna",
+      "silver",
+      "925",
+      "sterling",
+      "botun",
+      "šibenski botun",
+      "filigran",
+      "tradicijski",
+      "povoljno"
+    ]
+  },
+  {
+    "id": "smaragdni-leptir-prsten",
+    "name": "Astera Smaragdni Leptir Prsten",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "prstenje",
+    "theme": "Cvijeće",
+    "stoneColor": "Smaragd & Zlato",
+    "price": {
+      "gold_14k": 560,
+      "sterling_silver": 220
+    },
+    "basePrice": 560,
+    "rating": 4.9,
+    "reviewCount": 204,
+    "badges": [
+      "Bestseller",
+      "Unikat"
+    ],
+    "description": "Skulpturalni prsten s motivom leptira u 14k zlatu, ukrašen brušenim zelenim smaragdom i sitnim dijamantnim granulama.",
+    "images": [
+      "/emerald-butterfly-ring.png",
+      "/images/astera-showcase.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "smaragd",
+      "emerald",
+      "zeleni",
+      "green",
+      "leptir",
+      "butterfly",
+      "zlato",
+      "14k",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "sumska-rosa-ogrlica",
+    "name": "Ogrlica Šumska Rosa sa Smaragdom",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Cvijeće",
+    "stoneColor": "Smaragd & Biser",
+    "price": {
+      "gold_14k": 620,
+      "sterling_silver": 245
+    },
+    "basePrice": 620,
+    "rating": 4.8,
+    "reviewCount": 173,
+    "badges": [
+      "Novo"
+    ],
+    "description": "Suvremena Astera ogrlica inspirirana jutarnjom rosom, s privjeskom od smaragda i slatkovodnog bisera na 14k zlatnom lančiću.",
+    "images": [
+      "/forest-greens-necklace.png",
+      "/jewelry/filigran-lepeza-ogrlica.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "lančić",
+      "necklace",
+      "pendant",
+      "smaragd",
+      "emerald",
+      "biser",
+      "pearl",
+      "cvijeće",
+      "zlato",
+      "14k",
+      "astera"
+    ]
+  },
+  {
+    "id": "cvjetna-kapljica-nausnice",
+    "name": "Naušnice Cvjetna Kapljica Kristal",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "nausnice",
+    "theme": "Cvijeće",
+    "stoneColor": "Safir & Kristal",
+    "price": {
+      "gold_14k": 380,
+      "sterling_silver": 175
+    },
+    "basePrice": 380,
+    "rating": 4.7,
+    "reviewCount": 159,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Viseće cvjetne naušnice s fasetiranom kapljicom gorskog kristala koja hvata svaki tračak svjetlosti.",
+    "images": [
+      "/floral-droplet-earrings.png",
+      "/jewelry/cvjetne-filigran-biser-1.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "cvjetne",
+      "floral",
+      "kapljica",
+      "droplet",
+      "kristal",
+      "crystal",
+      "zlato",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "ruzina-latica-narukvica",
+    "name": "Narukvica Ružina Latica u Roza Zlatu",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "narukvice",
+    "theme": "Cvijeće",
+    "stoneColor": "Kameja Koralj",
+    "price": {
+      "gold_14k": 510,
+      "sterling_silver": 195
+    },
+    "basePrice": 510,
+    "rating": 4.8,
+    "reviewCount": 187,
+    "badges": [
+      "Ekskluzivno"
+    ],
+    "description": "Romantična narukvica s ručno oblikovanim laticama ruže i toplim tonovima koralja i 14k zlata.",
+    "images": [
+      "/rose-petal-bracelet.png",
+      "/jewelry/zlatna-narukvica-botuni.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "ruža",
+      "rose",
+      "latica",
+      "petal",
+      "cvijeće",
+      "koralj",
+      "zlato",
+      "14k",
+      "astera"
+    ]
+  },
+  {
+    "id": "tradicijski-privjesak-kriz-filigran",
+    "name": "Zlatni Filigranski Medaljon Rozeta",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 420
+    },
+    "basePrice": 420,
+    "rating": 4.8,
+    "reviewCount": 129,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Ručno rađeni zlatni medaljon inspiriran gotičkim rozetama dubrovačkih palača, izveden u najfinijem zlatnom filigranu.",
+    "images": [
+      "/jewelry/filigran-lepeza-ogrlica.jpg",
+      "/images/tradicijski-showcase.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "ogrlica",
+      "privjesak",
+      "medaljon",
+      "pendant",
+      "necklace",
+      "rozeta",
+      "dubrovnik",
+      "filigran",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "dubrovacka-kolajna-zlato",
+    "name": "Dubrovačka Zlatna Kolajna s Koraljima",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Tradicijski",
+    "stoneColor": "Crveni Koralj",
+    "price": {
+      "gold_14k": 780
+    },
+    "basePrice": 780,
+    "rating": 4.9,
+    "reviewCount": 215,
+    "badges": [
+      "Bestseller",
+      "Ručni Rad"
+    ],
+    "description": "Autentična dubrovačka kolajna sa šupljim filigranskim kuglama (peružinama) i prirodnim crvenim jadranskim koraljima.",
+    "images": [
+      "/jewelry/dubrovacke-nausnice-koralj.jpg",
+      "/images/tradicijski-showcase.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "kolajna",
+      "necklace",
+      "dubrovnik",
+      "dubrovačka",
+      "koralj",
+      "crveni koralj",
+      "coral",
+      "peružine",
+      "filigran",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "splitski-prsten-rozeta",
+    "name": "Splitski Zlatni Prsten Rozeta",
+    "brand": "Splitska Baština",
+    "line": "tradicijski-nakit",
+    "subcategory": "prstenje",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 395
+    },
+    "basePrice": 395,
+    "rating": 4.7,
+    "reviewCount": 178,
+    "badges": [
+      "Tradicijski"
+    ],
+    "description": "Klasični splitski prsten s kupolastom filigranskom rozetom i sitnim zlatnim zrncima, savršen spoj tradicije i svakodnevne elegancije.",
+    "images": [
+      "/jewelry/zlatni-cvjetni-botuni.jpg",
+      "/jewelry/splitske-kosarice-1.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "split",
+      "splitski",
+      "rozeta",
+      "filigran",
+      "granulacija",
+      "zlato",
+      "zlatni",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "sibenski-botun-prsten-zlato",
+    "name": "Zlatni Prsten Šibenski Botun",
+    "brand": "Šibenski Majstori",
+    "line": "tradicijski-nakit",
+    "subcategory": "prstenje",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 415,
+      "sterling_silver": 145
+    },
+    "basePrice": 415,
+    "rating": 4.9,
+    "reviewCount": 334,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Prepoznatljivi šibenski botun na profinjenoj zlatnoj šini. Simbol dalmatinskog ponosa i vrhunskog filigranskog umijeća.",
+    "images": [
+      "/jewelry/zlatna-narukvica-botuni.jpg",
+      "/jewelry/sibenski-botun-biser.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "šibenski botun",
+      "sibenski botun",
+      "botun",
+      "šibenik",
+      "dalmacija",
+      "filigran",
+      "zlato",
+      "srebro",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "koraljni-prsten-adriatic",
+    "name": "Prsten Jadranski Crveni Koralj",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "prstenje",
+    "theme": "Tradicijski",
+    "stoneColor": "Crveni Koralj",
+    "price": {
+      "gold_14k": 460,
+      "sterling_silver": 180
+    },
+    "basePrice": 460,
+    "rating": 4.8,
+    "reviewCount": 196,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Ovalni kabošon prirodnog crvenog koralja s otoka Zlarina uokviren čipkastim 14-karatnim zlatom.",
+    "images": [
+      "/jewelry/dubrovacke-nausnice-koralj.jpg",
+      "/jewelry/zlatni-prsten-kameja.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "koralj",
+      "crveni koralj",
+      "coral",
+      "zlarin",
+      "jadran",
+      "adriatic",
+      "zlato",
+      "14k",
+      "srebro",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "paski-biser-prsten",
+    "name": "Zlatni Prsten Paška Perla",
+    "brand": "Paška Čipka & Biser",
+    "line": "tradicijski-nakit",
+    "subcategory": "prstenje",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 430
+    },
+    "basePrice": 430,
+    "rating": 4.8,
+    "reviewCount": 152,
+    "badges": [
+      "Novo"
+    ],
+    "description": "Kraljevski prsten sa središnjim prirodnim biserom okruženim zlatnim vijencem po uzoru na pašku čipku.",
+    "images": [
+      "/jewelry/rozeta-nausnice-biseri.jpg",
+      "/jewelry/paske-peruzine-biseri.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "biser",
+      "perla",
+      "pearl",
+      "pag",
+      "paška čipka",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "astera-aurora-prsten-tirkiz",
+    "name": "Astera Aurora Prsten s Tirkizom",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "prstenje",
+    "theme": "Klasično",
+    "stoneColor": "Tirkiz",
+    "price": {
+      "gold_14k": 445,
+      "sterling_silver": 170
+    },
+    "basePrice": 445,
+    "rating": 4.7,
+    "reviewCount": 124,
+    "badges": [
+      "Unikat"
+    ],
+    "description": "Moderan geometrijski prsten s nebesko plavim tirkizom i toplim odsjajem 14-karatnog zlata.",
+    "images": [
+      "/jewelry/rozeta-nausnice-tirkiz.jpg",
+      "/images/astera-showcase.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "tirkiz",
+      "turquoise",
+      "aurora",
+      "plavi",
+      "zlato",
+      "14k",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "astera-luna-biserna-ogrlica",
+    "name": "Astera Luna Ogrlica s Biserima",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Klasično",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 550,
+      "sterling_silver": 210
+    },
+    "basePrice": 550,
+    "rating": 4.9,
+    "reviewCount": 267,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Suvremena ogrlica s nizom baroknih bisera i zlatnom kopčom, stvorena za večernje izlaske i svečane trenutke.",
+    "images": [
+      "/jewelry/visece-nausnice-niz-bisera.jpg",
+      "/jewelry/filigran-lepeza-ogrlica.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "necklace",
+      "choker",
+      "biser",
+      "biseri",
+      "pearl",
+      "pearls",
+      "luna",
+      "barokni",
+      "zlato",
+      "14k",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "sibenski-botun-ogrlica-zlato",
+    "name": "Zlatna Ogrlica Šibenski Botun",
+    "brand": "Šibenski Majstori",
+    "line": "tradicijski-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 495,
+      "sterling_silver": 160
+    },
+    "basePrice": 495,
+    "rating": 4.9,
+    "reviewCount": 389,
+    "badges": [
+      "Bestseller",
+      "Ručni Rad"
+    ],
+    "description": "Najtraženija tradicijska ogrlica s originalnim filigranskim šibenskim botunom na lančiću od 14k zlata.",
+    "images": [
+      "/jewelry/sibenski-botun-biser.jpg",
+      "/jewelry/zlatna-narukvica-botuni.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "lančić",
+      "necklace",
+      "pendant",
+      "šibenski botun",
+      "sibenski botun",
+      "botun",
+      "filigran",
+      "zlato",
+      "srebro",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "kameja-medalj-ogrlica",
+    "name": "Zlatna Ogrlica s Kameja Medaljonom",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Tradicijski",
+    "stoneColor": "Kameja Koralj",
+    "price": {
+      "gold_14k": 530
+    },
+    "basePrice": 530,
+    "rating": 4.8,
+    "reviewCount": 147,
+    "badges": [
+      "Ekskluzivno"
+    ],
+    "description": "Ogrlica s ručno rezbarenom kamejom u školjci sardoniksa, uokvirena zlatnom čipkom i biserima.",
+    "images": [
+      "/jewelry/zlatne-nausnice-kameja.jpg",
+      "/jewelry/zlatni-prsten-kameja.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "medaljon",
+      "necklace",
+      "pendant",
+      "kameja",
+      "cameo",
+      "koralj",
+      "biser",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "koraljna-narukvica-dubrovnik",
+    "name": "Narukvica Jadranski Koralj & Zlato",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "narukvice",
+    "theme": "Tradicijski",
+    "stoneColor": "Crveni Koralj",
+    "price": {
+      "gold_14k": 520,
+      "sterling_silver": 190
+    },
+    "basePrice": 520,
+    "rating": 4.8,
+    "reviewCount": 211,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Niz poliranih kuglica prirodnog crvenog koralja isprepleten sa zlatnim filigranskim perlama.",
+    "images": [
+      "/jewelry/dubrovacke-nausnice-koralj.jpg",
+      "/jewelry/zlatna-narukvica-botuni.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "koralj",
+      "crveni koralj",
+      "coral",
+      "dubrovnik",
+      "filigran",
+      "zlato",
+      "srebro",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "biserna-narukvica-adriatica",
+    "name": "Zlatna Narukvica s Jadranskim Biserima",
+    "brand": "Paška Čipka & Biser",
+    "line": "tradicijski-nakit",
+    "subcategory": "narukvice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 470,
+      "sterling_silver": 185
+    },
+    "basePrice": 470,
+    "rating": 4.8,
+    "reviewCount": 174,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Dvostruki niz bijelih slatkovodnih bisera sa zlatnom filigranskom kopčom u obliku rozete.",
+    "images": [
+      "/jewelry/visece-nausnice-niz-bisera.jpg",
+      "/jewelry/paske-peruzine-biseri.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "biser",
+      "biseri",
+      "pearl",
+      "pearls",
+      "rozeta",
+      "pag",
+      "zlato",
+      "srebro",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "astera-filigran-cuff-narukvica",
+    "name": "Astera Zlatna Čipkasta Narukvica",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "narukvice",
+    "theme": "Klasično",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 670,
+      "sterling_silver": 240
+    },
+    "basePrice": 670,
+    "rating": 4.9,
+    "reviewCount": 148,
+    "badges": [
+      "Unikat"
+    ],
+    "description": "Široka kruta narukvica (cuff) izrađena tehnikom prozračnog filigrana, lagana na ruci a raskošnog izgleda.",
+    "images": [
+      "/jewelry/zlatna-narukvica-botuni.jpg",
+      "/jewelry/filigran-lepeza-ogrlica.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "cuff",
+      "bangle",
+      "čipka",
+      "lace",
+      "filigran",
+      "filigree",
+      "zlato",
+      "14k",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "zadarske-ulice-zlatne-nausnice",
+    "name": "Zadarske Zlatne Naušnice Sv. Donat",
+    "brand": "Zadar Gold Heritage",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 455
+    },
+    "basePrice": 455,
+    "rating": 4.7,
+    "reviewCount": 112,
+    "badges": [
+      "Tradicijski"
+    ],
+    "description": "Naušnice inspirirane starohrvatskom pleternom ornamentikom i arhitekturom Zadra u 14-karatnom zlatu.",
+    "images": [
+      "/jewelry/zlatne-polumjesec-nausnice.jpg",
+      "/jewelry/zlatni-cvjetni-botuni.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "zadar",
+      "zadarske",
+      "pleter",
+      "starohrvatski",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "zagrebacko-licitar-srce-ogrlica",
+    "name": "Zlatna Ogrlica Medeno Srce Filigran",
+    "brand": "Zagreb Licitar Atelier",
+    "line": "tradicijski-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Tradicijski",
+    "stoneColor": "Crveni Koralj",
+    "price": {
+      "gold_14k": 440,
+      "sterling_silver": 155
+    },
+    "basePrice": 440,
+    "rating": 4.8,
+    "reviewCount": 238,
+    "badges": [
+      "Bestseller",
+      "Poklon"
+    ],
+    "description": "Profinjeni privjesak u obliku tradicijskog srca s ugraviranim filigranskim ornamentima i crvenim koraljem u središtu.",
+    "images": [
+      "/jewelry/dubrovacke-nausnice-koralj.jpg",
+      "/jewelry/filigran-lepeza-ogrlica.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "necklace",
+      "pendant",
+      "srce",
+      "heart",
+      "licitar",
+      "zagreb",
+      "koralj",
+      "poklon",
+      "gift",
+      "zlato",
+      "srebro",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "rijecki-morcic-zlatne-nausnice",
+    "name": "Kvarnerske Naušnice s Biserom i Oniksom",
+    "brand": "Astera Atelier",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "Zlato & Biser",
+    "price": {
+      "gold_14k": 485
+    },
+    "basePrice": 485,
+    "rating": 4.8,
+    "reviewCount": 145,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Tradicijske kvarnerske naušnice koje spajaju tamni sjaj oniksa, bijeli biser i 14-karatno zlato.",
+    "images": [
+      "/jewelry/rozeta-nausnice-biseri.jpg",
+      "/jewelry/konavoske-obruci-biseri.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "kvarner",
+      "rijeka",
+      "oniks",
+      "onyx",
+      "biser",
+      "pearl",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "slavonski-dukat-zlatna-ogrlica",
+    "name": "Zlatna Ogrlica Slavonski Dukat Filigran",
+    "brand": "Zagreb Licitar Atelier",
+    "line": "tradicijski-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 650
+    },
+    "basePrice": 650,
+    "rating": 4.9,
+    "reviewCount": 194,
+    "badges": [
+      "Ekskluzivno"
+    ],
+    "description": "Svečana ogrlica s motivom tradicijskog zlatnika uokvirenog raskošnom čipkom od 14-karatnog zlata.",
+    "images": [
+      "/jewelry/splitske-kosarice-2.jpg",
+      "/images/tradicijski-showcase.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "necklace",
+      "dukat",
+      "zlatnik",
+      "coin",
+      "slavonija",
+      "filigran",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "astera-celeste-safirne-nausnice",
+    "name": "Astera Celeste Naušnice s Plavim Safirom",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "nausnice",
+    "theme": "Klasično",
+    "stoneColor": "Safir & Kristal",
+    "price": {
+      "gold_14k": 475,
+      "sterling_silver": 185
+    },
+    "basePrice": 475,
+    "rating": 4.8,
+    "reviewCount": 212,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Kraljevski plavi safiri uokvireni blistavim bijelim topazima na postolju od 14-karatnog zlata.",
+    "images": [
+      "/images/astera-showcase.jpg",
       "/floral-droplet-earrings.png"
     ],
     "category": "Earrings",
     "material": [
-      "Sterling Silver",
-      "14k Gold"
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "safir",
+      "sapphire",
+      "plavi",
+      "blue",
+      "celeste",
+      "topaz",
+      "kristal",
+      "zlato",
+      "14k",
+      "srebro",
+      "astera"
     ]
   },
   {
-    "id": "forest-greens-necklace",
-    "name": "Forest Greens Necklace",
-    "theme": "Classic",
-    "stoneColor": "Green",
+    "id": "astera-solaris-zlatni-prsten",
+    "name": "Astera Solaris Zlatni Pečatnjak",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "prstenje",
+    "theme": "Klasično",
+    "stoneColor": "14k Zlato",
     "price": {
-      "sterling_silver": 320,
-      "gold_14k": 780
+      "gold_14k": 510,
+      "sterling_silver": 190
     },
-    "badges": [],
-    "description": "A classic necklace with stunning green stones.",
+    "basePrice": 510,
+    "rating": 4.7,
+    "reviewCount": 136,
+    "badges": [
+      "Novo"
+    ],
+    "description": "Suvremeni ženski pečatnjak (signet ring) s ugraviranim zrakama sunca i brušenim središnjim biserom.",
     "images": [
+      "/jewelry/zlatni-cvjetni-botuni.jpg",
+      "/jewelry/zlatni-prsten-kameja.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "signet",
+      "pečatnjak",
+      "solaris",
+      "sunce",
+      "sun",
+      "zlato",
+      "14k",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "hvarska-lavanda-ametist-nausnice",
+    "name": "Hvarske Zlatne Naušnice s Ametistom",
+    "brand": "Splitska Baština",
+    "line": "astera-nakit",
+    "subcategory": "nausnice",
+    "theme": "Cvijeće",
+    "stoneColor": "Safir & Kristal",
+    "price": {
+      "gold_14k": 425,
+      "sterling_silver": 165
+    },
+    "basePrice": 425,
+    "rating": 4.8,
+    "reviewCount": 158,
+    "badges": [
+      "Unikat"
+    ],
+    "description": "Nježne ljubičaste nijanse prirodnog ametista spojene sa zlatnim filigranskim listićima inspiriranim otokom Hvarom.",
+    "images": [
+      "/floral-droplet-earrings.png",
+      "/jewelry/cvjetne-filigran-biser-2.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "hvar",
+      "lavanda",
+      "ametist",
+      "amethyst",
+      "ljubičasta",
+      "purple",
+      "filigran",
+      "zlato",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "korculanski-ples-zlatna-narukvica",
+    "name": "Korčulanska Filigranska Narukvica Moreška",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "narukvice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 610
+    },
+    "basePrice": 610,
+    "rating": 4.9,
+    "reviewCount": 127,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Člankovita narukvica od 14k zlata sastavljena od osam ručno lemljenih filigranskih rozeta s otoka Korčule.",
+    "images": [
+      "/jewelry/zlatna-narukvica-botuni.jpg",
+      "/jewelry/srebrna-narukvica-botun.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "korčula",
+      "moreška",
+      "rozeta",
+      "filigran",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "istarska-maslina-zlatni-prsten",
+    "name": "Zlatni Prsten Istarska Maslina",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "prstenje",
+    "theme": "Cvijeće",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 375,
+      "sterling_silver": 140
+    },
+    "basePrice": 375,
+    "rating": 4.8,
+    "reviewCount": 289,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Otvoreni prsten u obliku grančice masline s fino teksturiranim zlatnim listićima i sitnim biserima.",
+    "images": [
+      "/emerald-butterfly-ring.png",
+      "/jewelry/zlatni-cvjetni-botuni.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "maslina",
+      "olive",
+      "istra",
+      "list",
+      "leaf",
+      "priroda",
+      "nature",
+      "zlato",
+      "srebro",
+      "14k",
+      "astera"
+    ]
+  },
+  {
+    "id": "trogirska-zvijezda-nausnice",
+    "name": "Trogirske Zlatne Naušnice Zvijezda",
+    "brand": "Splitska Baština",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 465
+    },
+    "basePrice": 465,
+    "rating": 4.8,
+    "reviewCount": 141,
+    "badges": [
+      "Tradicijski"
+    ],
+    "description": "Zvjezdaste filigranske naušnice iz Trogira s fino tordiranom zlatnom žicom i središnjom granulom.",
+    "images": [
+      "/jewelry/splitske-kosarice-1.jpg",
+      "/jewelry/zlatni-cvjetni-botuni.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "trogir",
+      "zvijezda",
+      "star",
+      "filigran",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "makarski-biser-zlatna-ogrlica",
+    "name": "Ogrlica Biokovski Biser & 14k Zlato",
+    "brand": "Splitska Baština",
+    "line": "tradicijski-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 515
+    },
+    "basePrice": 515,
+    "rating": 4.7,
+    "reviewCount": 119,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Elegantna zlatna ogrlica s tri viseća jadranska bisera i filigranskim čvorićima.",
+    "images": [
+      "/jewelry/visece-nausnice-niz-bisera.jpg",
+      "/jewelry/filigran-lepeza-ogrlica.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "necklace",
+      "makarska",
+      "biser",
+      "pearl",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "astoria-rubin-kraljevski-prsten",
+    "name": "Astera Kraljevski Rubin Prsten",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "prstenje",
+    "theme": "Klasično",
+    "stoneColor": "Crveni Koralj",
+    "price": {
+      "gold_14k": 640,
+      "sterling_silver": 250
+    },
+    "basePrice": 640,
+    "rating": 4.9,
+    "reviewCount": 231,
+    "badges": [
+      "Ekskluzivno"
+    ],
+    "description": "Fasetirani crveni rubin u viktorijanskom okviru od 14-karatnog zlata s ugraviranim bočnim laticama.",
+    "images": [
+      "/jewelry/zlatni-prsten-kameja.jpg",
+      "/emerald-butterfly-ring.png"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "rubin",
+      "ruby",
+      "crveni",
+      "red",
+      "kraljevski",
+      "zlato",
+      "14k",
+      "astera"
+    ]
+  },
+  {
+    "id": "astoria-rubin-visece-nausnice",
+    "name": "Astera Viseće Naušnice s Rubinom",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "nausnice",
+    "theme": "Klasično",
+    "stoneColor": "Crveni Koralj",
+    "price": {
+      "gold_14k": 540,
+      "sterling_silver": 215
+    },
+    "basePrice": 540,
+    "rating": 4.8,
+    "reviewCount": 175,
+    "badges": [
+      "Novo"
+    ],
+    "description": "Svečane naušnice s kapljicama crvenog rubina i toplim odsjajem 14-karatnog zlata.",
+    "images": [
+      "/jewelry/dubrovacke-nausnice-koralj.jpg",
+      "/floral-droplet-earrings.png"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "rubin",
+      "ruby",
+      "crveni",
+      "kapljica",
+      "zlato",
+      "14k",
+      "astera"
+    ]
+  },
+  {
+    "id": "sibenski-botun-manzete-zlato",
+    "name": "Zlatna Narukvica Kraljevski Niz Botuna",
+    "brand": "Šibenski Majstori",
+    "line": "tradicijski-nakit",
+    "subcategory": "narukvice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 790,
+      "sterling_silver": 280
+    },
+    "basePrice": 790,
+    "rating": 4.9,
+    "reviewCount": 162,
+    "badges": [
+      "Ekskluzivno",
+      "Ručni Rad"
+    ],
+    "description": "Raskošna narukvica sastavljena od sedam nanizanih šibenskih botuna u punom 14-karatnom zlatu.",
+    "images": [
+      "/jewelry/zlatna-narukvica-botuni.jpg",
+      "/jewelry/srebrna-narukvica-botun.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "šibenski botun",
+      "sibenski botun",
+      "botuni",
+      "niz",
+      "zlato",
+      "srebro",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "mljetska-perla-ogrlica",
+    "name": "Ogrlica Mljetska Zlatna Školjka s Biserom",
+    "brand": "Dubrovnik Filigran",
+    "line": "astera-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Klasično",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 460,
+      "sterling_silver": 175
+    },
+    "basePrice": 460,
+    "rating": 4.7,
+    "reviewCount": 149,
+    "badges": [
+      "Novo"
+    ],
+    "description": "Privjesak u obliku jadranske školjke od 14k zlata koja skriva prirodni bijeli biser.",
+    "images": [
+      "/jewelry/filigran-lepeza-ogrlica.jpg",
+      "/jewelry/rozeta-nausnice-biseri.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "necklace",
+      "pendant",
+      "školjka",
+      "shell",
+      "mljet",
+      "biser",
+      "pearl",
+      "zlato",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "konavoske-male-verizice-srebro",
+    "name": "Konavoske Srebrne Verižice Pozlata",
+    "brand": "Konavle Zlatarna",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "Srebro 925",
+    "price": {
+      "sterling_silver": 150,
+      "gold_14k": 360
+    },
+    "basePrice": 150,
+    "rating": 4.6,
+    "reviewCount": 224,
+    "badges": [
+      "Akcija",
+      "Povoljno"
+    ],
+    "description": "Manja varijanta tradicijskih konavoskih verižica idealna za svakodnevno nošenje, dostupna u srebru 925 i 14k zlatu.",
+    "images": [
+      "/jewelry/konavoske-zlatne-verizice.jpg",
+      "/jewelry/konavoske-obruci-biseri.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "Sterling Silver",
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "konavoske",
+      "verižice",
+      "srebro",
+      "silver",
+      "zlato",
+      "tradicijski"
+    ],
+    "priceHistory30d": {
+      "sterling_silver": 180,
+      "gold_14k": 420
+    }
+  },
+  {
+    "id": "paska-cipka-zlatni-medalj",
+    "name": "Zlatna Ogrlica Paška Čipka Rozeta",
+    "brand": "Paška Čipka & Biser",
+    "line": "tradicijski-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 575
+    },
+    "basePrice": 575,
+    "rating": 4.9,
+    "reviewCount": 208,
+    "badges": [
+      "Bestseller",
+      "Ručni Rad"
+    ],
+    "description": "Okrugli privjesak čija zlatna filigranska mreža vjerno prenosi UNESCO-zaštićeni motiv paške čipke.",
+    "images": [
+      "/jewelry/paske-peruzine-biseri.jpg",
+      "/jewelry/rozeta-nausnice-biseri.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "necklace",
+      "paška čipka",
+      "pag",
+      "rozeta",
+      "biser",
+      "pearl",
+      "filigran",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "astera-zlatni-slap-nausnice",
+    "name": "Astera Zlatni Slap Viseće Naušnice",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "nausnice",
+    "theme": "Klasično",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 510,
+      "sterling_silver": 195
+    },
+    "basePrice": 510,
+    "rating": 4.8,
+    "reviewCount": 167,
+    "badges": [
+      "Ekskluzivno"
+    ],
+    "description": "Tri tanka kaskadna lančića od 14-karatnog zlata s dijamantnim rezom koji svjetlucaju pri svakom pokretu.",
+    "images": [
+      "/jewelry/filigranske-recine-masna.jpg",
+      "/jewelry/visece-nausnice-niz-bisera.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "earrings",
+      "viseće",
+      "slap",
+      "cascade",
+      "zlato",
+      "zlatne",
+      "14k",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "zadarska-sfinga-zlatni-prsten",
+    "name": "Prsten Zadarska Zlatna Granulacija",
+    "brand": "Zadar Gold Heritage",
+    "line": "tradicijski-nakit",
+    "subcategory": "prstenje",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 435
+    },
+    "basePrice": 435,
+    "rating": 4.7,
+    "reviewCount": 114,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Prsten ukrašen tehnikom antičke granulacije s tisućama sitnih zlatnih kuglica spojenih bez lema.",
+    "images": [
+      "/jewelry/zlatni-cvjetni-botuni.jpg",
+      "/jewelry/zlatne-polumjesec-nausnice.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "zadar",
+      "granulacija",
+      "antika",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "sibenski-botun-manzete-luksuz",
+    "name": "Zlatne Manžete Šibenski Botun 14k",
+    "brand": "Šibenski Majstori",
+    "line": "tradicijski-nakit",
+    "subcategory": "narukvice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 620,
+      "sterling_silver": 210
+    },
+    "basePrice": 620,
+    "rating": 4.9,
+    "reviewCount": 142,
+    "badges": [
+      "Ručni Rad",
+      "Poklon"
+    ],
+    "description": "Muške svečane manžete s filigranskim šibenskim botunom u 14-karatnom zlatu i srebru.",
+    "images": [
+      "/jewelry/zlatna-narukvica-botuni.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "manžete",
+      "cufflinks",
+      "šibenski botun",
+      "sibenski botun",
+      "botun",
+      "muški",
+      "poklon",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "splitska-kraljica-biserna-ogrlica",
+    "name": "Splitska Kraljevska Ogrlica s Biserima",
+    "brand": "Splitska Baština",
+    "line": "tradicijski-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 740
+    },
+    "basePrice": 740,
+    "rating": 4.9,
+    "reviewCount": 184,
+    "badges": [
+      "Ekskluzivno"
+    ],
+    "description": "Svečana ogrlica koja spaja splitske zlatne košarice i trostruki niz prirodnih jadranskih bisera.",
+    "images": [
+      "/jewelry/splitske-kosarice-2.jpg",
+      "/jewelry/visece-nausnice-niz-bisera.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "necklace",
+      "split",
+      "splitske košarice",
+      "biser",
+      "biseri",
+      "pearl",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "dubrovacka-peruzina-zlatni-prsten",
+    "name": "Dubrovački Zlatni Prsten Peružina",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "prstenje",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 480
+    },
+    "basePrice": 480,
+    "rating": 4.8,
+    "reviewCount": 165,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Unikatni zlatni prsten s filigranskom dubrovačkom peružinom ukrašenom sitnim zlatnim zrncima.",
+    "images": [
+      "/jewelry/zlatni-cvjetni-botuni.jpg",
+      "/jewelry/paske-peruzine-biseri.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "dubrovnik",
+      "peružina",
+      "peruzina",
+      "filigran",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "astera-stella-dijamantni-prsten",
+    "name": "Astera Stella Prsten Zvijezda Sjevernjača",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "prstenje",
+    "theme": "Klasično",
+    "stoneColor": "Safir & Kristal",
+    "price": {
+      "gold_14k": 590,
+      "sterling_silver": 225
+    },
+    "basePrice": 590,
+    "rating": 4.9,
+    "reviewCount": 256,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Zaručnički i svečani prsten s motivom zvijezde, optočen brušenim bijelim safirima u 14k zlatu.",
+    "images": [
+      "/emerald-butterfly-ring.png",
+      "/images/astera-showcase.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "stella",
+      "zvijezda",
+      "star",
+      "zaručnički",
+      "engagement",
+      "safir",
+      "kristal",
+      "zlato",
+      "14k",
+      "astera"
+    ]
+  },
+  {
+    "id": "astera-flora-biserna-narukvica",
+    "name": "Astera Flora Narukvica Cvjetni Vijenac",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "narukvice",
+    "theme": "Cvijeće",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 490,
+      "sterling_silver": 185
+    },
+    "basePrice": 490,
+    "rating": 4.8,
+    "reviewCount": 193,
+    "badges": [
+      "Novo"
+    ],
+    "description": "Nježna narukvica s filigranskim cvjetovima i slatkovodnim biserima na podesivom zlatnom lančiću.",
+    "images": [
+      "/rose-petal-bracelet.png",
+      "/jewelry/cvjetne-filigran-biser-1.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "flora",
+      "cvijet",
+      "cvjetni",
+      "floral",
+      "biser",
+      "pearl",
+      "zlato",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "konavoski-zlatni-prsten-granule",
+    "name": "Konavoski Zlatni Prsten s Granulacijom",
+    "brand": "Konavle Zlatarna",
+    "line": "tradicijski-nakit",
+    "subcategory": "prstenje",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 420
+    },
+    "basePrice": 420,
+    "rating": 4.7,
+    "reviewCount": 128,
+    "badges": [
+      "Tradicijski"
+    ],
+    "description": "Ručno kovani zlatni prsten s prepoznatljivim konavoskim nizom zlatnih zrnaca i upletenom žicom.",
+    "images": [
+      "/jewelry/konavoske-zlatne-verizice.jpg",
+      "/jewelry/zlatni-prsten-kameja.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "konavle",
+      "konavoski",
+      "granulacija",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "paska-kraljica-zlatna-narukvica",
+    "name": "Zlatna Narukvica Paška Rozeta s Biserom",
+    "brand": "Paška Čipka & Biser",
+    "line": "tradicijski-nakit",
+    "subcategory": "narukvice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 630
+    },
+    "basePrice": 630,
+    "rating": 4.9,
+    "reviewCount": 171,
+    "badges": [
+      "Ekskluzivno"
+    ],
+    "description": "Narukvica s tri filigranske paške rozete i prirodnim biserima u 14-karatnom zlatu.",
+    "images": [
+      "/jewelry/paske-peruzine-biseri.jpg",
+      "/jewelry/rozeta-nausnice-biseri.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "pag",
+      "paška",
+      "rozeta",
+      "biser",
+      "pearl",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "astera-nocturne-safirna-ogrlica",
+    "name": "Astera Nocturne Ogrlica s Kraljevskim Safirom",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Klasično",
+    "stoneColor": "Safir & Kristal",
+    "price": {
+      "gold_14k": 680,
+      "sterling_silver": 260
+    },
+    "basePrice": 680,
+    "rating": 4.9,
+    "reviewCount": 284,
+    "badges": [
+      "Bestseller"
+    ],
+    "description": "Duboki ponoćno plavi safir u obliku suze ovješen o dijamantno brušeni lančić od 14k zlata.",
+    "images": [
+      "/images/astera-showcase.jpg",
       "/forest-greens-necklace.png"
     ],
     "category": "Necklaces",
     "material": [
-      "Sterling Silver",
-      "14k Gold"
-    ]
-  },
-  {
-    "id": "rose-petal-bracelet",
-    "name": "Rose Petal Bracelet",
-    "theme": "Flowers",
-    "stoneColor": "Rose",
-    "price": {
-      "sterling_silver": 180,
-      "gold_14k": 620
-    },
-    "badges": [
-      "Handcrafted"
-    ],
-    "description": "A handcrafted bracelet composed of sterling silver rose petals.",
-    "images": [
-      "/rose-petal-bracelet.png"
-    ],
-    "category": "Bracelets",
-    "material": [
-      "Sterling Silver",
-      "14k Gold"
-    ]
-  },
-  {
-    "id": "diamond-butterfly-necklace",
-    "name": "Diamond Butterfly Necklace",
-    "theme": "Butterflies",
-    "stoneColor": "Clear",
-    "price": {
-      "sterling_silver": 250,
-      "gold_14k": 850
-    },
-    "badges": [
-      "Premium"
-    ],
-    "description": "A delicate butterfly necklace with clear stones.",
-    "images": [],
-    "category": "Necklaces",
-    "material": [
-      "Sterling Silver",
       "14k Gold",
-      "Platinum"
+      "Sterling Silver"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "necklace",
+      "pendant",
+      "nocturne",
+      "safir",
+      "sapphire",
+      "suza",
+      "teardrop",
+      "plavi",
+      "zlato",
+      "14k",
+      "astera"
     ]
   },
   {
-    "id": "classic-gold-hoops",
-    "name": "Classic Gold Hoops",
-    "theme": "Classic",
-    "stoneColor": "Clear",
+    "id": "astera-aurora-safirna-ogrlica",
+    "name": "Astera Aurora Zlatna Ogrlica sa Safirom",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Klasično",
+    "stoneColor": "Safir & Kristal",
     "price": {
-      "gold_14k": 140
+      "gold_14k": 580,
+      "sterling_silver": 220
     },
+    "basePrice": 580,
+    "rating": 4.9,
+    "reviewCount": 214,
     "badges": [
       "Bestseller"
     ],
-    "description": "Timeless 14k gold hoop earrings.",
-    "images": [],
-    "category": "Earrings",
+    "description": "Elegantna ogrlica od 14-karatnog zlata s brušenim plavim safirom okruženim sitnim bijelim topazima.",
+    "images": [
+      "/images/astera-showcase.jpg",
+      "/jewelry/filigran-lepeza-ogrlica.jpg"
+    ],
+    "category": "Necklaces",
     "material": [
       "14k Gold",
-      "Rose Gold"
+      "Sterling Silver"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "lančić",
+      "necklace",
+      "pendant",
+      "safir",
+      "sapphire",
+      "plavi",
+      "aurora",
+      "zlato",
+      "14k",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "dubrovacki-zlatni-botuni-nausnice",
+    "name": "Dubrovačke Zlatne Naušnice Puplini",
+    "brand": "Dubrovnik Filigran",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 510
+    },
+    "basePrice": 510,
+    "rating": 4.8,
+    "reviewCount": 167,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Tradicijske dubrovačke zlatne naušnice na klin s finom filigranskom kalotom i središnjom zlatnom granulom.",
+    "images": [
+      "/jewelry/zlatni-cvjetni-botuni.jpg",
+      "/jewelry/splitske-kosarice-1.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "rećine",
+      "earrings",
+      "dubrovnik",
+      "puplini",
+      "botuni",
+      "filigran",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "splitska-mandulina-zlatne-nausnice",
+    "name": "Splitske Zlatne Naušnice Mandulina",
+    "brand": "Splitska Baština",
+    "line": "tradicijski-nakit",
+    "subcategory": "nausnice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 545
+    },
+    "basePrice": 545,
+    "rating": 4.9,
+    "reviewCount": 176,
+    "badges": [
+      "Ekskluzivno"
+    ],
+    "description": "Viseće splitske naušnice bademastog oblika ukrašene filigranskim viticama i prirodnim bijelim biserima.",
+    "images": [
+      "/jewelry/splitske-kosarice-2.jpg",
+      "/jewelry/rozeta-nausnice-biseri.jpg"
+    ],
+    "category": "Earrings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "naušnice",
+      "nausnice",
+      "rećine",
+      "earrings",
+      "split",
+      "mandulina",
+      "biser",
+      "pearl",
+      "filigran",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "astera-imperial-biserni-prsten",
+    "name": "Astera Imperial Prsten s Južnomorskim Biserom",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "prstenje",
+    "theme": "Klasično",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 530,
+      "sterling_silver": 195
+    },
+    "basePrice": 530,
+    "rating": 4.8,
+    "reviewCount": 182,
+    "badges": [
+      "Novo"
+    ],
+    "description": "Luksuzni prsten s krunom od 14k zlata i središnjim biserom sedefastog sjaja.",
+    "images": [
+      "/jewelry/zlatni-prsten-kameja.jpg",
+      "/jewelry/cvjetne-filigran-biser-1.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "biser",
+      "perla",
+      "pearl",
+      "imperial",
+      "zlato",
+      "14k",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "astera-iris-cvjetna-ogrlica",
+    "name": "Astera Iris Zlatna Ogrlica Hrvatski Perunika",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Cvijeće",
+    "stoneColor": "Safir & Kristal",
+    "price": {
+      "gold_14k": 520,
+      "sterling_silver": 190
+    },
+    "basePrice": 520,
+    "rating": 4.8,
+    "reviewCount": 164,
+    "badges": [
+      "Unikat"
+    ],
+    "description": "Ogrlica inspirirana cvijetom hrvatske perunike (irisa) s laticama u 14k zlatu i plavim safirom.",
+    "images": [
+      "/forest-greens-necklace.png",
+      "/images/astera-showcase.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "lančić",
+      "necklace",
+      "iris",
+      "perunika",
+      "cvijet",
+      "safir",
+      "zlato",
+      "14k",
+      "srebro",
+      "astera"
+    ]
+  },
+  {
+    "id": "konavoska-zlatna-narukvica-biser",
+    "name": "Konavoska Zlatna Narukvica s Biserima",
+    "brand": "Konavle Zlatarna",
+    "line": "tradicijski-nakit",
+    "subcategory": "narukvice",
+    "theme": "Tradicijski",
+    "stoneColor": "Prirodni Biser",
+    "price": {
+      "gold_14k": 560
+    },
+    "basePrice": 560,
+    "rating": 4.9,
+    "reviewCount": 148,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Elegantna narukvica s filigranskim konavoskim karikama i prirodnim slatkovodnim biserima.",
+    "images": [
+      "/jewelry/konavoske-obruci-biseri.jpg",
+      "/jewelry/zlatna-narukvica-botuni.jpg"
+    ],
+    "category": "Bracelets",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "narukvica",
+      "narukvice",
+      "bracelet",
+      "konavle",
+      "konavoska",
+      "biser",
+      "biseri",
+      "pearl",
+      "zlato",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "krcka-zlatna-zvijezda-prsten",
+    "name": "Zlatni Prsten Krčka Rozeta Filigran",
+    "brand": "Zadar Gold Heritage",
+    "line": "tradicijski-nakit",
+    "subcategory": "prstenje",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 410,
+      "sterling_silver": 155
+    },
+    "basePrice": 410,
+    "rating": 4.7,
+    "reviewCount": 129,
+    "badges": [
+      "Tradicijski"
+    ],
+    "description": "Filigranski prsten nadahnut glagoljaškom i renesansnom baštinom otoka Krka.",
+    "images": [
+      "/jewelry/zlatni-cvjetni-botuni.jpg",
+      "/jewelry/zlatne-polumjesec-nausnice.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "krk",
+      "rozeta",
+      "filigran",
+      "zlato",
+      "srebro",
+      "14k",
+      "tradicijski"
+    ]
+  },
+  {
+    "id": "astoria-koraljna-suza-ogrlica",
+    "name": "Astera Ogrlica Koraljna Kapljica 14k",
+    "brand": "Astera Atelier",
+    "line": "astera-nakit",
+    "subcategory": "ogrlice",
+    "theme": "Klasično",
+    "stoneColor": "Crveni Koralj",
+    "price": {
+      "gold_14k": 495,
+      "sterling_silver": 185
+    },
+    "basePrice": 495,
+    "rating": 4.8,
+    "reviewCount": 191,
+    "badges": [
+      "Novo"
+    ],
+    "description": "Minimalistički privjesak s kapljicom crvenog jadranskog koralja u glatkom okviru od 14k zlata.",
+    "images": [
+      "/jewelry/dubrovacke-nausnice-koralj.jpg",
+      "/jewelry/filigran-lepeza-ogrlica.jpg"
+    ],
+    "category": "Necklaces",
+    "material": [
+      "14k Gold",
+      "Sterling Silver"
+    ],
+    "tags": [
+      "ogrlica",
+      "ogrlice",
+      "lančić",
+      "necklace",
+      "koralj",
+      "crveni koralj",
+      "coral",
+      "kapljica",
+      "zlato",
+      "14k",
+      "astera"
+    ]
+  },
+  {
+    "id": "slavonski-zlatni-prsten-dukat",
+    "name": "Zlatni Prsten Mali Dukat",
+    "brand": "Zagreb Licitar Atelier",
+    "line": "tradicijski-nakit",
+    "subcategory": "prstenje",
+    "theme": "Tradicijski",
+    "stoneColor": "14k Zlato",
+    "price": {
+      "gold_14k": 450
+    },
+    "basePrice": 450,
+    "rating": 4.8,
+    "reviewCount": 162,
+    "badges": [
+      "Ručni Rad"
+    ],
+    "description": "Tradicijski zlatni prsten s motivom dukata obrubljenog finim zlatnim pletenim vijencem.",
+    "images": [
+      "/jewelry/splitske-kosarice-1.jpg",
+      "/jewelry/zlatni-prsten-kameja.jpg"
+    ],
+    "category": "Rings",
+    "material": [
+      "14k Gold"
+    ],
+    "tags": [
+      "prsten",
+      "prstenje",
+      "ring",
+      "dukat",
+      "zlatnik",
+      "slavonija",
+      "zlato",
+      "14k",
+      "tradicijski"
     ]
   }
 ]

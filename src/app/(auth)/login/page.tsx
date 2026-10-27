@@ -46,8 +46,10 @@ function LoginForm() {
         } else {
           await signup(formData);
         }
-      } catch (err: any) {
-        toast.error(err.message || "Dogodila se pogreška prilikom prijave.");
+      } catch (err: unknown) {
+        const message =
+          err instanceof Error ? err.message : "Dogodila se pogreška prilikom prijave.";
+        toast.error(message);
       }
     });
   };
@@ -65,16 +67,16 @@ function LoginForm() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_100%)] mix-blend-overlay"></div>
         <div className="absolute top-0 right-0 w-[90%] h-[90%] bg-astera-700/20 blur-[140px] rounded-full mix-blend-screen pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-[70%] h-[70%] bg-astera-800/30 blur-[120px] rounded-full mix-blend-screen pointer-events-none"></div>
-        
+
         <div className="relative z-10 max-w-lg text-pure-white text-center space-y-8">
           <div className="inline-block px-4 py-1.5 border border-white/10 rounded-full bg-white/5 backdrop-blur-md">
-            <span className="text-[9px] uppercase tracking-[0.3em] text-astera-100 font-bold">Astera Inner Circle</span>
+            <span className="text-[9px] uppercase tracking-[0.3em] text-astera-100 font-bold">Astera Krug</span>
           </div>
           <h2 className="font-serif text-5xl mb-6 tracking-wide leading-tight">
             {isLogin ? "Dobrodošli Natrag" : "Pridružite se Kolektivu"}
           </h2>
           <p className="text-astera-100/75 font-sans font-light tracking-wide leading-relaxed text-sm max-w-md mx-auto">
-            {isLogin 
+            {isLogin
               ? "Pristupite svom ekskluzivnom profilu, pregledajte povijest narudžbi i upravljajte svojim postavkama u profinjenom prostoru."
               : "Stvorite račun kako biste ostvarili pristup ekskluzivnim kolekcijama, spremili omiljene artikle i iskusili besprijekoran proces kupnje."}
           </p>
@@ -84,10 +86,10 @@ function LoginForm() {
       {/* Right side - Interactive Form */}
       <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 md:p-20 relative">
         <div className="w-full max-w-md bg-white border border-black/5 rounded-[2.5rem] shadow-xl p-8 sm:p-10 space-y-8 relative overflow-hidden">
-          
+
           {/* Subtle top decoration */}
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-astera-300 via-astera-600 to-astera-900" />
-          
+
           <div className="text-center space-y-2">
             <h1 className="font-serif text-3xl text-astera-900">
               {isLogin ? "Prijava" : "Registracija"}
@@ -100,10 +102,10 @@ function LoginForm() {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Email Field with Floating Label Effect */}
             <div className="space-y-1 relative group">
-              <label 
+              <label
                 className={`absolute left-0 transition-all duration-300 pointer-events-none uppercase tracking-[0.2em] font-bold ${
-                  isEmailFocused || email 
-                    ? "-top-3.5 text-[8px] text-astera-900" 
+                  isEmailFocused || email
+                    ? "-top-3.5 text-[8px] text-astera-900"
                     : "top-3 text-xs text-soft-taupe"
                 }`}
               >
@@ -125,10 +127,10 @@ function LoginForm() {
 
             {/* Password Field with Visibility Toggle & Floating Label */}
             <div className="space-y-1 relative group">
-              <label 
+              <label
                 className={`absolute left-0 transition-all duration-300 pointer-events-none uppercase tracking-[0.2em] font-bold ${
-                  isPasswordFocused || password 
-                    ? "-top-3.5 text-[8px] text-astera-900" 
+                  isPasswordFocused || password
+                    ? "-top-3.5 text-[8px] text-astera-900"
                     : "top-3 text-xs text-soft-taupe"
                 }`}
               >
@@ -157,9 +159,9 @@ function LoginForm() {
                 </button>
               </div>
             </div>
-            
-            <button 
-              type="submit" 
+
+            <button
+              type="submit"
               disabled={isPending}
               className="w-full inline-flex items-center justify-center px-10 py-4 font-sans text-[11px] font-bold tracking-[0.2em] uppercase rounded-none bg-charcoal text-white hover:bg-black hover:shadow-lg hover:shadow-astera-900/10 transition-all duration-300 disabled:opacity-50 mt-4 cursor-pointer"
             >
@@ -182,7 +184,7 @@ function LoginForm() {
 
           {/* Premium OAuth Buttons */}
           <div className="grid grid-cols-2 gap-4">
-            <button 
+            <button
               onClick={() => handleOAuth('google')}
               disabled={isPending}
               className="flex items-center justify-center gap-2 py-3 border border-gray-200 hover:border-astera-900 hover:bg-astera-50/50 transition-all duration-300 text-xs font-bold uppercase tracking-wider text-gray-700 disabled:opacity-50 rounded-xl cursor-pointer"
@@ -195,7 +197,7 @@ function LoginForm() {
               </svg>
               Google
             </button>
-            <button 
+            <button
               onClick={() => handleOAuth('apple')}
               disabled={isPending}
               className="flex items-center justify-center gap-2 py-3 border border-gray-200 hover:border-astera-900 hover:bg-astera-50/50 transition-all duration-300 text-xs font-bold uppercase tracking-wider text-gray-700 disabled:opacity-50 rounded-xl cursor-pointer"

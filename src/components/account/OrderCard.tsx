@@ -1,12 +1,38 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Package, MapPin, CreditCard, Clock, ChevronDown, ChevronUp, AlertCircle, RefreshCw } from "lucide-react";
+import { Package, MapPin, CreditCard, Clock, ChevronDown, ChevronUp, RefreshCw } from "lucide-react";
 import { updateOrderStatus } from "@/app/account/actions";
 import { toast } from "sonner";
+import { formatEUR } from "@/lib/pricing";
+
+export interface OrderLineItem {
+  id: string;
+  description: string | null;
+  quantity: number | null;
+  amount_total: number | null;
+}
+
+export interface OrderRecord {
+  id: string;
+  status?: string | null;
+  total_amount?: number | string | null;
+  delivery_method?: string | null;
+  boxnow_locker_id?: string | null;
+  shipping_address?: {
+    street?: string;
+    line1?: string;
+    zip?: string;
+    postal_code?: string;
+    city?: string;
+    country?: string;
+  } | null;
+  sessionCreated: number | null;
+  lineItems?: OrderLineItem[];
+}
 
 interface OrderCardProps {
-  order: any;
+  order: OrderRecord;
   isDev: boolean;
 }
 
@@ -14,21 +40,19 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
 
-  // Status mapping
-  // DB status: 'paid', 'shipped', 'delivered'
   const currentStatus = order.status || "paid";
 
   const getStatusStep = (status: string) => {
     switch (status) {
       case "paid":
-        return 1; // Processing
+        return 1;
       case "shipped":
-        return 2; // In Transit
+        return 2;
       case "delivered":
       case "arrived":
-        return 3; // Arrived
+        return 3;
       default:
-        return 0; // Received/Pending
+        return 0;
     }
   };
 
@@ -45,7 +69,7 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
     startTransition(async () => {
       const res = await updateOrderStatus(order.id, status);
       if (res.success) {
-        toast.success(`Status updated to ${status}`, {
+        toast.success(`Status narudžbe ažuriran: ${status}`, {
           className: "font-sans text-sm",
           style: {
             background: "#fdfcf8",
@@ -54,13 +78,13 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
           },
         });
       } else {
-        toast.error(res.error || "Failed to update status");
+        toast.error(res.error || "Neuspješno ažuriranje statusa");
       }
     });
   };
 
   const formatDate = (timestamp: number | null) => {
-    if (!timestamp) return "Datum nepoznat";
+    if (!timestamp) return "Nedavno";
     return new Date(timestamp * 1000).toLocaleDateString("hr-HR", {
       year: "numeric",
       month: "long",
@@ -80,7 +104,7 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
         </div>
         <div>
           <p className="text-[9px] uppercase tracking-[0.25em] font-bold text-soft-taupe mb-1">Ukupno</p>
-          <p className="text-xs font-sans text-gray-900 font-bold">€{order.total_amount?.toFixed(2)}</p>
+          <p className="text-xs font-sans text-gray-900 font-bold">{formatEUR(Number(order.total_amount) || 0)}</p>
         </div>
         <div className="sm:text-right">
           <p className="text-[9px] uppercase tracking-[0.25em] font-bold text-soft-taupe mb-1">Broj narudžbe</p>
@@ -98,29 +122,27 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
             <h4 className="text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-astera-900">
               Praćenje dostave
             </h4>
-            <span className={`text-[10px] font-sans font-bold uppercase tracking-wider px-3 py-1 rounded-full ${
-              currentStep === 3 
-                ? "bg-green-50 text-green-700 border border-green-100" 
-                : currentStep === 2
-                ? "bg-blue-50 text-blue-700 border border-blue-100"
-                : "bg-amber-50 text-amber-700 border border-amber-100"
-            }`}>
+            <span
+              className={`text-[10px] font-sans font-bold uppercase tracking-wider px-3 py-1 rounded-full ${
+                currentStep === 3
+                  ? "bg-green-50 text-green-700 border border-green-100"
+                  : currentStep === 2
+                  ? "bg-blue-50 text-blue-700 border border-blue-100"
+                  : "bg-amber-50 text-amber-700 border border-amber-100"
+              }`}
+            >
               {currentStep === 3 ? "Isporučeno" : currentStep === 2 ? "Poslano" : "U obradi"}
             </span>
           </div>
 
           {/* Graphical timeline */}
           <div className="relative pt-2 pb-6">
-            {/* Background Line */}
             <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-150 -translate-y-1/2 z-0" />
-            
-            {/* Active Colored Line */}
-            <div 
-              className="absolute top-1/2 left-0 h-0.5 bg-astera-700 -translate-y-1/2 z-0 transition-all duration-1000 ease-out" 
+            <div
+              className="absolute top-1/2 left-0 h-0.5 bg-astera-700 -translate-y-1/2 z-0 transition-all duration-1000 ease-out"
               style={{ width: `${(currentStep / 3) * 100}%` }}
             />
 
-            {/* Steps Nodes */}
             <div className="relative z-10 flex justify-between">
               {steps.map((step, idx) => {
                 const isCompleted = idx <= currentStep;
@@ -128,7 +150,7 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
 
                 return (
                   <div key={idx} className="flex flex-col items-center text-center max-w-[80px]">
-                    <div 
+                    <div
                       className={`w-7 h-7 rounded-full flex items-center justify-center border transition-all duration-1000 ${
                         isActive
                           ? "bg-astera-900 border-astera-900 text-white shadow-md shadow-astera-900/20 scale-110"
@@ -146,9 +168,11 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
                       )}
                     </div>
                     <div className="mt-3">
-                      <p className={`text-[10px] font-sans font-bold tracking-wide transition-colors duration-500 ${
-                        isActive ? "text-astera-900 font-extrabold" : isCompleted ? "text-gray-900" : "text-gray-400"
-                      }`}>
+                      <p
+                        className={`text-[10px] font-sans font-bold tracking-wide transition-colors duration-500 ${
+                          isActive ? "text-astera-900 font-extrabold" : isCompleted ? "text-gray-900" : "text-gray-400"
+                        }`}
+                      >
                         {step.label}
                       </p>
                     </div>
@@ -162,7 +186,6 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
         {/* Dynamic Status Dashboard Notifications */}
         <div className="transition-all duration-500">
           {currentStep === 3 ? (
-            // ARRIVED STATE
             <div className="bg-green-50/50 border border-green-100/50 rounded-2xl p-5 flex items-start gap-4">
               <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-700 shrink-0">
                 <Package size={20} />
@@ -171,8 +194,9 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
                 <h5 className="text-xs font-bold text-green-950 uppercase tracking-wider">Vaša pošiljka je stigla! 🎁</h5>
                 {order.delivery_method === "boxnow" ? (
                   <p className="text-xs text-green-800 font-sans leading-relaxed">
-                    Paket je uspješno dostavljen u vaš odabrani **Box Now pretinac #{order.boxnow_locker_id || "Dostupan"}**.
-                    Jednokratni PIN kod za otvaranje pretinca poslan vam je putem SMS-a i e-pošte. Pretinac je dostupan 24/7.
+                    Paket je uspješno dostavljen u vaš odabrani{" "}
+                    <strong>Box Now pretinac #{order.boxnow_locker_id || "Dostupan"}</strong>. Jednokratni PIN kod za
+                    otvaranje pretinca poslan vam je putem SMS-a i e-pošte. Pretinac je dostupan 24/7.
                   </p>
                 ) : (
                   <p className="text-xs text-green-800 font-sans leading-relaxed">
@@ -182,13 +206,12 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
               </div>
             </div>
           ) : (
-            // IN TRANSIT OR PROCESSING STATE
             <div className="bg-astera-50/40 border border-astera-100/40 rounded-2xl p-5 flex items-start gap-4">
               <div className="w-10 h-10 rounded-full bg-astera-100/50 flex items-center justify-center text-astera-700 shrink-0">
                 <Clock size={20} className="animate-pulse" />
               </div>
               <div className="space-y-1.5">
-                <h5 className="text-xs font-bold text-astera-955 uppercase tracking-wider">
+                <h5 className="text-xs font-bold text-astera-900 uppercase tracking-wider">
                   {currentStep === 2 ? "Pošiljka je na putu" : "Narudžba se priprema"}
                 </h5>
                 <p className="text-xs text-soft-taupe font-sans leading-relaxed">
@@ -247,7 +270,7 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
         <div className="border-t border-gray-100 pt-4">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-full flex items-center justify-between py-2 text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-soft-taupe hover:text-astera-900 transition-colors"
+            className="w-full flex items-center justify-between py-2 text-[10px] font-sans font-bold uppercase tracking-[0.2em] text-soft-taupe hover:text-astera-900 transition-colors cursor-pointer"
           >
             <span>{isOpen ? "Sakrij detalje narudžbe" : "Prikaži detalje narudžbe"}</span>
             {isOpen ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
@@ -256,19 +279,22 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
           {isOpen && (
             <div className="mt-4 space-y-4 border-t border-gray-50 pt-4 transition-all duration-300">
               {order.lineItems && order.lineItems.length > 0 ? (
-                order.lineItems.map((item: any) => (
-                  <div key={item.id} className="flex justify-between items-center py-2 border-b border-gray-50 last:border-0">
+                order.lineItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="flex justify-between items-center py-2 border-b border-gray-50 last:border-0"
+                  >
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-astera-300 border border-gray-100">
                         <Package size={16} />
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-gray-900">{item.description}</p>
-                        <p className="text-[10px] text-soft-taupe">Količina: {item.quantity}</p>
+                        <p className="text-xs font-bold text-gray-900">{item.description || "Astera nakit"}</p>
+                        <p className="text-[10px] text-soft-taupe">Količina: {item.quantity || 1}</p>
                       </div>
                     </div>
                     <p className="text-xs font-semibold text-gray-900">
-                      €{((item.amount_total || 0) / 100).toFixed(2)}
+                      {formatEUR((item.amount_total || 0) / 100)}
                     </p>
                   </div>
                 ))
@@ -292,7 +318,7 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
               <button
                 onClick={() => handleSimulateStatus("paid")}
                 disabled={isPending || currentStatus === "paid"}
-                className={`px-3 py-1.5 text-[9px] font-sans font-bold uppercase tracking-wider rounded border transition-all ${
+                className={`px-3 py-1.5 text-[9px] font-sans font-bold uppercase tracking-wider rounded border transition-all cursor-pointer ${
                   currentStatus === "paid"
                     ? "bg-amber-100 border-amber-300 text-amber-800"
                     : "bg-white border-gray-200 text-gray-700 hover:border-amber-400 hover:bg-amber-50/30"
@@ -303,7 +329,7 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
               <button
                 onClick={() => handleSimulateStatus("shipped")}
                 disabled={isPending || currentStatus === "shipped"}
-                className={`px-3 py-1.5 text-[9px] font-sans font-bold uppercase tracking-wider rounded border transition-all ${
+                className={`px-3 py-1.5 text-[9px] font-sans font-bold uppercase tracking-wider rounded border transition-all cursor-pointer ${
                   currentStatus === "shipped"
                     ? "bg-blue-100 border-blue-300 text-blue-800"
                     : "bg-white border-gray-200 text-gray-700 hover:border-blue-400 hover:bg-blue-50/30"
@@ -314,7 +340,7 @@ export default function OrderCard({ order, isDev }: OrderCardProps) {
               <button
                 onClick={() => handleSimulateStatus("delivered")}
                 disabled={isPending || currentStatus === "delivered" || currentStatus === "arrived"}
-                className={`px-3 py-1.5 text-[9px] font-sans font-bold uppercase tracking-wider rounded border transition-all ${
+                className={`px-3 py-1.5 text-[9px] font-sans font-bold uppercase tracking-wider rounded border transition-all cursor-pointer ${
                   currentStatus === "delivered" || currentStatus === "arrived"
                     ? "bg-green-100 border-green-300 text-green-800"
                     : "bg-white border-gray-200 text-gray-700 hover:border-green-400 hover:bg-green-50/30"

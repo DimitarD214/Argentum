@@ -1,54 +1,97 @@
-import ProductGrid from './ProductGrid';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import { getStripeProducts } from '@/lib/stripe-products';
+import ProductGrid from "./ProductGrid";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import { getStripeProducts } from "@/lib/stripe-products";
+import { buildBreadcrumbJsonLd } from "@/lib/seo";
+import type { SearchableProduct } from "@/lib/searchEngine";
+import type { Metadata } from "next";
 
-export default async function ShopPage() {
+export const metadata: Metadata = {
+  title: "Trgovina – srebrni i zlatni nakit ručne izrade",
+  description:
+    "Srebrni nakit ručne izrade, certificirano srebro 925 i zlato 585. Prstenje, naušnice, ogrlice i narukvice – besplatna dostava Hrvatska.",
+  alternates: { canonical: "/shop" },
+  openGraph: {
+    title: "Trgovina – srebrni i zlatni nakit | Astera",
+    description:
+      "Srebrni nakit ručne izrade, certificirano srebro 925 i zlato 585. Besplatna dostava Hrvatska.",
+    url: "/shop",
+    locale: "hr_HR",
+    type: "website",
+  },
+};
+
+export default async function ShopPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ q?: string }>;
+}) {
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
   const stripeProducts = await getStripeProducts();
 
-  const products = stripeProducts.map(p => ({
-    id: p.metadata.original_id || p.id,
-    stripe_id: p.id,
-    name: p.name,
-    description: p.description,
-    images: p.images,
-    category: p.metadata.category || 'Jewelry',
-    theme: p.metadata.theme || 'Classic',
-    stoneColor: p.metadata.stoneColor || 'Clear',
-    material: p.metadata.materials ? p.metadata.materials.split(',') : [],
-    price: p.prices.reduce((acc, price) => {
-      const material = price.metadata.material || 'sterling_silver';
-      acc[material] = (price.unit_amount || 0) / 100;
-      return acc;
-    }, {} as Record<string, number>),
-    badges: p.metadata.materials ? [] : ['Novo']
-  }));
+  const products: SearchableProduct[] = stripeProducts
+    .filter(
+      (p) =>
+        p.metadata.category !== "Vjerski nakit" &&
+        p.metadata.line !== "vjerski-nakit"
+    )
+    .map((p) => ({
+      id: p.metadata.original_id || p.id,
+      stripe_id: p.id,
+      name: p.name,
+      description: p.description,
+      images: p.images,
+      brand: p.brand || p.metadata.brand || "Astera Atelier",
+      tags:
+        p.tags ||
+        (p.metadata.tags ? p.metadata.tags.split(",").filter(Boolean) : []),
+      rating:
+        typeof p.rating === "number"
+          ? p.rating
+          : Number(p.metadata.rating || 4.8),
+      reviewCount:
+        typeof p.reviewCount === "number"
+          ? p.reviewCount
+          : Number(p.metadata.reviewCount || 120),
+      basePrice:
+        typeof p.basePrice === "number"
+          ? p.basePrice
+          : Number(p.metadata.basePrice || 0),
+      category: p.metadata.category || "Jewelry",
+      line: p.metadata.line || "astera-nakit",
+      subcategory: p.metadata.subcategory || "",
+      theme: p.metadata.theme || "Klasično",
+      stoneColor: p.metadata.stoneColor || "14k Zlato",
+      material: p.metadata.materials ? p.metadata.materials.split(",") : [],
+      price: p.prices.reduce((acc, price) => {
+        const material = price.metadata.material || "gold_14k";
+        acc[material] = (price.unit_amount || 0) / 100;
+        return acc;
+      }, {} as Record<string, number>),
+      priceHistory30d: p.priceHistory30d,
+      badges: p.metadata.badges
+        ? p.metadata.badges.split(",").filter(Boolean)
+        : ["Ručni Rad"],
+    }));
 
   return (
-    <div className="bg-white">
+    <div className="bg-cream">
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: "Početna", path: "/" },
+          { name: "Trgovina", path: "/shop" },
+        ])}
+      />
       <Navbar />
-      
-      <main className="min-h-screen pt-32 lg:pt-48 pb-24">
-        <header className="px-6 md:px-12 lg:px-24 mb-20 lg:mb-32">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-end justify-between gap-10">
-            <div className="max-w-2xl">
-              <p className="font-sans text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase text-astera-400 mb-6 md:mb-10">Katalog • Proljeće/Ljeto '26</p>
-              <h1 className="font-serif text-6xl md:text-8xl lg:text-[10rem] leading-tight tracking-tighter text-charcoal">
-                Kolekcija Astera
-              </h1>
-            </div>
-            <div className="max-w-xs md:pb-4">
-              <p className="font-sans text-xs md:text-sm leading-relaxed text-gray-500 text-right md:text-left">
-                Pažljivo kurirana selekcija naših najistaknutijih kreacija. Dizajnirano za vječnost.
-              </p>
-            </div>
-          </div>
-          <div className="max-w-7xl mx-auto mt-16 md:mt-24 h-[1px] w-full bg-gradient-to-r from-charcoal via-gray-200 to-transparent opacity-20" />
-        </header>
 
-        <section className="px-4 md:px-12 lg:px-24">
+      <main className="min-h-screen pt-28 lg:pt-32 pb-20">
+        <section className="px-4 md:px-8 lg:px-12">
           <div className="max-w-7xl mx-auto">
-            <ProductGrid initialProducts={products as any} />
+            <ProductGrid
+              initialProducts={products}
+              initialQuery={resolvedSearchParams?.q || ""}
+            />
           </div>
         </section>
       </main>

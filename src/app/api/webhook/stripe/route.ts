@@ -4,7 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import { processBoxNowDelivery } from "@/lib/boxnow";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_dummy", {
-  apiVersion: '2026-02-25.clover',
+  apiVersion: "2026-02-25.clover",
 });
 
 export async function POST(req: NextRequest) {
@@ -24,17 +24,21 @@ export async function POST(req: NextRequest) {
       sig,
       process.env.STRIPE_WEBHOOK_SECRET!
     );
-  } catch (err: any) {
-    console.error("❌ Webhook signature verification failed:", err.message);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Unknown webhook error";
+    console.error("❌ Webhook signature verification failed:", message);
     return NextResponse.json(
-      { error: `Webhook Error: ${err.message}` },
+      { error: `Webhook Error: ${message}` },
       { status: 400 }
     );
   }
 
   // ── Handle checkout.session.completed ──
   if (event.type === "checkout.session.completed") {
-    const session = event.data.object as Stripe.Checkout.Session;
+    const session = event.data.object as Stripe.Checkout.Session & {
+      shipping_details?: unknown;
+      shipping?: unknown;
+    };
 
     console.log("══════════════════════════════════════");
     console.log("✅ PAYMENT RECEIVED");
@@ -57,7 +61,7 @@ export async function POST(req: NextRequest) {
           name: session.customer_details?.name,
           phone: session.customer_details?.phone,
         },
-        shipping: (session as any).shipping_details || (session as any).shipping,
+        shipping: session.shipping_details || session.shipping,
         lineItems: lineItems.data.map((item) => ({
           name: item.description,
           quantity: item.quantity,
@@ -72,32 +76,38 @@ export async function POST(req: NextRequest) {
         created: new Date().toISOString(),
       };
 
-            // Save to Supabase Orders
+      // Save to Supabase Orders
       const supabaseAdmin = createClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
       );
-      
-      const { data: order, error: orderError } = await supabaseAdmin.from('orders').insert({
-        id: session.id,
-        user_email: session.customer_details?.email,
-        total_amount: (session.amount_total || 0) / 100,
-        delivery_method: session.metadata?.delivery_method,
-        boxnow_locker_id: session.metadata?.boxNowLocation,
-        shipping_address: session.metadata?.shipping_address ? JSON.parse(session.metadata.shipping_address) : null,
-        status: 'paid'
-      }).select().single();
+
+      const { error: orderError } = await supabaseAdmin
+        .from("orders")
+        .insert({
+          id: session.id,
+          user_email: session.customer_details?.email,
+          total_amount: (session.amount_total || 0) / 100,
+          delivery_method: session.metadata?.delivery_method,
+          boxnow_locker_id: session.metadata?.boxNowLocation,
+          shipping_address: session.metadata?.shipping_address
+            ? JSON.parse(session.metadata.shipping_address)
+            : null,
+          status: "paid",
+        })
+        .select()
+        .single();
 
       if (orderError) {
-        console.error('Failed to save order to Supabase:', orderError);
+        console.error("Failed to save order to Supabase:", orderError);
       } else {
-        console.log('Order saved to Supabase');
+        console.log("Order saved to Supabase");
         // Handle Box Now fulfillment
-        if (session.metadata?.delivery_method === 'boxnow' && session.metadata?.boxNowLocation) {
+        if (session.metadata?.delivery_method === "boxnow" && session.metadata?.boxNowLocation) {
           await processBoxNowDelivery(session.id, session.metadata.boxNowLocation, {
             name: session.customer_details?.name,
             email: session.customer_details?.email,
-            phone: session.metadata?.phone || session.customer_details?.phone
+            phone: session.metadata?.phone || session.customer_details?.phone,
           });
         }
       }
@@ -119,8 +129,9 @@ export async function POST(req: NextRequest) {
       }
 
       console.log("══════════════════════════════════════");
-    } catch (err: any) {
-      console.error("❌ Error processing webhook:", err.message);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Unknown error";
+      console.error("❌ Error processing webhook:", message);
     }
   }
 

@@ -2,32 +2,52 @@
 
 @theme inline {
   --color-pure-white: #ffffff;
-  --color-foreground: #1a1a1a;
+  --color-foreground: #1c1310;
 
-  --color-astera-50: #f4fcfb;
-  --color-astera-100: #dff6f4;
-  --color-astera-200: #bcece7;
-  --color-astera-300: #89ddd5;
-  --color-astera-400: #57c8bf;
-  --color-astera-500: #269999;
-  --color-astera-600: #1b7a7b;
-  --color-astera-700: #196263;
-  --color-astera-800: #174e4f;
-  --color-astera-900: #164142;
+  /* Astera Autumn Luxury Scale (Cashmere -> Champagne -> Amber -> Cognac -> Bordeaux -> Burgundy Espresso) */
+  --color-astera-50: #fbf8f4;
+  --color-astera-100: #f4ece0;
+  --color-astera-200: #e7d5be;
+  --color-astera-300: #d3b289;
+  --color-astera-400: #bd8b5b;
+  --color-astera-500: #9d6338;
+  --color-astera-600: #824925;
+  --color-astera-700: #66321b;
+  --color-astera-800: #4b1e16;
+  --color-astera-900: #31120e;
 
-  --color-seafoam: #e0f5e9;
-  --color-mint: #d4edda;
-  --color-aqua: #b8e2e1;
-  --color-emerald: #10b981;
-  
-  --color-champagne: #f1e5ac;
-  --color-cream: #fdfcf8;
-  --color-warm-beige: #f7f4ef;
-  --color-luxury-beige: #fcfaf7;
-  --color-soft-taupe: #9e9e9e;
-  
-  --color-charcoal: #1f1f1f;
-  --color-obsidian: #0a0a0a;
+  /* Named Autumn Opulence Accents */
+  --color-cognac: #9d6338;
+  --color-amber: #c88a4b;
+  --color-terracotta: #b56545;
+  --color-cinnamon: #8c4a27;
+  --color-bordeaux: #4b1e16;
+  --color-burgundy: #5c1a24;
+  --color-cashmere: #f4ece0;
+  --color-gold: #c6a15b;
+
+  /* Legacy alias remapping to warm autumn neutrals */
+  --color-seafoam: #f5ede2;
+  --color-mint: #efe3d2;
+  --color-aqua: #e8d6bf;
+  --color-emerald: #9d6338;
+
+  --color-champagne: #eedcb3;
+  --color-cream: #fdfbf7;
+  --color-warm-beige: #f7f2ea;
+  --color-luxury-beige: #fcf9f4;
+  --color-soft-taupe: #9c8f84;
+
+  --color-charcoal: #211815;
+  --color-obsidian: #110b09;
+
+  /* Refined Compact Luxury Typography Scale */
+  --text-xs: 0.72rem;
+  --text-xs--line-height: 1.1rem;
+  --text-sm: 0.8125rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 0.925rem;
+  --text-base--line-height: 1.45rem;
 
   /* Fonts injected by next/font will provide the CSS variables */
   --font-serif: var(--font-serif), "Playfair Display", "Georgia", serif;
@@ -42,10 +62,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 14.5px;
   }
 
   ::selection {
-    background-color: var(--color-astera-100);
+    background-color: var(--color-astera-200);
     color: var(--color-astera-900);
   }
 }

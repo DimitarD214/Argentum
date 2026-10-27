@@ -1,4 +1,14 @@
-export async function processBoxNowDelivery(orderId: string, lockerId: string, userDetails: any) {
+export interface BoxNowRecipient {
+  name?: string | null;
+  phone?: string | null;
+  email?: string | null;
+}
+
+export async function processBoxNowDelivery(
+  orderId: string,
+  lockerId: string,
+  userDetails: BoxNowRecipient
+) {
   try {
     const clientId = process.env.BOXNOW_CLIENT_ID || "dummy_client";
     const clientSecret = process.env.BOXNOW_CLIENT_SECRET || "dummy_secret";
@@ -12,7 +22,7 @@ export async function processBoxNowDelivery(orderId: string, lockerId: string, u
         grant_type: "client_credentials",
         client_id: clientId,
         client_secret: clientSecret,
-      })
+      }),
     });
 
     if (!authRes.ok) throw new Error("Failed to authenticate with Box Now");
@@ -24,24 +34,24 @@ export async function processBoxNowDelivery(orderId: string, lockerId: string, u
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         orderNumber: orderId,
         destination: {
-          lockerId: lockerId
+          lockerId: lockerId,
         },
         recipient: {
           name: userDetails.name,
           phone: userDetails.phone,
-          email: userDetails.email
-        }
-      })
+          email: userDetails.email,
+        },
+      }),
     });
 
     if (!deliveryRes.ok) throw new Error("Failed to create Box Now delivery request");
     const deliveryData = await deliveryRes.json();
-    
+
     console.log("Box Now label generated:", deliveryData);
     return deliveryData;
   } catch (error) {

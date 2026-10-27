@@ -9,14 +9,16 @@ export interface CartItem {
   quantity: number;
   image?: string;
   metal?: string;
+  /** Ring size (EU) – only for rings. Part of the line-item identity. */
+  size?: string;
 }
 
 interface CartState {
   items: CartItem[];
   isCartOpen: boolean;
   addItem: (item: CartItem) => void;
-  removeItem: (id: string, metal?: string) => void;
-  updateQuantity: (id: string, quantity: number, metal?: string) => void;
+  removeItem: (id: string, metal?: string, size?: string) => void;
+  updateQuantity: (id: string, quantity: number, metal?: string, size?: string) => void;
   clearCart: () => void;
   getCartTotal: () => number;
   getCartCount: () => number;
@@ -30,11 +32,11 @@ export const useCartStore = create<CartState>()(
     (set, get) => ({
       items: [],
       isCartOpen: false,
-      
+
       addItem: (item) => {
         set((state) => {
           const existingItemIndex = state.items.findIndex(
-            (i) => i.id === item.id && i.metal === item.metal
+            (i) => i.id === item.id && i.metal === item.metal && i.size === item.size
           );
 
           if (existingItemIndex > -1) {
@@ -46,19 +48,21 @@ export const useCartStore = create<CartState>()(
         });
       },
 
-      removeItem: (id, metal) => {
+      removeItem: (id, metal, size) => {
         set((state) => ({
-          items: state.items.filter((i) => !(i.id === id && i.metal === metal)),
+          items: state.items.filter((i) => !(i.id === id && i.metal === metal && i.size === size)),
         }));
       },
 
-      updateQuantity: (id, quantity, metal) => {
+      updateQuantity: (id, quantity, metal, size) => {
         set((state) => ({
-          items: state.items.map((item) =>
-            item.id === id && item.metal === metal
-              ? { ...item, quantity: Math.max(0, quantity) }
-              : item
-          ).filter((item) => item.quantity > 0),
+          items: state.items
+            .map((item) =>
+              item.id === id && item.metal === metal && item.size === size
+                ? { ...item, quantity: Math.max(0, quantity) }
+                : item
+            )
+            .filter((item) => item.quantity > 0),
         }));
       },
 
@@ -87,8 +91,10 @@ export const useCartStore = create<CartState>()(
       hydrateFromServer: (serverItems) => {
         set((state) => {
           const merged = [...serverItems];
-          state.items.forEach(localItem => {
-            const existing = merged.find(i => i.id === localItem.id && i.metal === localItem.metal);
+          state.items.forEach((localItem) => {
+            const existing = merged.find(
+              (i) => i.id === localItem.id && i.metal === localItem.metal && i.size === localItem.size
+            );
             if (existing) {
               existing.quantity += localItem.quantity;
             } else {
@@ -101,6 +107,7 @@ export const useCartStore = create<CartState>()(
     }),
     {
       name: 'astera-cart-storage',
+      partialize: (state) => ({ items: state.items }),
     }
   )
 );
